@@ -4,7 +4,7 @@ void();
 
 ## History
 
-[可能封号] [已停止更新] [0.x]: `MajsoulEx Helper`
+[可能封号] [已停止更新] [0.x]: `MajsoulEx Helper`  
 [可能封号] [已停止更新] [1.0]：[修罗之战挂机程序](https://github.com/moxcomic/no-asura-no)
 
 ## 2.0

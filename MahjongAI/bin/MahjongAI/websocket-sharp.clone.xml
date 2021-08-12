@@ -1,0 +1,3551 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>websocket-sharp.clone</name>
+    </assembly>
+    <members>
+        <member name="T:WebSocketSharp.ByteOrder">
+            <summary>
+            Contains the values that indicate whether the byte order is a Little-endian or Big-endian.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.ByteOrder.Little">
+            <summary>
+            Indicates a Little-endian.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.ByteOrder.Big">
+            <summary>
+            Indicates a Big-endian.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.CloseEventArgs">
+            <summary>
+            Contains the event data associated with a <see cref="!:WebSocket.OnClose"/> event.
+            </summary>
+            <remarks>
+              <para>
+              A <see cref="!:WebSocket.OnClose"/> event occurs when the WebSocket connection has been
+              closed.
+              </para>
+              <para>
+              If you would like to get the reason for the close, you should access
+              the <see cref="!:CloseEventArgs.Code"/> or <see cref="!:CloseEventArgs.Reason"/> property.
+              </para>
+            </remarks>
+        </member>
+        <member name="P:WebSocketSharp.CloseEventArgs.WasClean">
+            <summary>
+            Gets a value indicating whether the WebSocket connection has been closed cleanly.
+            </summary>
+            <value>
+            <c>true</c> if the WebSocket connection has been closed cleanly; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.CloseStatusCode">
+            <summary>
+            Contains the values of the status code for the WebSocket connection close.
+            </summary>
+            <remarks>
+              <para>
+              The values of the status code are defined in
+              <see href="http://tools.ietf.org/html/rfc6455#section-7.4">Section 7.4</see>
+              of RFC 6455.
+              </para>
+              <para>
+              "Reserved value" must not be set as a status code in a close control frame
+              by an endpoint. It's designated for use in applications expecting a status
+              code to indicate that the connection was closed due to the system grounds.
+              </para>
+            </remarks>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.Normal">
+            <summary>
+            Equivalent to close status 1000.
+            Indicates a normal close.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.Away">
+            <summary>
+            Equivalent to close status 1001.
+            Indicates that an endpoint is going away.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.ProtocolError">
+            <summary>
+            Equivalent to close status 1002.
+            Indicates that an endpoint is terminating the connection due to a protocol error.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.IncorrectData">
+            <summary>
+            Equivalent to close status 1003.
+            Indicates that an endpoint is terminating the connection because it has received
+            an unacceptable type message.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.Undefined">
+            <summary>
+            Equivalent to close status 1004.
+            Still undefined. A Reserved value.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.NoStatusCode">
+            <summary>
+            Equivalent to close status 1005.
+            Indicates that no status code was actually present. A Reserved value.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.Abnormal">
+            <summary>
+            Equivalent to close status 1006.
+            Indicates that the connection was closed abnormally. A Reserved value.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.InconsistentData">
+            <summary>
+            Equivalent to close status 1007.
+            Indicates that an endpoint is terminating the connection because it has received
+            a message that contains a data that isn't consistent with the type of the message.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.PolicyViolation">
+            <summary>
+            Equivalent to close status 1008.
+            Indicates that an endpoint is terminating the connection because it has received
+            a message that violates its policy.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.TooBig">
+            <summary>
+            Equivalent to close status 1009.
+            Indicates that an endpoint is terminating the connection because it has received
+            a message that is too big to process.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.IgnoreExtension">
+            <summary>
+            Equivalent to close status 1010.
+            Indicates that the client is terminating the connection because it has expected
+            the server to negotiate one or more extension, but the server didn't return them
+            in the handshake response.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.ServerError">
+            <summary>
+            Equivalent to close status 1011.
+            Indicates that the server is terminating the connection because it has encountered
+            an unexpected condition that prevented it from fulfilling the request.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CloseStatusCode.TlsHandshakeFailure">
+            <summary>
+            Equivalent to close status 1015.
+            Indicates that the connection was closed due to a failure to perform a TLS handshake.
+            A Reserved value.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.CompressionMethod">
+            <summary>Contains the values of the compression method used to compress the message on the WebSocket connection.</summary>
+            <remarks>The values of the compression method are defined in <see href="http://tools.ietf.org/html/draft-ietf-hybi-permessage-compression-09">Compression Extensions for WebSocket</see>.</remarks>
+        </member>
+        <member name="F:WebSocketSharp.CompressionMethod.None">
+            <summary>
+            Indicates non compression.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.CompressionMethod.Deflate">
+            <summary>
+            Indicates using DEFLATE.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.ErrorEventArgs">
+            <summary>
+            Contains the event data associated with a <see cref="!:WebSocket.OnError"/> event.
+            </summary>
+            <remarks>
+              <para>
+              A <see cref="!:WebSocket.OnError"/> event occurs when the <see cref="T:WebSocketSharp.WebSocket"/> gets
+              an error.
+              </para>
+              <para>
+              If you would like to get the error message, you should access
+              the <see cref="P:WebSocketSharp.ErrorEventArgs.Message"/> property.
+              </para>
+              <para>
+              And if the error is due to an exception, you can get the <see cref="T:System.Exception"/>
+              instance by accessing the <see cref="P:WebSocketSharp.ErrorEventArgs.Exception"/> property.
+              </para>
+            </remarks>
+        </member>
+        <member name="P:WebSocketSharp.ErrorEventArgs.Exception">
+            <summary>
+            Gets the <see cref="T:System.Exception"/> instance that caused the error.
+            </summary>
+            <value>
+            An <see cref="T:System.Exception"/> instance that represents the cause of the error,
+            or <see langword="null"/> if the error isn't due to an exception.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.ErrorEventArgs.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the error message.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Ext">
+            <summary>
+                Provides a set of static methods for websocket-sharp.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Ext.Contains(System.String,System.Char[])">
+            <summary>
+                Determines whether the specified <see cref="T:System.String" /> contains any of characters
+                in the specified array of <see cref="T:System.Char" />.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="value" /> contains any of <paramref name="chars" />;
+                otherwise, <c>false</c>.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to test.
+            </param>
+            <param name="chars">
+                An array of <see cref="T:System.Char" /> that contains characters to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.Contains(System.Collections.Specialized.NameValueCollection,System.String,System.String)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains the entry
+                with the specified both <paramref name="name" /> and <paramref name="value" />.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="collection" /> contains the entry with both
+                <paramref name="name" /> and <paramref name="value" />; otherwise, <c>false</c>.
+            </returns>
+            <param name="collection">
+                A <see cref="T:System.Collections.Specialized.NameValueCollection" /> to test.
+            </param>
+            <param name="name">
+                A <see cref="T:System.String" /> that represents the key of the entry to find.
+            </param>
+            <param name="value">
+                A <see cref="T:System.String" /> that represents the value of the entry to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.GetCookies(System.Collections.Specialized.NameValueCollection,System.Boolean)">
+            <summary>
+                Gets the collection of the HTTP cookies from the specified HTTP <paramref name="headers" />.
+            </summary>
+            <returns>
+                A <see cref="T:WebSocketSharp.Net.CookieCollection" /> that receives a collection of the HTTP cookies.
+            </returns>
+            <param name="headers">
+                A <see cref="T:System.Collections.Specialized.NameValueCollection" /> that contains a collection of the HTTP headers.
+            </param>
+            <param name="response">
+                <c>true</c> if <paramref name="headers" /> is a collection of the response headers;
+                otherwise, <c>false</c>.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.GetDescription(WebSocketSharp.Net.HttpStatusCode)">
+            <summary>
+                Gets the description of the specified HTTP status <paramref name="code" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that represents the description of the HTTP status code.
+            </returns>
+            <param name="code">
+                One of <see cref="T:WebSocketSharp.Net.HttpStatusCode" /> enum values, indicates the HTTP status code.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.IsEnclosedIn(System.String,System.Char)">
+            <summary>
+                Determines whether the specified <see cref="T:System.String" /> is enclosed in the specified
+                <see cref="T:System.Char" />.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="value" /> is enclosed in <paramref name="c" />;
+                otherwise, <c>false</c>.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to test.
+            </param>
+            <param name="c">
+                A <see cref="T:System.Char" /> that represents the character to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.IsLocal(System.Net.IPAddress)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Net.IPAddress" /> represents
+                the local IP address.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="address" /> represents the local IP address;
+                otherwise, <c>false</c>.
+            </returns>
+            <param name="address">
+                A <see cref="T:System.Net.IPAddress" /> to test.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="address" /> is <see langword="null" />.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Ext.MaybeUri(System.String)">
+            <summary>
+                Determines whether the specified <see cref="T:System.String" /> is a URI string.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="value" /> may be a URI string; otherwise, <c>false</c>.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to test.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.SubArray``1(``0[],System.Int32,System.Int32)">
+            <summary>
+                Retrieves a sub-array from the specified <paramref name="array" />.
+                A sub-array starts at the specified element position in <paramref name="array" />.
+            </summary>
+            <returns>
+                An array of T that receives a sub-array, or an empty array of T
+                if any problems with the parameters.
+            </returns>
+            <param name="array">
+                An array of T from which to retrieve a sub-array.
+            </param>
+            <param name="startIndex">
+                An <see cref="T:System.Int32" /> that represents the zero-based starting position of
+                a sub-array in <paramref name="array" />.
+            </param>
+            <param name="length">
+                An <see cref="T:System.Int32" /> that represents the number of elements to retrieve.
+            </param>
+            <typeparam name="T">
+                The type of elements in <paramref name="array" />.
+            </typeparam>
+        </member>
+        <member name="M:WebSocketSharp.Ext.ToUri(System.String)">
+            <summary>
+                Converts the specified <see cref="T:System.String" /> to a <see cref="T:System.Uri" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.Uri" /> converted from <paramref name="uriString" />, or <see langword="null" />
+                if <paramref name="uriString" /> isn't successfully converted.
+            </returns>
+            <param name="uriString">
+                A <see cref="T:System.String" /> to convert.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.UrlDecode(System.String)">
+            <summary>
+                URL-decodes the specified <see cref="T:System.String" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that receives the decoded string, or the <paramref name="value" />
+                if it's <see langword="null" /> or empty.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to decode.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.UrlEncode(System.String)">
+            <summary>
+                URL-encodes the specified <see cref="T:System.String" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that receives the encoded string, or <paramref name="value" />
+                if it's <see langword="null" /> or empty.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to encode.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.EqualsWith(System.Int32,System.Char,System.Action{System.Int32})">
+            <summary>
+                Determines whether the specified <see cref="T:System.Int32" /> equals the specified <see cref="T:System.Char" />,
+                and invokes the specified Action&lt;int&gt; delegate at the same time.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="value" /> equals <paramref name="c" />;
+                otherwise, <c>false</c>.
+            </returns>
+            <param name="value">
+                An <see cref="T:System.Int32" /> to compare.
+            </param>
+            <param name="c">
+                A <see cref="T:System.Char" /> to compare.
+            </param>
+            <param name="action">
+                An Action&lt;int&gt; delegate that references the method(s) called at
+                the same time as comparing. An <see cref="T:System.Int32" /> parameter to pass to
+                the method(s) is <paramref name="value" />.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="value" /> isn't between 0 and 255.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Ext.GetAbsolutePath(System.Uri)">
+            <summary>
+                Gets the absolute path from the specified <see cref="T:System.Uri" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that represents the absolute path if it's successfully found;
+                otherwise, <see langword="null" />.
+            </returns>
+            <param name="uri">
+                A <see cref="T:System.Uri" /> that represents the URI to get the absolute path from.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.GetValue(System.String,System.Char)">
+            <summary>
+                Gets the value from the specified <see cref="T:System.String" /> that contains a pair of name and
+                value separated by a separator character.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that represents the value if any; otherwise, <c>null</c>.
+            </returns>
+            <param name="nameAndValue">
+                A <see cref="T:System.String" /> that contains a pair of name and value separated by a separator
+                character.
+            </param>
+            <param name="separator">
+                A <see cref="T:System.Char" /> that represents the separator character.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.TryCreateWebSocketUri(System.String,System.Uri@,System.String@)">
+            <summary>
+                Tries to create a <see cref="T:System.Uri" /> for WebSocket with the specified
+                <paramref name="uriString" />.
+            </summary>
+            <returns>
+                <c>true</c> if a <see cref="T:System.Uri" /> is successfully created; otherwise, <c>false</c>.
+            </returns>
+            <param name="uriString">
+                A <see cref="T:System.String" /> that represents the WebSocket URL to try.
+            </param>
+            <param name="result">
+                When this method returns, a <see cref="T:System.Uri" /> that represents the WebSocket URL
+                if <paramref name="uriString" /> is valid; otherwise, <see langword="null" />.
+            </param>
+            <param name="message">
+                When this method returns, a <see cref="T:System.String" /> that represents the error message
+                if <paramref name="uriString" /> is invalid; otherwise, <see cref="F:System.String.Empty" />.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.Contains(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains the entry
+                with the specified <paramref name="name" />.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="collection" /> contains the entry
+                with <paramref name="name" />; otherwise, <c>false</c>.
+            </returns>
+            <param name="collection">
+                A <see cref="T:System.Collections.Specialized.NameValueCollection" /> to test.
+            </param>
+            <param name="name">
+                A <see cref="T:System.String" /> that represents the key of the entry to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.GetStatusDescription(System.Int32)">
+            <summary>
+                Gets the description of the specified HTTP status <paramref name="code" />.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that represents the description of the HTTP status code.
+            </returns>
+            <param name="code">
+                An <see cref="T:System.Int32" /> that represents the HTTP status code.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.IsHostOrder(WebSocketSharp.ByteOrder)">
+            <summary>
+                Determines whether the specified <see cref="T:WebSocketSharp.ByteOrder" /> is host (this computer
+                architecture) byte order.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="order" /> is host byte order; otherwise, <c>false</c>.
+            </returns>
+            <param name="order">
+                One of the <see cref="T:WebSocketSharp.ByteOrder" /> enum values, to test.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.IsPredefinedScheme(System.String)">
+            <summary>
+                Determines whether the specified <see cref="T:System.String" /> is a predefined scheme.
+            </summary>
+            <returns>
+                <c>true</c> if <paramref name="value" /> is a predefined scheme; otherwise, <c>false</c>.
+            </returns>
+            <param name="value">
+                A <see cref="T:System.String" /> to test.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Ext.ToHostOrder(System.Byte[],WebSocketSharp.ByteOrder)">
+            <summary>
+                Converts the order of the specified array of <see cref="T:System.Byte" /> to the host byte order.
+            </summary>
+            <returns>
+                An array of <see cref="T:System.Byte" /> converted from <paramref name="source" />.
+            </returns>
+            <param name="source">
+                An array of <see cref="T:System.Byte" /> to convert.
+            </param>
+            <param name="sourceOrder">
+                One of the <see cref="T:WebSocketSharp.ByteOrder" /> enum values, indicates the byte order of
+                <paramref name="source" />.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="source" /> is <see langword="null" />.
+            </exception>
+        </member>
+        <member name="T:WebSocketSharp.MessageEventArgs">
+            <summary>
+            Contains the event data associated with a <see cref="!:WebSocket.OnMessage"/> event.
+            </summary>
+            <remarks>
+              <para>
+              A <see cref="!:WebSocket.OnMessage"/> event occurs when the <see cref="T:WebSocketSharp.WebSocket"/> receives
+              a text or binary message.
+              </para>
+              <para>
+              If you would like to get the message data, you should access
+              the <see cref="P:WebSocketSharp.MessageEventArgs.Data"/> or <see cref="P:WebSocketSharp.MessageEventArgs.Text"/> property.
+              </para>
+            </remarks>
+        </member>
+        <member name="T:WebSocketSharp.Opcode">
+            <summary>
+            Contains the values of the opcode that indicates the type of a WebSocket frame.
+            </summary>
+            <remarks>
+            The values of the opcode are defined in
+            <see href="http://tools.ietf.org/html/rfc6455#section-5.2">Section 5.2</see> of RFC 6455.
+            </remarks>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Cont">
+            <summary>
+            Equivalent to numeric value 0.
+            Indicates a continuation frame.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Text">
+            <summary>
+            Equivalent to numeric value 1.
+            Indicates a text frame.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Binary">
+            <summary>
+            Equivalent to numeric value 2.
+            Indicates a binary frame.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Close">
+            <summary>
+            Equivalent to numeric value 8.
+            Indicates a connection close frame.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Ping">
+            <summary>
+            Equivalent to numeric value 9.
+            Indicates a ping frame.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Opcode.Pong">
+            <summary>
+            Equivalent to numeric value 10.
+            Indicates a pong frame.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.SubStream.Flush">
+            <summary>
+            When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.
+            </summary>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+        </member>
+        <member name="M:WebSocketSharp.SubStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            When overridden in a derived class, sets the position within the current stream.
+            </summary>
+            <returns>
+            The new position within the current stream.
+            </returns>
+            <param name="offset">A byte offset relative to the <paramref name="origin"/> parameter. </param><param name="origin">A value of type <see cref="T:System.IO.SeekOrigin"/> indicating the reference point used to obtain the new position. </param><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support seeking, such as if the stream is constructed from a pipe or console output. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+        </member>
+        <member name="M:WebSocketSharp.SubStream.SetLength(System.Int64)">
+            <summary>
+            When overridden in a derived class, sets the length of the current stream.
+            </summary>
+            <param name="value">The desired length of the current stream in bytes. </param><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+        </member>
+        <member name="M:WebSocketSharp.SubStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
+            </summary>
+            <returns>
+            The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
+            </returns>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <paramref name="offset"/> and (<paramref name="offset"/> + <paramref name="count"/> - 1) replaced by the bytes read from the current source. </param><param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin storing the data read from the current stream. </param><param name="count">The maximum number of bytes to be read from the current stream. </param><exception cref="T:System.ArgumentException">The sum of <paramref name="offset"/> and <paramref name="count"/> is larger than the buffer length. </exception><exception cref="T:System.ArgumentNullException"><paramref name="buffer"/> is null. </exception><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset"/> or <paramref name="count"/> is negative. </exception><exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support reading. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+        </member>
+        <member name="M:WebSocketSharp.SubStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
+            </summary>
+            <param name="buffer">An array of bytes. This method copies <paramref name="count"/> bytes from <paramref name="buffer"/> to the current stream. </param><param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin copying bytes to the current stream. </param><param name="count">The number of bytes to be written to the current stream. </param>
+        </member>
+        <member name="P:WebSocketSharp.SubStream.CanRead">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports reading.
+            </summary>
+            <returns>
+            true if the stream supports reading; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WebSocketSharp.SubStream.CanSeek">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
+            </summary>
+            <returns>
+            true if the stream supports seeking; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WebSocketSharp.SubStream.CanWrite">
+            <summary>
+            When overridden in a derived class, gets a value indicating whether the current stream supports writing.
+            </summary>
+            <returns>
+            true if the stream supports writing; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WebSocketSharp.SubStream.Length">
+            <summary>
+            When overridden in a derived class, gets the length in bytes of the stream.
+            </summary>
+            <returns>
+            A long value representing the length of the stream in bytes.
+            </returns>
+            <exception cref="T:System.NotSupportedException">A class derived from Stream does not support seeking. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+        </member>
+        <member name="P:WebSocketSharp.SubStream.Position">
+            <summary>
+            When overridden in a derived class, gets or sets the position within the current stream.
+            </summary>
+            <returns>
+            The current position within the stream.
+            </returns>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception><exception cref="T:System.NotSupportedException">The stream does not support seeking. </exception><exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+        </member>
+        <member name="T:WebSocketSharp.WebSocket">
+            <summary>
+            Implements the WebSocket interface.
+            </summary>
+            <remarks>
+            The WebSocket class provides a set of methods and properties for two-way communication using
+            the WebSocket protocol (<see href="http://tools.ietf.org/html/rfc6455">RFC 6455</see>).
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.#ctor(System.String,System.Threading.CancellationToken,System.Int32,System.Func{System.Threading.Tasks.Task},System.Func{WebSocketSharp.CloseEventArgs,System.Threading.Tasks.Task},System.Func{WebSocketSharp.MessageEventArgs,System.Threading.Tasks.Task},System.Func{WebSocketSharp.ErrorEventArgs,System.Threading.Tasks.Task},System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.WebSocket"/> class with
+            the specified WebSocket URL and subprotocols.
+            </summary>
+            <param name="url">A <see cref="T:System.String"/> that represents the WebSocket URL to connect.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to cancel websocket operations.</param>
+            <param name="fragmentSize">Set the size of message packages. Smaller size equals less memory overhead when sending streams.</param>
+            <param name="onOpen">Delegate to be invoked when the WebSocket connection has been established.</param>
+            <param name="onClose">Delegate to be invoked when the WebSocket connection has been closed.</param>
+            <param name="onError">Delegate to be invoked when the <see cref="T:WebSocketSharp.WebSocket"/> gets an error.</param>
+            <param name="protocols">
+                An array of <see cref="T:System.String"/> that contains the WebSocket subprotocols if any.
+                Each value of <paramref name="protocols"/> must be a token defined in
+                <see href="http://tools.ietf.org/html/rfc2616#section-2.2">RFC 2616</see>.
+            </param>
+            <param name="onMessage">Delegate to be invoked when the <see cref="T:WebSocketSharp.WebSocket"/> receives a message.</param>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="url"/> is invalid.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              <paramref name="protocols"/> is invalid.
+              </para>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.#ctor(System.String,WebSocketSharp.Net.ClientSslConfiguration,System.Threading.CancellationToken,System.Int32,System.Func{System.Threading.Tasks.Task},System.Func{WebSocketSharp.CloseEventArgs,System.Threading.Tasks.Task},System.Func{WebSocketSharp.MessageEventArgs,System.Threading.Tasks.Task},System.Func{WebSocketSharp.ErrorEventArgs,System.Threading.Tasks.Task},System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.WebSocket"/> class with
+            the specified WebSocket URL and subprotocols.
+            </summary>
+            <param name="url">
+            A <see cref="T:System.String"/> that represents the WebSocket URL to connect.
+            </param>
+            <param name="sslAuthConfiguration">A <see cref="!:ClientSslAuthConfiguration"/> for securing the connection.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to cancel websocket operations.</param>
+            <param name="fragmentSize"></param>
+            <param name="onOpen">Delegate to be invoked when the WebSocket connection has been established.</param>
+            <param name="onClose">Delegate to be invoked when the WebSocket connection has been closed.</param>
+            <param name="onError">Delegate to be invoked when the <see cref="T:WebSocketSharp.WebSocket"/> gets an error.</param>
+            <param name="protocols">
+            An array of <see cref="T:System.String"/> that contains the WebSocket subprotocols if any.
+            Each value of <paramref name="protocols"/> must be a token defined in
+            <see href="http://tools.ietf.org/html/rfc2616#section-2.2">RFC 2616</see>.
+            </param>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="url"/> is invalid.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              <paramref name="protocols"/> is invalid.
+              </para>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.Cookies">
+            <summary>
+            Gets the HTTP cookies included in the WebSocket connection request and response.
+            </summary>
+            <value>
+            An <see cref="T:System.Collections.Generic.IEnumerable{WebSocketSharp.Net.Cookie}"/>
+            instance that provides an enumerator which supports the iteration over the collection of
+            the cookies.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.Extensions">
+            <summary>
+            Gets the WebSocket extensions selected by the server.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the extensions if any.
+            The default value is <see cref="F:System.String.Empty"/>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.IsAlive">
+            <summary>
+            Gets a value indicating whether the WebSocket connection is alive.
+            </summary>
+            <value>
+            <c>true</c> if the connection is alive; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.IsSecure">
+            <summary>
+            Gets a value indicating whether the WebSocket connection is secure.
+            </summary>
+            <value>
+            <c>true</c> if the connection is secure; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.Origin">
+            <summary>
+            Gets or sets the value of the HTTP Origin header to send with the WebSocket connection
+            request to the server.
+            </summary>
+            <remarks>
+            The <see cref="T:WebSocketSharp.WebSocket"/> sends the Origin header if this property has any.
+            </remarks>
+            <value>
+              <para>
+              A <see cref="T:System.String"/> that represents the value of
+              the <see href="http://tools.ietf.org/html/rfc6454#section-7">Origin</see> header to send.
+              The default value is <see langword="null"/>.
+              </para>
+              <para>
+              The Origin header has the following syntax:
+              <c>&lt;scheme&gt;://&lt;host&gt;[:&lt;port&gt;]</c>
+              </para>
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.Protocol">
+            <summary>
+            Gets the WebSocket subprotocol selected by the server.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the subprotocol if any.
+            The default value is <see cref="F:System.String.Empty"/>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.ReadyState">
+            <summary>
+            Gets the state of the WebSocket connection.
+            </summary>
+            <value>
+            One of the <see cref="T:WebSocketSharp.WebSocketState"/> enum values, indicates the state of the WebSocket
+            connection. The default value is <see cref="F:WebSocketSharp.WebSocketState.Connecting"/>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.GetUrl">
+            <summary>
+            Gets the WebSocket URL to connect.
+            </summary>
+            <value>
+            A <see cref="T:System.Uri"/> that represents the WebSocket URL to connect.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.WebSocket.WaitTime">
+            <summary>
+            Gets or sets the wait time for the response to the Ping or Close.
+            </summary>
+            <value>
+            A <see cref="T:System.TimeSpan"/> that represents the wait time. The default value is
+            the same as 5 seconds, or 1 second if the <see cref="T:WebSocketSharp.WebSocket"/> is used by
+            a server.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Close">
+            <summary>
+            Closes the WebSocket connection, and releases all associated resources.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Close(WebSocketSharp.CloseStatusCode)">
+            <summary>
+            Closes the WebSocket connection with the specified <see cref="T:WebSocketSharp.CloseStatusCode"/>,
+            and releases all associated resources.
+            </summary>
+            <param name="code">
+            One of the <see cref="T:WebSocketSharp.CloseStatusCode"/> enum values, represents the status code
+            indicating the reason for the close.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Close(WebSocketSharp.CloseStatusCode,System.String)">
+            <summary>
+            Closes the WebSocket connection with the specified <see cref="T:WebSocketSharp.CloseStatusCode"/>
+            and <see cref="T:System.String"/>, and releases all associated resources.
+            </summary>
+            <remarks>
+            This method emits a <see cref="!:OnError"/> event if the size of <paramref name="reason"/>
+            is greater than 123 bytes.
+            </remarks>
+            <param name="code">
+            One of the <see cref="T:WebSocketSharp.CloseStatusCode"/> enum values, represents the status code
+            indicating the reason for the close.
+            </param>
+            <param name="reason">
+            A <see cref="T:System.String"/> that represents the reason for the close.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Connect">
+            <summary>
+            Establishes a WebSocket connection.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Ping">
+            <summary>
+            Sends a Ping using the WebSocket connection.
+            </summary>
+            <returns>
+            <c>true</c> if the <see cref="T:WebSocketSharp.WebSocket"/> receives a Pong to this Ping in a time;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Ping(System.String)">
+            <summary>
+            Sends a Ping with the specified <paramref name="message"/> using the WebSocket connection.
+            </summary>
+            <returns>
+            <c>true</c> if the <see cref="T:WebSocketSharp.WebSocket"/> receives a Pong to this Ping in a time;
+            otherwise, <c>false</c>.
+            </returns>
+            <param name="message">
+            A <see cref="T:System.String"/> that represents the message to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Send(System.Byte[])">
+            <summary>
+            Sends a binary <paramref name="data"/> using the WebSocket connection.
+            </summary>
+            <param name="data">
+            An array of <see cref="T:System.Byte"/> that represents the binary data to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Send(System.IO.Stream)">
+            <summary>
+            Sends the specified <paramref name="stream"/> as a binary data
+            using the WebSocket connection.
+            </summary>
+            <param name="stream">
+            A <see cref="T:System.IO.FileInfo"/> that represents the file to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Send(System.IO.Stream,System.Int64)">
+            <summary>
+            Sends the specified <paramref name="stream"/> as a binary data
+            using the WebSocket connection.
+            </summary>
+            <param name="stream">
+            A <see cref="T:System.IO.FileInfo"/> that represents the file to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Send(System.String)">
+            <summary>
+            Sends a text <paramref name="data"/> using the WebSocket connection.
+            </summary>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.SetCookie(WebSocketSharp.Net.Cookie)">
+            <summary>
+            Sets an HTTP <paramref name="cookie"/> to send with the WebSocket connection request
+            to the server.
+            </summary>
+            <param name="cookie">
+            A <see cref="T:WebSocketSharp.Net.Cookie"/> that represents the cookie to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.SetCredentials(System.String,System.String,System.Boolean)">
+            <summary>
+            Sets a pair of <paramref name="username"/> and <paramref name="password"/> for
+            the HTTP authentication (Basic/Digest).
+            </summary>
+            <param name="username">
+            A <see cref="T:System.String"/> that represents the user name used to authenticate.
+            </param>
+            <param name="password">
+            A <see cref="T:System.String"/> that represents the password for <paramref name="username"/>
+            used to authenticate.
+            </param>
+            <param name="preAuth">
+            <c>true</c> if the <see cref="T:WebSocketSharp.WebSocket"/> sends the Basic authentication credentials
+            with the first connection request to the server; otherwise, <c>false</c>.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.SetProxy(System.String,System.String,System.String)">
+            <summary>
+            Sets an HTTP Proxy server URL to connect through, and if necessary, a pair of
+            <paramref name="username"/> and <paramref name="password"/> for the proxy server
+            authentication (Basic/Digest).
+            </summary>
+            <param name="url">
+            A <see cref="T:System.String"/> that represents the proxy server URL to connect through.
+            </param>
+            <param name="username">
+            A <see cref="T:System.String"/> that represents the user name used to authenticate.
+            </param>
+            <param name="password">
+            A <see cref="T:System.String"/> that represents the password for <paramref name="username"/>
+            used to authenticate.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.WebSocket.Dispose">
+            <summary>
+            Closes the WebSocket connection, and releases all associated resources.
+            </summary>
+            <remarks>
+            This method closes the connection with <see cref="F:WebSocketSharp.CloseStatusCode.Away"/>.
+            </remarks>
+        </member>
+        <member name="T:WebSocketSharp.WebSocketException">
+            <summary>
+            The exception that is thrown when a <see cref="T:WebSocketSharp.WebSocket"/> gets a fatal error.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.WebSocketException.Code">
+            <summary>
+            Gets the status code indicating the cause of the exception.
+            </summary>
+            <value>
+            One of the <see cref="T:WebSocketSharp.CloseStatusCode"/> enum values, represents the status code
+            indicating the cause of the exception.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.WebSocketState">
+            <summary>
+            Contains the values of the state of the WebSocket connection.
+            </summary>
+            <remarks>
+            The values of the state are defined in
+            <see href="http://www.w3.org/TR/websockets/#dom-websocket-readystate">The WebSocket API</see>.
+            </remarks>
+        </member>
+        <member name="F:WebSocketSharp.WebSocketState.Connecting">
+            <summary>
+            Equivalent to numeric value 0.
+            Indicates that the connection hasn't yet been established.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.WebSocketState.Open">
+            <summary>
+            Equivalent to numeric value 1.
+            Indicates that the connection is established and the communication is possible.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.WebSocketState.Closing">
+            <summary>
+            Equivalent to numeric value 2.
+            Indicates that the connection is going through the closing handshake or
+            the <c>WebSocket.Close</c> method has been invoked.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.WebSocketState.Closed">
+            <summary>
+            Equivalent to numeric value 3.
+            Indicates that the connection has been closed or couldn't be opened.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.Net.AuthenticationSchemes">
+            <summary>
+            Contains the values of the schemes for authentication.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.AuthenticationSchemes.None">
+            <summary>
+            Indicates that no authentication is allowed.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.AuthenticationSchemes.Digest">
+            <summary>
+            Indicates digest authentication.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.AuthenticationSchemes.Basic">
+            <summary>
+            Indicates basic authentication.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.AuthenticationSchemes.Anonymous">
+            <summary>
+            Indicates anonymous authentication.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.Net.ClientSslConfiguration">
+            <summary>
+            Stores the parameters used to configure a <see cref="T:System.Net.Security.SslStream"/> instance as a client.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.ClientSslConfiguration.#ctor(System.String,System.Security.Cryptography.X509Certificates.X509CertificateCollection,System.Security.Authentication.SslProtocols,System.Net.Security.LocalCertificateSelectionCallback,System.Boolean,System.Net.Security.RemoteCertificateValidationCallback)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.ClientSslConfiguration"/> class with
+            the specified <paramref name="targetHost"/>, <paramref name="clientCertificates"/>,
+            <paramref name="enabledSslProtocols"/>, and <paramref name="checkCertificateRevocation"/>.
+            </summary>
+            <param name="targetHost">
+            A <see cref="T:System.String"/> that represents the name of the server that shares
+            a secure connection.
+            </param>
+            <param name="clientCertificates">
+            A <see cref="T:System.Security.Cryptography.X509Certificates.X509CertificateCollection"/> that contains client certificates.
+            </param>
+            <param name="enabledSslProtocols">
+            The <see cref="T:System.Security.Authentication.SslProtocols"/> enum value that represents the protocols used for
+            authentication.
+            </param>
+            <param name="checkCertificateRevocation">
+            <c>true</c> if the certificate revocation list is checked during authentication;
+            otherwise, <c>false</c>.
+            </param>
+        </member>
+        <member name="P:WebSocketSharp.Net.ClientSslConfiguration.ClientCertificates">
+            <summary>
+            Gets or sets the collection that contains client certificates.
+            </summary>
+            <value>
+            A <see cref="T:System.Security.Cryptography.X509Certificates.X509CertificateCollection"/> that contains client certificates.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.ClientSslConfiguration.ClientCertificateSelectionCallback">
+            <summary>
+            Gets or sets the callback used to select a client certificate to supply to the server.
+            </summary>
+            <remarks>
+            If this callback returns <see langword="null"/>, no client certificate will be supplied.
+            </remarks>
+            <value>
+            A <see cref="T:System.Net.Security.LocalCertificateSelectionCallback"/> delegate that references the method
+            used to select the client certificate. The default value is a function that only returns
+            <see langword="null"/>.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Net.Cookie">
+            <summary>
+            Provides a set of methods and properties used to manage an HTTP Cookie.
+            </summary>
+            <remarks>
+              <para>
+              The Cookie class supports the following cookie formats:
+              <see href="http://web.archive.org/web/20020803110822/http://wp.netscape.com/newsref/std/cookie_spec.html">Netscape specification</see>,
+              <see href="http://www.ietf.org/rfc/rfc2109.txt">RFC 2109</see>, and
+              <see href="http://www.ietf.org/rfc/rfc2965.txt">RFC 2965</see>
+              </para>
+              <para>
+              The Cookie class cannot be inherited.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.Cookie"/> class.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.Cookie"/> class with the specified
+            <paramref name="name"/> and <paramref name="value"/>.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the Name of the cookie.
+            </param>
+            <param name="value">
+            A <see cref="T:System.String"/> that represents the Value of the cookie.
+            </param>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+              <para>
+              <paramref name="name"/> is <see langword="null"/> or empty.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="name"/> contains an invalid character.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> is <see langword="null"/>.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> contains a string not enclosed in double quotes
+              that contains an invalid character.
+              </para>
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.Cookie"/> class with the specified
+            <paramref name="name"/>, <paramref name="value"/>, and <paramref name="path"/>.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the Name of the cookie.
+            </param>
+            <param name="value">
+            A <see cref="T:System.String"/> that represents the Value of the cookie.
+            </param>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the value of the Path attribute of the cookie.
+            </param>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+              <para>
+              <paramref name="name"/> is <see langword="null"/> or empty.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="name"/> contains an invalid character.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> is <see langword="null"/>.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> contains a string not enclosed in double quotes
+              that contains an invalid character.
+              </para>
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.Cookie"/> class with the specified
+            <paramref name="name"/>, <paramref name="value"/>, <paramref name="path"/>, and
+            <paramref name="domain"/>.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the Name of the cookie.
+            </param>
+            <param name="value">
+            A <see cref="T:System.String"/> that represents the Value of the cookie.
+            </param>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the value of the Path attribute of the cookie.
+            </param>
+            <param name="domain">
+            A <see cref="T:System.String"/> that represents the value of the Domain attribute of the cookie.
+            </param>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+              <para>
+              <paramref name="name"/> is <see langword="null"/> or empty.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="name"/> contains an invalid character.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> is <see langword="null"/>.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              <paramref name="value"/> contains a string not enclosed in double quotes
+              that contains an invalid character.
+              </para>
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Comment">
+            <summary>
+            Gets or sets the value of the Comment attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the comment to document intended use of the cookie.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.CommentUri">
+            <summary>
+            Gets or sets the value of the CommentURL attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.Uri"/> that represents the URI that provides the comment to document intended
+            use of the cookie.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Discard">
+            <summary>
+            Gets or sets a value indicating whether the client discards the cookie unconditionally
+            when the client terminates.
+            </summary>
+            <value>
+            <c>true</c> if the client discards the cookie unconditionally when the client terminates;
+            otherwise, <c>false</c>. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Domain">
+            <summary>
+            Gets or sets the value of the Domain attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the URI for which the cookie is valid.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Expired">
+            <summary>
+            Gets or sets a value indicating whether the cookie has expired.
+            </summary>
+            <value>
+            <c>true</c> if the cookie has expired; otherwise, <c>false</c>.
+            The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Expires">
+            <summary>
+            Gets or sets the value of the Expires attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.DateTime"/> that represents the date and time at which the cookie expires.
+            The default value is <see cref="F:System.DateTime.MinValue"/>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.HttpOnly">
+            <summary>
+            Gets or sets a value indicating whether non-HTTP APIs can access the cookie.
+            </summary>
+            <value>
+            <c>true</c> if non-HTTP APIs cannot access the cookie; otherwise, <c>false</c>.
+            The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Name">
+            <summary>
+            Gets or sets the Name of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the Name of the cookie.
+            </value>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+              <para>
+              The value specified for a set operation is <see langword="null"/> or empty.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              The value specified for a set operation contains an invalid character.
+              </para>
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Path">
+            <summary>
+            Gets or sets the value of the Path attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the subset of URI on the origin server
+            to which the cookie applies.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Port">
+            <summary>
+            Gets or sets the value of the Port attribute of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the list of TCP ports to which the cookie applies.
+            </value>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+            The value specified for a set operation isn't enclosed in double quotes or
+            couldn't be parsed.
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Secure">
+            <summary>
+            Gets or sets a value indicating whether the security level of the cookie is secure.
+            </summary>
+            <remarks>
+            When this property is <c>true</c>, the cookie may be included in the HTTP request
+            only if the request is transmitted over the HTTPS.
+            </remarks>
+            <value>
+            <c>true</c> if the security level of the cookie is secure; otherwise, <c>false</c>.
+            The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.TimeStamp">
+            <summary>
+            Gets the time when the cookie was issued.
+            </summary>
+            <value>
+            A <see cref="T:System.DateTime"/> that represents the time when the cookie was issued.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Value">
+            <summary>
+            Gets or sets the Value of the cookie.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the Value of the cookie.
+            </value>
+            <exception cref="T:WebSocketSharp.Net.CookieException">
+              <para>
+              The value specified for a set operation is <see langword="null"/>.
+              </para>
+              <para>
+              - or -
+              </para>
+              <para>
+              The value specified for a set operation contains a string not enclosed in double quotes
+              that contains an invalid character.
+              </para>
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.Cookie.Version">
+            <summary>
+            Gets or sets the value of the Version attribute of the cookie.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the version of the HTTP state management
+            to which the cookie conforms.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The value specified for a set operation isn't 0 or 1.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current
+            <see cref="T:WebSocketSharp.Net.Cookie"/>.
+            </summary>
+            <param name="comparand">
+            An <see cref="T:System.Object"/> to compare with the current <see cref="T:WebSocketSharp.Net.Cookie"/>.
+            </param>
+            <returns>
+            <c>true</c> if <paramref name="comparand"/> is equal to the current <see cref="T:WebSocketSharp.Net.Cookie"/>;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.GetHashCode">
+            <summary>
+            Serves as a hash function for a <see cref="T:WebSocketSharp.Net.Cookie"/> object.
+            </summary>
+            <returns>
+            An <see cref="T:System.Int32"/> that represents the hash code for the current <see cref="T:WebSocketSharp.Net.Cookie"/>.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.Net.Cookie.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:WebSocketSharp.Net.Cookie"/>.
+            </summary>
+            <remarks>
+            This method returns a <see cref="T:System.String"/> to use to send an HTTP Cookie to
+            an origin server.
+            </remarks>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:WebSocketSharp.Net.Cookie"/>.
+            </returns>
+        </member>
+        <member name="T:WebSocketSharp.Net.CookieCollection">
+            <summary>
+            Provides a collection container for instances of the <see cref="T:WebSocketSharp.Net.Cookie"/> class.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.CookieCollection"/> class.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.Net.CookieCollection.Count">
+            <summary>
+            Gets the number of cookies in the collection.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the number of cookies in the collection.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.CookieCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the collection is read-only.
+            </summary>
+            <value>
+            <c>true</c> if the collection is read-only; otherwise, <c>false</c>.
+            The default value is <c>true</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.CookieCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:WebSocketSharp.Net.Cookie"/> at the specified <paramref name="index"/> from
+            the collection.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.Cookie"/> at the specified <paramref name="index"/> in the collection.
+            </value>
+            <param name="index">
+            An <see cref="T:System.Int32"/> that represents the zero-based index of the <see cref="T:WebSocketSharp.Net.Cookie"/>
+            to find.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of allowable range of indexes for the collection.
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.CookieCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:WebSocketSharp.Net.Cookie"/> with the specified <paramref name="name"/> from
+            the collection.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.Cookie"/> with the specified <paramref name="name"/> in the collection.
+            </value>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the name of the <see cref="T:WebSocketSharp.Net.Cookie"/> to find.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.CookieCollection.SyncRoot">
+            <summary>
+            Gets an object used to synchronize access to the collection.
+            </summary>
+            <value>
+            An <see cref="T:System.Object"/> used to synchronize access to the collection.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieCollection.Add(WebSocketSharp.Net.Cookie)">
+            <summary>
+            Adds the specified <paramref name="cookie"/> to the collection.
+            </summary>
+            <param name="cookie">
+            A <see cref="T:WebSocketSharp.Net.Cookie"/> to add.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="cookie"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieCollection.CopyTo(WebSocketSharp.Net.Cookie[],System.Int32)">
+            <summary>
+            Copies the elements of the collection to the specified array of <see cref="T:WebSocketSharp.Net.Cookie"/>,
+            starting at the specified <paramref name="index"/> in the <paramref name="array"/>.
+            </summary>
+            <param name="array">
+            An array of <see cref="T:WebSocketSharp.Net.Cookie"/> that represents the destination of the elements
+            copied from the collection.
+            </param>
+            <param name="index">
+            An <see cref="T:System.Int32"/> that represents the zero-based index in <paramref name="array"/>
+            at which copying begins.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="array"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The number of elements in the collection is greater than the available space from
+            <paramref name="index"/> to the end of the destination <paramref name="array"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieCollection.GetEnumerator">
+            <summary>
+            Gets the enumerator used to iterate through the collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> instance used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="T:WebSocketSharp.Net.CookieException">
+            <summary>
+            The exception that is thrown when a <see cref="T:WebSocketSharp.Net.Cookie"/> gets an error.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.CookieException"/> class from
+            the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> and <see cref="T:System.Runtime.Serialization.StreamingContext"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that contains the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the source for the deserialization.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.CookieException"/> class.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize
+            the current <see cref="T:WebSocketSharp.Net.CookieException"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the destination for the serialization.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Net.CookieException.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize
+            the current <see cref="T:WebSocketSharp.Net.CookieException"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the destination for the serialization.
+            </param>
+        </member>
+        <member name="T:WebSocketSharp.Net.HttpBasicIdentity">
+            <summary>
+            Holds the user name and password from the HTTP Basic authentication credentials.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.Net.HttpBasicIdentity.Password">
+            <summary>
+            Gets the password from the HTTP Basic authentication credentials.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the password.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Net.HttpDigestIdentity">
+            <summary>
+            Holds the user name and other parameters from the HTTP Digest authentication credentials.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.Net.HttpStatusCode">
+            <summary>
+            Contains the values of the HTTP status codes.
+            </summary>
+            <remarks>
+            The HttpStatusCode enumeration contains the values of the HTTP status codes defined in
+            <see href="http://tools.ietf.org/html/rfc2616#section-10">RFC 2616</see> for HTTP 1.1.
+            </remarks>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Continue">
+            <summary>
+            Equivalent to status code 100.
+            Indicates that the client should continue with its request.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.SwitchingProtocols">
+            <summary>
+            Equivalent to status code 101.
+            Indicates that the server is switching the HTTP version or protocol on the connection.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Ok">
+            <summary>
+            Equivalent to status code 200.
+            Indicates that the client's request has succeeded.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Created">
+            <summary>
+            Equivalent to status code 201.
+            Indicates that the client's request has been fulfilled and resulted in a new resource being
+            created.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Accepted">
+            <summary>
+            Equivalent to status code 202.
+            Indicates that the client's request has been accepted for processing, but the processing
+            hasn't been completed.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NonAuthoritativeInformation">
+            <summary>
+            Equivalent to status code 203.
+            Indicates that the returned metainformation is from a local or a third-party copy instead of
+            the origin server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NoContent">
+            <summary>
+            Equivalent to status code 204.
+            Indicates that the server has fulfilled the client's request but doesn't need to return
+            an entity-body.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.ResetContent">
+            <summary>
+            Equivalent to status code 205.
+            Indicates that the server has fulfilled the client's request, and the user agent should
+            reset the document view which caused the request to be sent.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.PartialContent">
+            <summary>
+            Equivalent to status code 206.
+            Indicates that the server has fulfilled the partial GET request for the resource.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.MultipleChoices">
+            <summary>
+              <para>
+              Equivalent to status code 300.
+              Indicates that the requested resource corresponds to any of multiple representations.
+              </para>
+              <para>
+              MultipleChoices is a synonym for Ambiguous.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Ambiguous">
+            <summary>
+              <para>
+              Equivalent to status code 300.
+              Indicates that the requested resource corresponds to any of multiple representations.
+              </para>
+              <para>
+              Ambiguous is a synonym for MultipleChoices.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.MovedPermanently">
+            <summary>
+              <para>
+              Equivalent to status code 301.
+              Indicates that the requested resource has been assigned a new permanent URI and
+              any future references to this resource should use one of the returned URIs.
+              </para>
+              <para>
+              MovedPermanently is a synonym for Moved.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Moved">
+            <summary>
+              <para>
+              Equivalent to status code 301.
+              Indicates that the requested resource has been assigned a new permanent URI and
+              any future references to this resource should use one of the returned URIs.
+              </para>
+              <para>
+              Moved is a synonym for MovedPermanently.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Found">
+            <summary>
+              <para>
+              Equivalent to status code 302.
+              Indicates that the requested resource is located temporarily under a different URI.
+              </para>
+              <para>
+              Found is a synonym for Redirect.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Redirect">
+            <summary>
+              <para>
+              Equivalent to status code 302.
+              Indicates that the requested resource is located temporarily under a different URI.
+              </para>
+              <para>
+              Redirect is a synonym for Found.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.SeeOther">
+            <summary>
+              <para>
+              Equivalent to status code 303.
+              Indicates that the response to the request can be found under a different URI and
+              should be retrieved using a GET method on that resource.
+              </para>
+              <para>
+              SeeOther is a synonym for RedirectMethod.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RedirectMethod">
+            <summary>
+              <para>
+              Equivalent to status code 303.
+              Indicates that the response to the request can be found under a different URI and
+              should be retrieved using a GET method on that resource.
+              </para>
+              <para>
+              RedirectMethod is a synonym for SeeOther.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NotModified">
+            <summary>
+            Equivalent to status code 304.
+            Indicates that the client has performed a conditional GET request and access is allowed,
+            but the document hasn't been modified.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.UseProxy">
+            <summary>
+            Equivalent to status code 305.
+            Indicates that the requested resource must be accessed through the proxy given by
+            the Location field.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Unused">
+            <summary>
+            Equivalent to status code 306.
+            This status code was used in a previous version of the specification, is no longer used,
+            and is reserved for future use.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.TemporaryRedirect">
+            <summary>
+              <para>
+              Equivalent to status code 307.
+              Indicates that the requested resource is located temporarily under a different URI.
+              </para>
+              <para>
+              TemporaryRedirect is a synonym for RedirectKeepVerb.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RedirectKeepVerb">
+            <summary>
+              <para>
+              Equivalent to status code 307.
+              Indicates that the requested resource is located temporarily under a different URI.
+              </para>
+              <para>
+              RedirectKeepVerb is a synonym for TemporaryRedirect.
+              </para>
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.BadRequest">
+            <summary>
+            Equivalent to status code 400.
+            Indicates that the client's request couldn't be understood by the server due to
+            malformed syntax.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Unauthorized">
+            <summary>
+            Equivalent to status code 401.
+            Indicates that the client's request requires user authentication.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.PaymentRequired">
+            <summary>
+            Equivalent to status code 402.
+            This status code is reserved for future use.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Forbidden">
+            <summary>
+            Equivalent to status code 403.
+            Indicates that the server understood the client's request but is refusing to fulfill it.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NotFound">
+            <summary>
+            Equivalent to status code 404.
+            Indicates that the server hasn't found anything matching the request URI.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.MethodNotAllowed">
+            <summary>
+            Equivalent to status code 405.
+            Indicates that the method specified in the request line isn't allowed for the resource
+            identified by the request URI.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NotAcceptable">
+            <summary>
+            Equivalent to status code 406.
+            Indicates that the server doesn't have the appropriate resource to respond to the Accept
+            headers in the client's request.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.ProxyAuthenticationRequired">
+            <summary>
+            Equivalent to status code 407.
+            Indicates that the client must first authenticate itself with the proxy.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RequestTimeout">
+            <summary>
+            Equivalent to status code 408.
+            Indicates that the client didn't produce a request within the time that the server was
+            prepared to wait.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Conflict">
+            <summary>
+            Equivalent to status code 409.
+            Indicates that the client's request couldn't be completed due to a conflict on the server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.Gone">
+            <summary>
+            Equivalent to status code 410.
+            Indicates that the requested resource is no longer available at the server and
+            no forwarding address is known.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.LengthRequired">
+            <summary>
+            Equivalent to status code 411.
+            Indicates that the server refuses to accept the client's request without a defined
+            Content-Length.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.PreconditionFailed">
+            <summary>
+            Equivalent to status code 412.
+            Indicates that the precondition given in one or more of the request headers evaluated to
+            false when it was tested on the server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RequestEntityTooLarge">
+            <summary>
+            Equivalent to status code 413.
+            Indicates that the entity of the client's request is larger than the server is willing or
+            able to process.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RequestUriTooLong">
+            <summary>
+            Equivalent to status code 414.
+            Indicates that the request URI is longer than the server is willing to interpret.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.UnsupportedMediaType">
+            <summary>
+            Equivalent to status code 415.
+            Indicates that the entity of the client's request is in a format not supported by
+            the requested resource for the requested method.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.RequestedRangeNotSatisfiable">
+            <summary>
+            Equivalent to status code 416.
+            Indicates that none of the range specifier values in a Range request header overlap
+            the current extent of the selected resource.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.ExpectationFailed">
+            <summary>
+            Equivalent to status code 417.
+            Indicates that the expectation given in an Expect request header couldn't be met by
+            the server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.InternalServerError">
+            <summary>
+            Equivalent to status code 500.
+            Indicates that the server encountered an unexpected condition which prevented it from
+            fulfilling the client's request.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.NotImplemented">
+            <summary>
+            Equivalent to status code 501.
+            Indicates that the server doesn't support the functionality required to fulfill the client's
+            request.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.BadGateway">
+            <summary>
+            Equivalent to status code 502.
+            Indicates that a gateway or proxy server received an invalid response from the upstream
+            server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.ServiceUnavailable">
+            <summary>
+            Equivalent to status code 503.
+            Indicates that the server is currently unable to handle the client's request due to
+            a temporary overloading or maintenance of the server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.GatewayTimeout">
+            <summary>
+            Equivalent to status code 504.
+            Indicates that a gateway or proxy server didn't receive a timely response from the upstream
+            server or some other auxiliary server.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpStatusCode.HttpVersionNotSupported">
+            <summary>
+            Equivalent to status code 505.
+            Indicates that the server doesn't support the HTTP version used in the client's request.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.Net.HttpVersion">
+            <summary>
+            Provides the HTTP version numbers.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpVersion.Version10">
+            <summary>
+            Provides a <see cref="T:System.Version"/> instance for HTTP 1.0.
+            </summary>
+        </member>
+        <member name="F:WebSocketSharp.Net.HttpVersion.Version11">
+            <summary>
+            Provides a <see cref="T:System.Version"/> instance for HTTP 1.1.
+            </summary>
+        </member>
+        <member name="T:WebSocketSharp.Net.NetworkCredential">
+            <summary>
+            Provides the credentials for HTTP authentication (Basic/Digest).
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.NetworkCredential.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.NetworkCredential"/> class
+            with the specified user name and password.
+            </summary>
+            <param name="username">
+            A <see cref="T:System.String"/> that represents the user name associated with the
+            credentials.
+            </param>
+            <param name="password">
+            A <see cref="T:System.String"/> that represents the password for the user name
+            associated with the credentials.
+            </param>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="username"/> is <see langword="null"/> or empty.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.NetworkCredential.#ctor(System.String,System.String,System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.NetworkCredential"/> class
+            with the specified user name, password, domain, and roles.
+            </summary>
+            <param name="username">
+            A <see cref="T:System.String"/> that represents the user name associated with the
+            credentials.
+            </param>
+            <param name="password">
+            A <see cref="T:System.String"/> that represents the password for the user name
+            associated with the credentials.
+            </param>
+            <param name="domain">
+            A <see cref="T:System.String"/> that represents the name of the user domain
+            associated with the credentials.
+            </param>
+            <param name="roles">
+            An array of <see cref="T:System.String"/> that contains the role names to which
+            the user associated with the credentials belongs if any.
+            </param>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="username"/> is <see langword="null"/> or empty.
+            </exception>
+        </member>
+        <member name="P:WebSocketSharp.Net.NetworkCredential.Domain">
+            <summary>
+            Gets the name of the user domain associated with the credentials.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the name of the user domain
+            associated with the credentials.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.NetworkCredential.Password">
+            <summary>
+            Gets the password for the user name associated with the credentials.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the password for the user name
+            associated with the credentials.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.NetworkCredential.Roles">
+            <summary>
+            Gets the role names to which the user associated with the credentials
+            belongs.
+            </summary>
+            <value>
+            An array of <see cref="T:System.String"/> that contains the role names to which
+            the user associated with the credentials belongs.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.NetworkCredential.UserName">
+            <summary>
+            Gets the user name associated with the credentials.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the user name associated with the
+            credentials.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Net.ServerSslConfiguration">
+            <summary>
+            Stores the parameters used to configure a <see cref="T:System.Net.Security.SslStream"/> instance as a server.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.ServerSslConfiguration.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Boolean,System.Security.Authentication.SslProtocols,System.Boolean,System.Net.Security.RemoteCertificateValidationCallback,System.Net.Security.LocalCertificateSelectionCallback)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.ServerSslConfiguration"/> class with
+            the specified <paramref name="serverCertificate"/>,
+            <paramref name="clientCertificateRequired"/>, <paramref name="enabledSslProtocols"/>,
+            and <paramref name="checkCertificateRevocation"/>.
+            </summary>
+            <param name="serverCertificate">
+            A <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> that represents the certificate used to authenticate
+            the server.
+            </param>
+            <param name="clientCertificateRequired">
+            <c>true</c> if the client must supply a certificate for authentication;
+            otherwise, <c>false</c>.
+            </param>
+            <param name="enabledSslProtocols">
+            The <see cref="T:System.Security.Authentication.SslProtocols"/> enum value that represents the protocols used for
+            authentication.
+            </param>
+            <param name="checkCertificateRevocation">
+            <c>true</c> if the certificate revocation list is checked during authentication;
+            otherwise, <c>false</c>.
+            </param>
+            <param name="clientCertificateValidationCallback">A user delegate used to verify remote SSL certificate</param>
+            <param name="userCertificateSelectionCallback">A user delegate used to select local SSL certificate</param>
+        </member>
+        <member name="P:WebSocketSharp.Net.ServerSslConfiguration.ClientCertificateRequired">
+            <summary>
+            Gets or sets a value indicating whether the client must supply a certificate for
+            authentication.
+            </summary>
+            <value>
+            <c>true</c> if the client must supply a certificate; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.ServerSslConfiguration.ClientCertificateValidationCallback">
+            <summary>
+            Gets or sets the callback used to validate the certificate supplied by the client.
+            </summary>
+            <remarks>
+            If this callback returns <c>true</c>, the client certificate will be valid.
+            </remarks>
+            <value>
+            A <see cref="T:System.Net.Security.RemoteCertificateValidationCallback"/> delegate that references the method
+            used to validate the client certificate. The default value is a function that only returns
+            <c>true</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.ServerSslConfiguration.ServerCertificate">
+            <summary>
+            Gets or sets the certificate used to authenticate the server on the secure connection.
+            </summary>
+            <value>
+            A <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> that represents the certificate used to authenticate
+            the server.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Net.SslConfiguration">
+            <summary>
+            Stores the parameters used to configure a <see cref="T:System.Net.Security.SslStream"/> instance.
+            </summary>
+            <remarks>
+            The SslConfiguration class is an abstract class.
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.Net.SslConfiguration.#ctor(System.Security.Authentication.SslProtocols,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.SslConfiguration"/> class with
+            the specified <paramref name="enabledSslProtocols"/> and
+            <paramref name="checkCertificateRevocation"/>.
+            </summary>
+            <param name="enabledSslProtocols">
+            The <see cref="T:System.Security.Authentication.SslProtocols"/> enum value that represents the protocols used for
+            authentication.
+            </param>
+            <param name="checkCertificateRevocation">
+            <c>true</c> if the certificate revocation list is checked during authentication;
+            otherwise, <c>false</c>.
+            </param>
+        </member>
+        <member name="P:WebSocketSharp.Net.SslConfiguration.CertificateSelectionCallback">
+            <summary>
+            Gets or sets the callback used to select a certificate to supply to the remote party.
+            </summary>
+            <remarks>
+            If this callback returns <see langword="null"/>, no certificate will be supplied.
+            </remarks>
+            <value>
+            A <see cref="T:System.Net.Security.LocalCertificateSelectionCallback"/> delegate that references the method
+            used to select a certificate. The default value is a function that only returns
+            <see langword="null"/>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.SslConfiguration.CertificateValidationCallback">
+            <summary>
+            Gets or sets the callback used to validate the certificate supplied by the remote party.
+            </summary>
+            <remarks>
+            If this callback returns <c>true</c>, the certificate will be valid.
+            </remarks>
+            <value>
+            A <see cref="T:System.Net.Security.RemoteCertificateValidationCallback"/> delegate that references the method
+            used to validate the certificate. The default value is a function that only returns
+            <c>true</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.SslConfiguration.CheckCertificateRevocation">
+            <summary>
+            Gets or sets a value indicating whether the certificate revocation list is checked
+            during authentication.
+            </summary>
+            <value>
+            <c>true</c> if the certificate revocation list is checked; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.SslConfiguration.EnabledSslProtocols">
+            <summary>
+            Gets or sets the SSL protocols used for authentication.
+            </summary>
+            <value>
+            The <see cref="T:System.Security.Authentication.SslProtocols"/> enum value that represents the protocols used for
+            authentication.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Net.WebHeaderCollection">
+            <summary>
+            Provides a collection of the HTTP headers associated with a request or response.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/> class from
+            the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> and <see cref="T:System.Runtime.Serialization.StreamingContext"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that contains the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the source for the deserialization.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="serializationInfo"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            An element with the specified name isn't found in <paramref name="serializationInfo"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a header with the specified <paramref name="name"/> and <paramref name="value"/>
+            to the collection.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the name of the header to add.
+            </param>
+            <param name="value">
+            A <see cref="T:System.String"/> that represents the value of the header to add.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <see langword="null"/> or empty.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="name"/> or <paramref name="value"/> contains invalid characters.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              <paramref name="name"/> is a restricted header name.
+              </para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The length of <paramref name="value"/> is greater than 65,535 characters.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The current <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/> instance doesn't allow the header
+            <paramref name="name"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.Clear">
+            <summary>
+            Removes all headers from the collection.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.GetValues(System.Int32)">
+            <summary>
+            Gets an array of header values stored in the specified <paramref name="index"/> position
+            of the collection.
+            </summary>
+            <returns>
+            An array of <see cref="T:System.String"/> that receives the header values if found; otherwise,
+            <see langword="null"/>.
+            </returns>
+            <param name="index">
+            An <see cref="T:System.Int32"/> that represents the zero-based index of the header to find.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of allowable range of indexes for the collection.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.GetValues(System.String)">
+            <summary>
+            Gets an array of header values stored in the specified <paramref name="header"/>.
+            </summary>
+            <returns>
+            An array of <see cref="T:System.String"/> that receives the header values if found; otherwise,
+            <see langword="null"/>.
+            </returns>
+            <param name="header">
+            A <see cref="T:System.String"/> that represents the name of the header to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize
+            the <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the destination for the serialization.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="serializationInfo"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.OnDeserialization(System.Object)">
+            <summary>
+            Implements the <see cref="T:System.Runtime.Serialization.ISerializable"/> interface and raises the deserialization event
+            when the deserialization is complete.
+            </summary>
+            <param name="sender">
+            An <see cref="T:System.Object"/> that represents the source of the deserialization event.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.Remove(System.String)">
+            <summary>
+            Removes the specified header from the collection.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the name of the header to remove.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <see langword="null"/> or empty.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="name"/> contains invalid characters.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              <paramref name="name"/> is a restricted header name.
+              </para>
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The current <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/> instance doesn't allow the header
+            <paramref name="name"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.Set(System.String,System.String)">
+            <summary>
+            Sets the specified header to the specified value.
+            </summary>
+            <param name="name">
+            A <see cref="T:System.String"/> that represents the name of the header to set.
+            </param>
+            <param name="value">
+            A <see cref="T:System.String"/> that represents the value of the header to set.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <see langword="null"/> or empty.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="name"/> or <paramref name="value"/> contains invalid characters.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              <paramref name="name"/> is a restricted header name.
+              </para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The length of <paramref name="value"/> is greater than 65,535 characters.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The current <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/> instance doesn't allow the header
+            <paramref name="name"/>.
+            </exception>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current
+            <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/>.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebHeaderCollection.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates the specified <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize
+            the current <see cref="T:WebSocketSharp.Net.WebHeaderCollection"/>.
+            </summary>
+            <param name="serializationInfo">
+            A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data.
+            </param>
+            <param name="streamingContext">
+            A <see cref="T:System.Runtime.Serialization.StreamingContext"/> that specifies the destination for the serialization.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="serializationInfo"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext">
+            <summary>
+            Provides the properties used to access the information in a WebSocket connection request
+            received by the <see cref="T:System.Net.Sockets.TcpListener"/>.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetCookieCollection">
+            <summary>
+            Gets the HTTP cookies included in the request.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.CookieCollection"/> that contains the cookies.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetHeader(System.String)">
+            <summary>
+            Gets the HTTP headers included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.Collections.Specialized.NameValueCollection"/> that contains the headers.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetHost">
+            <summary>
+            Gets the value of the Host header included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Host header.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.IsAuthenticated">
+            <summary>
+            Gets a value indicating whether the client is authenticated.
+            </summary>
+            <value>
+            <c>true</c> if the client is authenticated; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.IsLocal">
+            <summary>
+            Gets a value indicating whether the client connected from the local computer.
+            </summary>
+            <value>
+            <c>true</c> if the client connected from the local computer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.IsSecureConnection">
+            <summary>
+            Gets a value indicating whether the WebSocket connection is secured.
+            </summary>
+            <value>
+            <c>true</c> if the connection is secured; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.IsWebSocketRequest">
+            <summary>
+            Gets a value indicating whether the request is a WebSocket connection request.
+            </summary>
+            <value>
+            <c>true</c> if the request is a WebSocket connection request; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetOrigin">
+            <summary>
+            Gets the value of the Origin header included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Origin header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetQueryString">
+            <summary>
+            Gets the query string included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.Collections.Specialized.NameValueCollection"/> that contains the query string parameters.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetRequestUri">
+            <summary>
+            Gets the URI requested by the client.
+            </summary>
+            <value>
+            A <see cref="T:System.Uri"/> that represents the requested URI.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetSecWebSocketKey">
+            <summary>
+            Gets the value of the Sec-WebSocket-Key header included in the request.
+            </summary>
+            <remarks>
+            This property provides a part of the information used by the server to prove that it
+            received a valid WebSocket connection request.
+            </remarks>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Sec-WebSocket-Key header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetSecWebSocketProtocols">
+            <summary>
+            Gets the values of the Sec-WebSocket-Protocol header included in the request.
+            </summary>
+            <remarks>
+            This property represents the subprotocols requested by the client.
+            </remarks>
+            <value>
+            An <see cref="T:System.Collections.Generic.IEnumerable{string}"/> instance that provides
+            an enumerator which supports the iteration over the values of the Sec-WebSocket-Protocol
+            header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.GetSecWebSocketVersion">
+            <summary>
+            Gets the value of the Sec-WebSocket-Version header included in the request.
+            </summary>
+            <remarks>
+            This property represents the WebSocket protocol version.
+            </remarks>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Sec-WebSocket-Version header.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.ServerEndPoint">
+            <summary>
+            Gets the server endpoint as an IP address and a port number.
+            </summary>
+            <value>
+            A <see cref="T:System.Net.IPEndPoint"/> that represents the server endpoint.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.User">
+            <summary>
+            Gets the client information (identity, authentication, and security roles).
+            </summary>
+            <value>
+            A <see cref="T:System.Security.Principal.IPrincipal"/> that represents the client information.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.UserEndPoint">
+            <summary>
+            Gets the client endpoint as an IP address and a port number.
+            </summary>
+            <value>
+            A <see cref="T:System.Net.IPEndPoint"/> that represents the client endpoint.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.WebSocket">
+            <summary>
+            Gets the <see cref="T:WebSocketSharp.WebSocket"/> instance used for two-way communication
+            between client and server.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.WebSocket"/>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current
+            <see cref="T:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current
+            <see cref="T:WebSocketSharp.Net.WebSockets.TcpListenerWebSocketContext"/>.
+            </returns>
+        </member>
+        <member name="T:WebSocketSharp.Net.WebSockets.WebSocketContext">
+            <summary>
+            Exposes the properties used to access the information in a WebSocket connection request.
+            </summary>
+            <remarks>
+            The WebSocketContext class is an abstract class.
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetCookieCollection">
+            <summary>
+            Gets the HTTP cookies included in the request.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.CookieCollection"/> that contains the cookies.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetHeader(System.String)">
+            <summary>
+            Gets the HTTP headers included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.Collections.Specialized.NameValueCollection"/> that contains the headers.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetHost">
+            <summary>
+            Gets the value of the Host header included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Host header.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.IsAuthenticated">
+            <summary>
+            Gets a value indicating whether the client is authenticated.
+            </summary>
+            <value>
+            <c>true</c> if the client is authenticated; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.IsLocal">
+            <summary>
+            Gets a value indicating whether the client connected from the local computer.
+            </summary>
+            <value>
+            <c>true</c> if the client connected from the local computer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.IsSecureConnection">
+            <summary>
+            Gets a value indicating whether the WebSocket connection is secured.
+            </summary>
+            <value>
+            <c>true</c> if the connection is secured; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.IsWebSocketRequest">
+            <summary>
+            Gets a value indicating whether the request is a WebSocket connection request.
+            </summary>
+            <value>
+            <c>true</c> if the request is a WebSocket connection request; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetOrigin">
+            <summary>
+            Gets the value of the Origin header included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Origin header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetQueryString">
+            <summary>
+            Gets the query string included in the request.
+            </summary>
+            <value>
+            A <see cref="T:System.Collections.Specialized.NameValueCollection"/> that contains the query string parameters.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetRequestUri">
+            <summary>
+            Gets the URI requested by the client.
+            </summary>
+            <value>
+            A <see cref="T:System.Uri"/> that represents the requested URI.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetSecWebSocketKey">
+            <summary>
+            Gets the value of the Sec-WebSocket-Key header included in the request.
+            </summary>
+            <remarks>
+            This property provides a part of the information used by the server to prove that it
+            received a valid WebSocket connection request.
+            </remarks>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Sec-WebSocket-Key header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetSecWebSocketProtocols">
+            <summary>
+            Gets the values of the Sec-WebSocket-Protocol header included in the request.
+            </summary>
+            <remarks>
+            This property represents the subprotocols requested by the client.
+            </remarks>
+            <value>
+            An <see cref="T:System.Collections.Generic.IEnumerable{string}"/> instance that provides
+            an enumerator which supports the iteration over the values of the Sec-WebSocket-Protocol
+            header.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Net.WebSockets.WebSocketContext.GetSecWebSocketVersion">
+            <summary>
+            Gets the value of the Sec-WebSocket-Version header included in the request.
+            </summary>
+            <remarks>
+            This property represents the WebSocket protocol version.
+            </remarks>
+            <value>
+            A <see cref="T:System.String"/> that represents the value of the Sec-WebSocket-Version header.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.ServerEndPoint">
+            <summary>
+            Gets the server endpoint as an IP address and a port number.
+            </summary>
+            <value>
+            A <see cref="T:System.Net.IPEndPoint"/> that represents the server endpoint.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.User">
+            <summary>
+            Gets the client information (identity, authentication, and security roles).
+            </summary>
+            <value>
+            A <see cref="T:System.Security.Principal.IPrincipal"/> that represents the client information.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.UserEndPoint">
+            <summary>
+            Gets the client endpoint as an IP address and a port number.
+            </summary>
+            <value>
+            A <see cref="T:System.Net.IPEndPoint"/> that represents the client endpoint.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Net.WebSockets.WebSocketContext.WebSocket">
+            <summary>
+            Gets the <see cref="T:WebSocketSharp.WebSocket"/> instance used for two-way communication
+            between client and server.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.WebSocket"/>.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Server.IWebSocketSession">
+            <summary>
+            Exposes the properties used to access the information in a session in a WebSocket service.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.Server.IWebSocketSession.Context">
+            <summary>
+            Gets the information in the connection request to the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.WebSockets.WebSocketContext"/> that provides the access to the connection request.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.IWebSocketSession.Id">
+            <summary>
+            Gets the unique ID of the session.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the unique ID of the session.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.IWebSocketSession.Protocol">
+            <summary>
+            Gets the WebSocket subprotocol used in the session.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the subprotocol if any.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.IWebSocketSession.StartTime">
+            <summary>
+            Gets the time that the session has started.
+            </summary>
+            <value>
+            A <see cref="T:System.DateTime"/> that represents the time that the session has started.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.IWebSocketSession.State">
+            <summary>
+            Gets the state of the <see cref="T:WebSocketSharp.WebSocket"/> used in the session.
+            </summary>
+            <value>
+            One of the <see cref="T:WebSocketSharp.WebSocketState"/> enum values, indicates the state of
+            the <see cref="T:WebSocketSharp.WebSocket"/> used in the session.
+            </value>
+        </member>
+        <member name="T:WebSocketSharp.Server.WebSocketBehavior">
+            <summary>
+            Exposes the methods and properties used to define the behavior of a WebSocket service
+            provided by the <see cref="T:WebSocketSharp.Server.WebSocketServer"/> or <see cref="T:WebSocketSharp.Server.WebSocketServer"/>.
+            </summary>
+            <remarks>
+            The WebSocketBehavior class is an abstract class.
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> class.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.Context">
+            <summary>
+            Gets the information in the current connection request to the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Net.WebSockets.WebSocketContext"/> that provides the access to the current connection request,
+            or <see langword="null"/> if the WebSocket connection isn't established.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.CookiesValidator">
+            <summary>
+            Gets or sets the delegate called to validate the HTTP cookies included in a connection
+            request to the WebSocket service.
+            </summary>
+            <remarks>
+            The delegate is called when the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session
+            validates the connection request.
+            </remarks>
+            <value>
+              <para>
+              A <c>Func&lt;CookieCollection, CookieCollection, bool&gt;</c> delegate that references
+              the method(s) used to validate the cookies. 1st <see cref="T:WebSocketSharp.Net.CookieCollection"/> passed to
+              this delegate contains the cookies to validate if any. 2nd <see cref="T:WebSocketSharp.Net.CookieCollection"/>
+              passed to this delegate receives the cookies to send to the client.
+              </para>
+              <para>
+              This delegate should return <c>true</c> if the cookies are valid.
+              </para>
+              <para>
+              The default value is <see langword="null"/>, and it does nothing to validate.
+              </para>
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.Id">
+            <summary>
+            Gets the unique ID of the current session.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the unique ID of the current session,
+            or <see langword="null"/> if the WebSocket connection isn't established.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.OriginValidator">
+            <summary>
+            Gets or sets the delegate called to validate the Origin header included in a connection
+            request to the WebSocket service.
+            </summary>
+            <remarks>
+            The delegate is called when the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session
+            validates the connection request.
+            </remarks>
+            <value>
+              <para>
+              A <c>Func&lt;string, bool&gt;</c> delegate that references the method(s) used to validate
+              the origin header. A <see cref="T:System.String"/> passed to this delegate represents the value of
+              the origin header to validate if any.
+              </para>
+              <para>
+              This delegate should return <c>true</c> if the origin header is valid.
+              </para>
+              <para>
+              The default value is <see langword="null"/>, and it does nothing to validate.
+              </para>
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.Protocol">
+            <summary>
+            Gets or sets the WebSocket subprotocol used in the current session.
+            </summary>
+            <remarks>
+            Set operation of this property is available before the WebSocket connection has been
+            established.
+            </remarks>
+            <value>
+              <para>
+              A <see cref="T:System.String"/> that represents the subprotocol if any.
+              The default value is <see cref="F:System.String.Empty"/>.
+              </para>
+              <para>
+              The value to set must be a token defined in
+              <see href="http://tools.ietf.org/html/rfc2616#section-2.2">RFC 2616</see>.
+              </para>
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.StartTime">
+            <summary>
+            Gets the time that the current session has started.
+            </summary>
+            <value>
+            A <see cref="T:System.DateTime"/> that represents the time that the current session has started,
+            or <see cref="F:System.DateTime.MaxValue"/> if the WebSocket connection isn't established.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.State">
+            <summary>
+            Gets the state of the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session.
+            </summary>
+            <value>
+            One of the <see cref="T:WebSocketSharp.WebSocketState"/> enum values, indicates the state of
+            the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketBehavior.Sessions">
+            <summary>
+            Gets the access to the sessions in the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Server.WebSocketSessionManager"/> that provides the access to the sessions, or <see langword="null"/> if the WebSocket connection isn't established.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.Error(System.String,System.Exception)">
+            <summary>
+            Calls the <see cref="M:WebSocketSharp.Server.WebSocketBehavior.OnError(WebSocketSharp.ErrorEventArgs)"/> method with the specified <paramref name="message"/> and
+            <paramref name="exception"/>.
+            </summary>
+            <remarks>
+            This method doesn't call the <see cref="M:WebSocketSharp.Server.WebSocketBehavior.OnError(WebSocketSharp.ErrorEventArgs)"/> method if <paramref name="message"/> is
+            <see langword="null"/> or empty.
+            </remarks>
+            <param name="message">
+            A <see cref="T:System.String"/> that represents the error message.
+            </param>
+            <param name="exception">
+            An <see cref="T:System.Exception"/> instance that represents the cause of the error if any.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.OnClose(WebSocketSharp.CloseEventArgs)">
+            <summary>
+            Called when the WebSocket connection used in the current session has been closed.
+            </summary>
+            <param name="e">
+            A <see cref="T:WebSocketSharp.CloseEventArgs"/> that represents the event data passed to
+            a <see cref="!:WebSocket.OnClose"/> event.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.OnError(WebSocketSharp.ErrorEventArgs)">
+            <summary>
+            Called when the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session gets an error.
+            </summary>
+            <param name="e">
+            A <see cref="T:WebSocketSharp.ErrorEventArgs"/> that represents the event data passed to
+            a <see cref="!:WebSocket.OnError"/> event.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.OnMessage(WebSocketSharp.MessageEventArgs)">
+            <summary>
+            Called when the <see cref="T:WebSocketSharp.WebSocket"/> used in the current session receives a message.
+            </summary>
+            <param name="e">
+            A <see cref="T:WebSocketSharp.MessageEventArgs"/> that represents the event data passed to
+            a <see cref="!:WebSocket.OnMessage"/> event.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.OnOpen">
+            <summary>
+            Called when the WebSocket connection used in the current session has been established.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.Send(System.Byte[])">
+            <summary>
+            Sends a binary <paramref name="data"/> to the client on the current session.
+            </summary>
+            <remarks>
+            This method is available after the WebSocket connection has been established.
+            </remarks>
+            <param name="data">
+            An array of <see cref="T:System.Byte"/> that represents the binary data to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.Send(System.IO.Stream)">
+            <summary>
+            Sends the specified <paramref name="stream"/> as a binary data to the client
+            on the current session.
+            </summary>
+            <remarks>
+            This method is available after the WebSocket connection has been established.
+            </remarks>
+            <param name="stream">
+            A <see cref="T:System.IO.FileInfo"/> that represents the file to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketBehavior.Send(System.String)">
+            <summary>
+            Sends a text <paramref name="data"/> to the client on the current session.
+            </summary>
+            <remarks>
+            This method is available after the WebSocket connection has been established.
+            </remarks>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to send.
+            </param>
+        </member>
+        <member name="T:WebSocketSharp.Server.WebSocketServer">
+            <summary>
+            Provides a WebSocket protocol server.
+            </summary>
+            <remarks>
+            The WebSocketServer class can provide multiple WebSocket services.
+            </remarks>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.#ctor(System.Net.IPAddress,System.Int32,WebSocketSharp.Net.ServerSslConfiguration,WebSocketSharp.Net.AuthenticationSchemes,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebSocketSharp.Server.WebSocketServer"/> class with the specified
+            <paramref name="address"/>, <paramref name="port"/>, and <paramref name="secure"/>.
+            </summary>
+            <remarks>
+            An instance initialized by this constructor listens for the incoming connection requests
+            on <paramref name="port"/>.
+            </remarks>
+            <param name="address">
+            A <see cref="T:System.Net.IPAddress"/> that represents the local IP address of the server.
+            </param>
+            <param name="port">
+            An <see cref="T:System.Int32"/> that represents the port number on which to listen.
+            </param>
+            <param name="certificate">
+            A <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> used to secure the connection.
+            </param>
+            <param name="authenticationSchemes">Supported authentication schemes.</param>
+            <exception cref="T:System.ArgumentException">
+              <para>
+              <paramref name="address"/> isn't a local IP address.
+              </para>
+              <para>
+              -or-
+              </para>
+              <para>
+              Pair of <paramref name="port"/> and <paramref name="certificate"/> is invalid.
+              </para>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="address"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="port"/> isn't between 1 and 65535.</exception>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.IsListening">
+            <summary>
+            Gets a value indicating whether the server has started.
+            </summary>
+            <value>
+            <c>true</c> if the server has started; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.IsSecure">
+            <summary>
+            Gets a value indicating whether the server provides a secure connection.
+            </summary>
+            <value>
+            <c>true</c> if the server provides a secure connection; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.Port">
+            <summary>
+            Gets the port on which to listen for incoming connection requests.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the port number on which to listen.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.Realm">
+            <summary>
+            Gets or sets the name of the realm associated with the server.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the name of the realm.
+            The default value is <c>"SECRET AREA"</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.ReuseAddress">
+            <summary>
+            Gets or sets a value indicating whether the server is allowed to be bound to an address
+            that is already in use.
+            </summary>
+            <remarks>
+            If you would like to resolve to wait for socket in <c>TIME_WAIT</c> state, you should set
+            this property to <c>true</c>.
+            </remarks>
+            <value>
+            <c>true</c> if the server is allowed to be bound to an address that is already in use;
+            otherwise, <c>false</c>. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.UserCredentialsFinder">
+            <summary>
+            Gets or sets the delegate called to find the credentials for an identity used to
+            authenticate a client.
+            </summary>
+            <value>
+            A Func&lt;<see cref="T:System.Security.Principal.IIdentity"/>, <see cref="T:WebSocketSharp.Net.NetworkCredential"/>&gt; delegate that
+            references the method(s) used to find the credentials. The default value is a function
+            that only returns <see langword="null"/>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.WaitTime">
+            <summary>
+            Gets or sets the wait time for the response to the WebSocket Ping or Close.
+            </summary>
+            <value>
+            A <see cref="T:System.TimeSpan"/> that represents the wait time. The default value is
+            the same as 1 second.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServer.WebSocketServices">
+            <summary>
+            Gets the access to the WebSocket services provided by the server.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Server.WebSocketServiceManager"/> that manages the WebSocket services.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.AddWebSocketService``1(System.String)">
+            <summary>
+            Adds a WebSocket service with the specified behavior and <paramref name="path"/>.
+            </summary>
+            <remarks>
+            This method converts <paramref name="path"/> to URL-decoded string,
+            and removes <c>'/'</c> from tail end of <paramref name="path"/>.
+            </remarks>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the absolute path to the service to add.
+            </param>
+            <typeparam name="TBehaviorWithNew">
+            The type of the behavior of the service to add. The TBehaviorWithNew must inherit
+            the <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> class, and must have a public parameterless
+            constructor.
+            </typeparam>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.AddWebSocketService``1(System.String,System.Func{``0})">
+            <summary>
+            Adds a WebSocket service with the specified behavior, <paramref name="path"/>,
+            and <paramref name="initializer"/>.
+            </summary>
+            <remarks>
+              <para>
+              This method converts <paramref name="path"/> to URL-decoded string,
+              and removes <c>'/'</c> from tail end of <paramref name="path"/>.
+              </para>
+              <para>
+              <paramref name="initializer"/> returns an initialized specified typed
+              <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> instance.
+              </para>
+            </remarks>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the absolute path to the service to add.
+            </param>
+            <param name="initializer">
+            A Func&lt;T&gt; delegate that references the method used to initialize a new specified
+            typed <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> instance (a new <see cref="T:WebSocketSharp.Server.IWebSocketSession"/>
+            instance).
+            </param>
+            <typeparam name="TBehavior">
+            The type of the behavior of the service to add. The TBehavior must inherit
+            the <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> class.
+            </typeparam>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.RemoveWebSocketService(System.String)">
+            <summary>
+            Removes the WebSocket service with the specified <paramref name="path"/>.
+            </summary>
+            <remarks>
+            This method converts <paramref name="path"/> to URL-decoded string,
+            and removes <c>'/'</c> from tail end of <paramref name="path"/>.
+            </remarks>
+            <returns>
+            <c>true</c> if the service is successfully found and removed; otherwise, <c>false</c>.
+            </returns>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the absolute path to the service to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.Start">
+            <summary>
+            Starts receiving the WebSocket connection requests.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.Stop">
+            <summary>
+            Stops receiving the WebSocket connection requests.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServer.Stop(WebSocketSharp.CloseStatusCode,System.String)">
+            <summary>
+            Stops receiving the WebSocket connection requests with the specified
+            <see cref="T:WebSocketSharp.CloseStatusCode"/> and <see cref="T:System.String"/>.
+            </summary>
+            <param name="code">
+            One of the <see cref="T:WebSocketSharp.CloseStatusCode"/> enum values, represents the status code
+            indicating the reason for stop.
+            </param>
+            <param name="reason">
+            A <see cref="T:System.String"/> that represents the reason for stop.
+            </param>
+        </member>
+        <member name="T:WebSocketSharp.Server.WebSocketServiceHost">
+            <summary>
+            Exposes the methods and properties used to access the information in a WebSocket service provided by the <see cref="T:WebSocketSharp.Server.WebSocketServer"/>.
+            </summary>
+            <remarks>
+            The WebSocketServiceHost class is an abstract class.
+            </remarks>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceHost.KeepClean">
+            <summary>
+            Gets or sets a value indicating whether the WebSocket service cleans up
+            the inactive sessions periodically.
+            </summary>
+            <value>
+            <c>true</c> if the service cleans up the inactive sessions periodically;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceHost.Path">
+            <summary>
+            Gets the path to the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:System.String"/> that represents the absolute path to the service.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceHost.Sessions">
+            <summary>
+            Gets the access to the sessions in the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Server.WebSocketSessionManager"/> that manages the sessions in the service.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceHost.Type">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of the behavior of the WebSocket service.
+            </summary>
+            <value>
+            A <see cref="T:System.Type"/> that represents the type of the behavior of the service.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceHost.WaitTime">
+            <summary>
+            Gets or sets the wait time for the response to the WebSocket Ping or Close.
+            </summary>
+            <value>
+            A <see cref="T:System.TimeSpan"/> that represents the wait time. The default value is
+            the same as 1 second.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceHost.CreateSession">
+            <summary>
+            Creates a new session in the WebSocket service.
+            </summary>
+            <returns>
+            A <see cref="T:WebSocketSharp.Server.WebSocketBehavior"/> instance that represents a new session.
+            </returns>
+        </member>
+        <member name="T:WebSocketSharp.Server.WebSocketServiceManager">
+            <summary>
+            Manages the WebSocket services provided by the <see cref="T:WebSocketSharp.Server.WebSocketServer"/> or
+            <see cref="T:WebSocketSharp.Server.WebSocketServer"/>.
+            </summary>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.Count">
+            <summary>
+            Gets the number of the WebSocket services.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the number of the services.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.Hosts">
+            <summary>
+            Gets the host instances for the Websocket services.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;WebSocketServiceHost&gt;</c> instance that provides an enumerator
+            which supports the iteration over the collection of the host instances for the services.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.Item(System.String)">
+            <summary>
+            Gets the WebSocket service host with the specified <paramref name="path"/>.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Server.WebSocketServiceHost"/> instance that provides the access to
+            the information in the service, or <see langword="null"/> if it's not found.
+            </value>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the absolute path to the service to find.
+            </param>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.Paths">
+            <summary>
+            Gets the paths for the WebSocket services.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;string&gt;</c> instance that provides an enumerator which supports
+            the iteration over the collection of the paths for the services.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.SessionCount">
+            <summary>
+            Gets the total number of the sessions in the WebSocket services.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the total number of the sessions in the services.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketServiceManager.WaitTime">
+            <summary>
+            Gets the wait time for the response to the WebSocket Ping or Close.
+            </summary>
+            <value>
+            A <see cref="T:System.TimeSpan"/> that represents the wait time.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.Broadcast(System.Byte[])">
+            <summary>
+            Broadcasts a binary <paramref name="data"/> to every client in the WebSocket services.
+            </summary>
+            <param name="data">
+            An array of <see cref="T:System.Byte"/> that represents the binary data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.Broadcast(System.String)">
+            <summary>
+            Broadcasts a text <paramref name="data"/> to every client in the WebSocket services.
+            </summary>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.Broadcast(System.IO.Stream)">
+            <summary>
+            Broadcasts a text <paramref name="data"/> to every client in the WebSocket services.
+            </summary>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.Broadping">
+            <summary>
+            Sends a Ping to every client in the WebSocket services.
+            </summary>
+            <returns>
+            A <c>Dictionary&lt;string, Dictionary&lt;string, bool&gt;&gt;</c> that contains
+            a collection of pairs of a service path and a collection of pairs of a session ID
+            and a value indicating whether the manager received a Pong from each client in a time,
+            or <see langword="null"/> if this method isn't available.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.Broadping(System.String)">
+            <summary>
+            Sends a Ping with the specified <paramref name="message"/> to every client
+            in the WebSocket services.
+            </summary>
+            <returns>
+            A <c>Dictionary&lt;string, Dictionary&lt;string, bool&gt;&gt;</c> that contains
+            a collection of pairs of a service path and a collection of pairs of a session ID
+            and a value indicating whether the manager received a Pong from each client in a time,
+            or <see langword="null"/> if this method isn't available or <paramref name="message"/>
+            is invalid.
+            </returns>
+            <param name="message">
+            A <see cref="T:System.String"/> that represents the message to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketServiceManager.TryGetServiceHost(System.String,WebSocketSharp.Server.WebSocketServiceHost@)">
+            <summary>
+            Tries to get the WebSocket service host with the specified <paramref name="path"/>.
+            </summary>
+            <returns>
+            <c>true</c> if the service is successfully found; otherwise, <c>false</c>.
+            </returns>
+            <param name="path">
+            A <see cref="T:System.String"/> that represents the absolute path to the service to find.
+            </param>
+            <param name="host">
+            When this method returns, a <see cref="T:WebSocketSharp.Server.WebSocketServiceHost"/> instance that provides
+            the access to the information in the service, or <see langword="null"/> if it's not found.
+            This parameter is passed uninitialized.
+            </param>
+        </member>
+        <member name="T:WebSocketSharp.Server.WebSocketSessionManager">
+            <summary>
+            Manages the sessions in a Websocket service.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.ActiveIDs">
+            <summary>
+            Gets the IDs for the active sessions in the Websocket service.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;string&gt;</c> instance that provides an enumerator which
+            supports the iteration over the collection of the IDs for the active sessions.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.Count">
+            <summary>
+            Gets the number of the sessions in the Websocket service.
+            </summary>
+            <value>
+            An <see cref="T:System.Int32"/> that represents the number of the sessions.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.Ds">
+            <summary>
+            Gets the IDs for the sessions in the Websocket service.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;string&gt;</c> instance that provides an enumerator which
+            supports the iteration over the collection of the IDs for the sessions.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.InactiveIDs">
+            <summary>
+            Gets the IDs for the inactive sessions in the Websocket service.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;string&gt;</c> instance that provides an enumerator which
+            supports the iteration over the collection of the IDs for the inactive sessions.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.Item(System.String)">
+            <summary>
+            Gets the session with the specified <paramref name="id"/>.
+            </summary>
+            <value>
+            A <see cref="T:WebSocketSharp.Server.IWebSocketSession"/> instance that provides the access to
+            the information in the session, or <see langword="null"/> if it's not found.
+            </value>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.KeepClean">
+            <summary>
+            Gets a value indicating whether the manager cleans up the inactive sessions
+            in the WebSocket service periodically.
+            </summary>
+            <value>
+            <c>true</c> if the manager cleans up the inactive sessions every 60 seconds;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.Sessions">
+            <summary>
+            Gets the sessions in the Websocket service.
+            </summary>
+            <value>
+            An <c>IEnumerable&lt;IWebSocketSession&gt;</c> instance that provides an enumerator
+            which supports the iteration over the collection of the sessions in the service.
+            </value>
+        </member>
+        <member name="P:WebSocketSharp.Server.WebSocketSessionManager.WaitTime">
+            <summary>
+            Gets the wait time for the response to the WebSocket Ping or Close.
+            </summary>
+            <value>
+            A <see cref="T:System.TimeSpan"/> that represents the wait time.
+            </value>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Broadcast(System.Byte[])">
+            <summary>
+            Broadcasts a binary <paramref name="data"/> to every client in the WebSocket service.
+            </summary>
+            <param name="data">
+            An array of <see cref="T:System.Byte"/> that represents the binary data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Broadcast(System.IO.Stream)">
+            <summary>
+            Broadcasts a binary <paramref name="data"/> to every client in the WebSocket service.
+            </summary>
+            <param name="data">
+            An array of <see cref="T:System.IO.Stream"/> that represents the binary data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Broadcast(System.String)">
+            <summary>
+            Broadcasts a text <paramref name="data"/> to every client in the WebSocket service.
+            </summary>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to broadcast.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Broadping">
+            <summary>
+            Sends a Ping to every client in the WebSocket service.
+            </summary>
+            <returns>
+            A <c>Dictionary&lt;string, bool&gt;</c> that contains a collection of pairs of
+            a session ID and a value indicating whether the manager received a Pong from
+            each client in a time.
+            </returns>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Broadping(System.String)">
+            <summary>
+            Sends a Ping with the specified <paramref name="message"/> to every client
+            in the WebSocket service.
+            </summary>
+            <returns>
+            A <c>Dictionary&lt;string, bool&gt;</c> that contains a collection of pairs of
+            a session ID and a value indicating whether the manager received a Pong from
+            each client in a time.
+            </returns>
+            <param name="message">
+            A <see cref="T:System.String"/> that represents the message to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.CloseSession(System.String)">
+            <summary>
+            Closes the session with the specified <paramref name="id"/>.
+            </summary>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to close.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.CloseSession(System.String,WebSocketSharp.CloseStatusCode,System.String)">
+            <summary>
+            Closes the session with the specified <paramref name="id"/>, <paramref name="code"/>,
+            and <paramref name="reason"/>.
+            </summary>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to close.
+            </param>
+            <param name="code">
+            One of the <see cref="T:WebSocketSharp.CloseStatusCode"/> enum values, represents the status code
+            indicating the reason for the close.
+            </param>
+            <param name="reason">
+            A <see cref="T:System.String"/> that represents the reason for the close.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.PingTo(System.String)">
+            <summary>
+            Sends a Ping to the client on the session with the specified <paramref name="id"/>.
+            </summary>
+            <returns>
+            <c>true</c> if the manager receives a Pong from the client in a time;
+            otherwise, <c>false</c>.
+            </returns>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.PingTo(System.String,System.String)">
+            <summary>
+            Sends a Ping with the specified <paramref name="message"/> to the client
+            on the session with the specified <paramref name="id"/>.
+            </summary>
+            <returns>
+            <c>true</c> if the manager receives a Pong from the client in a time;
+            otherwise, <c>false</c>.
+            </returns>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+            <param name="message">
+            A <see cref="T:System.String"/> that represents the message to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.SendTo(System.String,System.Byte[])">
+            <summary>
+            Sends a binary <paramref name="data"/> to the client on the session
+            with the specified <paramref name="id"/>.
+            </summary>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+            <param name="data">
+            An array of <see cref="T:System.Byte"/> that represents the binary data to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.SendTo(System.String,System.String)">
+            <summary>
+            Sends a text <paramref name="data"/> to the client on the session
+            with the specified <paramref name="id"/>.
+            </summary>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+            <param name="data">
+            A <see cref="T:System.String"/> that represents the text data to send.
+            </param>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.Sweep">
+            <summary>
+            Cleans up the inactive sessions in the WebSocket service.
+            </summary>
+        </member>
+        <member name="M:WebSocketSharp.Server.WebSocketSessionManager.TryGetSession(System.String,WebSocketSharp.Server.IWebSocketSession@)">
+            <summary>
+            Tries to get the session with the specified <paramref name="id"/>.
+            </summary>
+            <returns>
+            <c>true</c> if the session is successfully found; otherwise, <c>false</c>.
+            </returns>
+            <param name="id">
+            A <see cref="T:System.String"/> that represents the ID of the session to find.
+            </param>
+            <param name="session">
+            When this method returns, a <see cref="T:WebSocketSharp.Server.IWebSocketSession"/> instance that
+            provides the access to the information in the session, or <see langword="null"/>
+            if it's not found. This parameter is passed uninitialized.
+            </param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+{
+  "name": "MajsoulHelper",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "protobufjs": "^6.8.8"
+  }
+}

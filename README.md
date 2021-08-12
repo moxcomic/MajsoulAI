@@ -9,14 +9,16 @@
 
 ## 2.0
 
-!!! 请尽量使用 Cmd 或 Power Shell 运行 !!!
+!!! 请尽量使用 Cmd 或 Power Shell 运行 !!!  
 !!! 双击运行报错将会直接闪退无法截图错误信息 !!!
 
 运行说明：
 
 1. 首先运行一次 MahjongAI.exe (首次运行会直接报错退出)
 2. 在目录下找到 config.json 打开进行配置
-   {
+
+```JSON
+{
    // 此项无需修改
    "Platform": 1,
    // 此项无需修改
@@ -54,22 +56,24 @@
    // - "EastSouth": 東南戦 / 四人南 / 四人南 / 4-Player South
    "MatchMode": "East",
    // - "3": (most nonaggressive, recommended) A comprehensive defense
-   strategy.
+   // strategy.
    // - "2": May defend when at least one player has called riichi.
    // - "1": May defend when the dealer (oya) has called riichi.
    // - "0": (most aggressive) No defense.
    "DefenceLevel": 3,
    // 此项无需修改
    "DeviceUuid": ""
-   }
+}
+```
+
 3. 完成配置后再次启动 MahjongAI.exe
 4. 看到 LoginSuccess 表示登录成功（其他报错情况请截图报错信息反馈
 5. 如果要进友人房请先输入 j 然后输入 s （配置里友人房间号必须为 0，如果打匹配直接输入 s
 
-可用命令:
-q: 无论设置了打多少场在当前对局结束后立即结束并退出账号
-j: 加入友人房 (如果未设置房间号会报错)
-s: 开始匹配 (如果加入友人房则会变为准备)
+可用命令:  
+q: 无论设置了打多少场在当前对局结束后立即结束并退出账号  
+j: 加入友人房 (如果未设置房间号会报错)  
+s: 开始匹配 (如果加入友人房则会变为准备)  
 g: 退出当前账号 (请勿在对局进行时调用, 该命令会立即退出账号和程序, 例如登录后不想匹配则需要先输入 g 再关闭程序而不是直接关闭否则你的账号依然会在线)
 
 ## Author

@@ -3,6 +3,8 @@
 基于 Majsoul Ex SDK 的雀魂麻将 AI，AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI);  
 有封号风险请勿使用大号登录, 请使用小号或新注册账号进行使用。
 
+[![VersionLatest](https://img.shields.io/github/release/moxcomic/majsoul-ex) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/majsoul-ex/latest/total)](https://github.com/moxcomic/majsoul-ex/releases/latest)
+
 ## 当前测试进度
 
 ![雀杰](./imgs/majsoul-0.jpg)

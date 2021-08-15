@@ -184,24 +184,6 @@ namespace MahjongAI
             return config;
         }
 
-        static void SelfCheck(Models.Config config)
-        {
-            try
-            {
-                MahjongHelper.getInstance();
-                if (config.Platform == Platform.Majsoul)
-                {
-                    new MajsoulHelper().selfCheck();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex);
-                Console.ReadKey();
-                //Environment.Exit(2);
-            }
-        }
-
         static void Main(string[] args)
         {
             var listener = new ConsoleTraceListener();

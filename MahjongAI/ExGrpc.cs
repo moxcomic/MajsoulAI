@@ -780,8 +780,6 @@ namespace Ex {
 
     static readonly grpc::Marshaller<global::Ex.ReqLogout> __Marshaller_ex_ReqLogout = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqLogout.Parser));
     static readonly grpc::Marshaller<global::Ex.ResLogout> __Marshaller_ex_ResLogout = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResLogout.Parser));
-    static readonly grpc::Marshaller<global::Ex.ReqCommon> __Marshaller_ex_ReqCommon = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqCommon.Parser));
-    static readonly grpc::Marshaller<global::Ex.ResPayMonthTicket> __Marshaller_ex_ResPayMonthTicket = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResPayMonthTicket.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqAddCollectedGameRecord> __Marshaller_ex_ReqAddCollectedGameRecord = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqAddCollectedGameRecord.Parser));
     static readonly grpc::Marshaller<global::Ex.ResAddCollectedGameRecord> __Marshaller_ex_ResAddCollectedGameRecord = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResAddCollectedGameRecord.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqFinishedEnding> __Marshaller_ex_ReqFinishedEnding = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqFinishedEnding.Parser));
@@ -875,6 +873,7 @@ namespace Ex {
     static readonly grpc::Marshaller<global::Ex.ResDMMPreLogin> __Marshaller_ex_ResDMMPreLogin = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResDMMPreLogin.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqDoActivitySignIn> __Marshaller_ex_ReqDoActivitySignIn = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqDoActivitySignIn.Parser));
     static readonly grpc::Marshaller<global::Ex.ResDoActivitySignIn> __Marshaller_ex_ResDoActivitySignIn = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResDoActivitySignIn.Parser));
+    static readonly grpc::Marshaller<global::Ex.ReqCommon> __Marshaller_ex_ReqCommon = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqCommon.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqRoomDressing> __Marshaller_ex_ReqRoomDressing = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqRoomDressing.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqEmailLogin> __Marshaller_ex_ReqEmailLogin = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqEmailLogin.Parser));
     static readonly grpc::Marshaller<global::Ex.ResLogin> __Marshaller_ex_ResLogin = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResLogin.Parser));
@@ -1022,6 +1021,7 @@ namespace Ex {
     static readonly grpc::Marshaller<global::Ex.ReqOpenRandomRewardItem> __Marshaller_ex_ReqOpenRandomRewardItem = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqOpenRandomRewardItem.Parser));
     static readonly grpc::Marshaller<global::Ex.ResOpenRandomRewardItem> __Marshaller_ex_ResOpenRandomRewardItem = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResOpenRandomRewardItem.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqPayMonthTicket> __Marshaller_ex_ReqPayMonthTicket = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqPayMonthTicket.Parser));
+    static readonly grpc::Marshaller<global::Ex.ResPayMonthTicket> __Marshaller_ex_ResPayMonthTicket = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResPayMonthTicket.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqReadAnnouncement> __Marshaller_ex_ReqReadAnnouncement = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqReadAnnouncement.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqReadMail> __Marshaller_ex_ReqReadMail = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqReadMail.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqReadSNS> __Marshaller_ex_ReqReadSNS = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqReadSNS.Parser));
@@ -1104,13 +1104,6 @@ namespace Ex {
         "softLogout",
         __Marshaller_ex_ReqLogout,
         __Marshaller_ex_ResLogout);
-
-    static readonly grpc::Method<global::Ex.ReqCommon, global::Ex.ResPayMonthTicket> __Method_takeMonthTicket = new grpc::Method<global::Ex.ReqCommon, global::Ex.ResPayMonthTicket>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "takeMonthTicket",
-        __Marshaller_ex_ReqCommon,
-        __Marshaller_ex_ResPayMonthTicket);
 
     static readonly grpc::Method<global::Ex.ReqAddCollectedGameRecord, global::Ex.ResAddCollectedGameRecord> __Method_addCollectedGameRecord = new grpc::Method<global::Ex.ReqAddCollectedGameRecord, global::Ex.ResAddCollectedGameRecord>(
         grpc::MethodType.Unary,
@@ -2807,11 +2800,6 @@ namespace Ex {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::Ex.ResPayMonthTicket> takeMonthTicket(global::Ex.ReqCommon request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
       public virtual global::System.Threading.Tasks.Task<global::Ex.ResAddCollectedGameRecord> addCollectedGameRecord(global::Ex.ReqAddCollectedGameRecord request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -4052,22 +4040,6 @@ namespace Ex {
       public virtual grpc::AsyncUnaryCall<global::Ex.ResLogout> softLogoutAsync(global::Ex.ReqLogout request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_softLogout, null, options, request);
-      }
-      public virtual global::Ex.ResPayMonthTicket takeMonthTicket(global::Ex.ReqCommon request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return takeMonthTicket(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual global::Ex.ResPayMonthTicket takeMonthTicket(global::Ex.ReqCommon request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_takeMonthTicket, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::Ex.ResPayMonthTicket> takeMonthTicketAsync(global::Ex.ReqCommon request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return takeMonthTicketAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::Ex.ResPayMonthTicket> takeMonthTicketAsync(global::Ex.ReqCommon request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_takeMonthTicket, null, options, request);
       }
       public virtual global::Ex.ResAddCollectedGameRecord addCollectedGameRecord(global::Ex.ReqAddCollectedGameRecord request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -7922,7 +7894,6 @@ namespace Ex {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_softLogout, serviceImpl.softLogout)
-          .AddMethod(__Method_takeMonthTicket, serviceImpl.takeMonthTicket)
           .AddMethod(__Method_addCollectedGameRecord, serviceImpl.addCollectedGameRecord)
           .AddMethod(__Method_addFinishedEnding, serviceImpl.addFinishedEnding)
           .AddMethod(__Method_applyFriend, serviceImpl.applyFriend)
@@ -8172,7 +8143,6 @@ namespace Ex {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, LobbyBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_softLogout, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqLogout, global::Ex.ResLogout>(serviceImpl.softLogout));
-      serviceBinder.AddMethod(__Method_takeMonthTicket, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqCommon, global::Ex.ResPayMonthTicket>(serviceImpl.takeMonthTicket));
       serviceBinder.AddMethod(__Method_addCollectedGameRecord, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqAddCollectedGameRecord, global::Ex.ResAddCollectedGameRecord>(serviceImpl.addCollectedGameRecord));
       serviceBinder.AddMethod(__Method_addFinishedEnding, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqFinishedEnding, global::Ex.ResCommon>(serviceImpl.addFinishedEnding));
       serviceBinder.AddMethod(__Method_applyFriend, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqApplyFriend, global::Ex.ResCommon>(serviceImpl.applyFriend));

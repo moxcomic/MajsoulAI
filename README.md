@@ -3,6 +3,10 @@
 基于 Majsoul Ex SDK 的雀魂麻将 AI，AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI);  
 有封号风险请勿使用大号登录, 请使用小号或新注册账号进行使用。
 
+## 当前测试进度
+
+![雀杰](./imgs/majsoul-0.jpg)
+
 ## 如何获得测试资格
 
 对本项目有重大贡献的用户将会获得一份测试资格  

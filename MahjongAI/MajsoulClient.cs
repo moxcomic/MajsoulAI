@@ -447,8 +447,7 @@ namespace MahjongAI
                     Type = nextReach ? (uint)7 : (uint)1,
                     Tile = tile.OfficialName,
                     Moqie = gameData.lastTile == tile,
-                    Timeuse = (uint)stopwatch.Elapsed.Seconds,
-                    TileState = 1
+                    Timeuse = (uint)stopwatch.Elapsed.Seconds
                 }, md);
 
                 nextReach = false;

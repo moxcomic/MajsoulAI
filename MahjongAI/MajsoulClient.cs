@@ -24,16 +24,11 @@ namespace MahjongAI
 {
   class MajsoulClient : PlatformClient
   {
-    private const string serverListUrl = "/recommend_list?service=ws-gateway&protocol=ws&ssl=true";
-    private const string gameServerListUrlTemplate = "/recommend_list?service=ws-game-gateway&protocol=ws&ssl=true&location={0}";
     private const string replaysFileName = "replays.txt";
 
-    private WebSocket ws;
-    private WebSocket wsGame;
     private string username;
     private string password;
     //private MajsoulHelper majsoulHelper = new MajsoulHelper();
-    private byte[] buffer = new byte[1048576];
     private IEnumerable<JToken> operationList;
     private bool nextReach = false;
     private bool gameEnded = false;
@@ -68,11 +63,11 @@ namespace MahjongAI
 
     public void HandleSyncGameMessage(string name, JToken data)
     {
-            var buf = new List<byte>();
-            foreach (var t in (JArray)data)
-            {
-                buf.Add((byte)t);
-            }
+      var buf = new List<byte>();
+      foreach (var t in (JArray)data)
+      {
+          buf.Add((byte)t);
+      }
 
       string json = null;
 
@@ -244,32 +239,10 @@ namespace MahjongAI
       username = config.MajsoulUsername;
       password = config.MajsoulPassword;
       InitGrpc();
-      //var host = getServerHost(serverListUrl);
-      //ws = new WebSocket("wss://" + host, onMessage: OnMessage, onError: OnError);
-      //ws.Connect().Wait();
     }
 
     public override void Close(bool unexpected = false)
     {
-      //lock (ws)
-      //{
-      //    if (connected)
-      //    {
-      //        connected = false;
-      //        if (unexpected)
-      //        {
-      //            InvokeOnConnectionException();
-      //        }
-      //        InvokeOnClose();
-      //        try
-      //        {
-      //            ws.Close().Wait();
-      //            wsGame.Close().Wait();
-      //        }
-      //        catch { }
-      //    }
-      //}
-
       try
       {
         var res = lobby.softLogout(new Ex.ReqLogout { }, md);
@@ -283,20 +256,6 @@ namespace MahjongAI
 
     public override void Login()
     {
-      //Send(ws, ".lq.Lobby.login", new
-      //{
-      //    currency_platforms = new[] { 2 },
-      //    account = username,
-      //    password = EncodePassword(password),
-      //    reconnect = false,
-      //    device = new { device_type = "pc", browser = "safari" },
-      //    random_key = GetDeviceUUID(),
-      //    client_version = "0.4.149.w",
-      //    gen_access_token = false,
-      //}).Wait();
-      //new Task(HeartBeat).Start();
-      //connected = true;
-
       if (lobby == null)
       {
         throw new Exception("can't get lobby client");
@@ -331,11 +290,17 @@ namespace MahjongAI
               AccessToken = config.AccessToken,
               Type = 0
             }, md);
+            if (!vres.HasAccount) {
+              config.AccessToken = "";
+              File.WriteAllText("config.json", JsonConvert.SerializeObject(config));
+              Console.WriteLine("Please Restart Application...");
+              Console.WriteLine("Press any key to exit...");
+              Console.ReadKey();
+              Environment.Exit(0);
+            }
           }
           catch
           {
-            config.AccessToken = "";
-            File.WriteAllText("config.json", JsonConvert.SerializeObject(config));
             Console.WriteLine("Please Restart Application...");
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
@@ -404,7 +369,6 @@ namespace MahjongAI
           typeNum += 3;
         }
 
-        //Send(ws, ".lq.Lobby.matchGame", new { match_mode = typeNum }).Wait();
         try
         {
           expectMessage("MatchGame", timeout: 60000, timeoutMessage: "Game matching timed out.");
@@ -431,7 +395,6 @@ namespace MahjongAI
       }
       else
       {
-        //Send(ws, ".lq.Lobby.readyPlay", new { ready = true }).Wait();
         try
         {
           Thread.Sleep(1000);
@@ -461,7 +424,6 @@ namespace MahjongAI
       {
         try
         {
-          //Send(ws, ".lq.Lobby.joinRoom", new { room_id = roomNumber }).Wait();
           var res = lobby.joinRoom(new Ex.ReqJoinRoom
           {
             RoomId = (uint)roomNumber
@@ -493,7 +455,6 @@ namespace MahjongAI
 
     public override void NextReady()
     {
-      //Send(wsGame, "confirmNewRound", new { }).Wait();
       try
       {
         var res = fast.confirmNewRound(new Ex.ReqCommon { }, md);
@@ -517,15 +478,12 @@ namespace MahjongAI
 
     public override void Bye()
     {
-      //wsGame.Close();
-      //wsGame = null;
-      //Console.WriteLine("Bye()");
+
     }
 
     public override void Pass()
     {
       doRandomDelay();
-      //Send(wsGame, "InputChiPengGang", new { cancel_operation = true, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -553,7 +511,6 @@ namespace MahjongAI
     public override void Discard(Tile tile)
     {
       doRandomDelay();
-      //Send(wsGame, "inputOperation", new { type = nextReach ? 7 : 1, tile = tile.OfficialName, moqie = gameData.lastTile == tile, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputOperation(new Ex.ReqSelfOperation
@@ -588,7 +545,6 @@ namespace MahjongAI
       doRandomDelay();
       var combination = operationList.First(item => (int)item["Type"] == 3)["Combination"].Select(t => (string)t);
       int index = combination.ToList().FindIndex(comb => comb.Contains(tile0.GeneralName));
-      //Send(wsGame, "InputChiPengGang", new { type = 3, index, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -617,7 +573,6 @@ namespace MahjongAI
     public override void Minkan()
     {
       doRandomDelay();
-      //Send(wsGame, "InputChiPengGang", new { type = 5, index = 0, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -648,7 +603,6 @@ namespace MahjongAI
       doRandomDelay();
       var combination = operationList.First(item => (int)item["Type"] == 2)["Combination"].Select(t => (string)t);
       int index = combination.ToList().FindIndex(comb => comb.Split('|').OrderBy(t => t).SequenceEqual(new[] { tile0.OfficialName, tile1.OfficialName }.OrderBy(t => t)));
-      //Send(wsGame, "InputChiPengGang", new { type = 2, index, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -679,7 +633,6 @@ namespace MahjongAI
       doRandomDelay();
       var combination = operationList.First(item => (int)item["Type"] == 4)["Combination"].Select(t => (string)t);
       int index = combination.ToList().FindIndex(comb => comb.Contains(tile.GeneralName));
-      //Send(wsGame, "InputChiPengGang", new { type = 4, index, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -710,7 +663,6 @@ namespace MahjongAI
       doRandomDelay();
       var combination = operationList.First(item => (int)item["Type"] == 6)["Combination"].Select(t => (string)t);
       int index = combination.ToList().FindIndex(comb => comb.Contains(tile.GeneralName) || comb.Contains(tile.OfficialName));
-      //Send(wsGame, "InputChiPengGang", new { type = 6, index, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -738,7 +690,6 @@ namespace MahjongAI
 
     public override void Ron()
     {
-      //Send(wsGame, "InputChiPengGang", new { type = 9, index = 0 }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -765,7 +716,6 @@ namespace MahjongAI
 
     public override void Tsumo()
     {
-      //Send(wsGame, "InputChiPengGang", new { type = 8, index = 0 }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -793,7 +743,6 @@ namespace MahjongAI
     public override void Ryuukyoku()
     {
       doRandomDelay();
-      //Send(wsGame, "InputChiPengGang", new { type = 10, index = 0, timeuse = stopwatch.Elapsed.Seconds }).Wait();
       try
       {
         var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
@@ -844,29 +793,6 @@ namespace MahjongAI
 
     private void StartGame(JToken data, bool continued)
     {
-      //gameStarted = false;
-
-      //Task.Factory.StartNew(() =>
-      //{
-      //    InvokeOnUnknownEvent("Game found. Connecting...");
-      //    while (!gameStarted)
-      //    {
-      //        wsGame = new WebSocket("wss://" + getServerHost(string.Format(gameServerListUrlTemplate, data["location"])), onMessage: OnMessage, onError: OnError);
-      //        wsGame.Connect().Wait();
-      //        Send(wsGame, "authGame", new
-      //        {
-      //            account_id = accountId,
-      //            token = data["connect_token"],
-      //            game_uuid = data["game_uuid"]
-      //        }).Wait();
-      //        Thread.Sleep(3000);
-      //        if (!gameStarted)
-      //        {
-      //            InvokeOnUnknownEvent("Failed to connect. Retrying...");
-      //        }
-      //    }
-      //});
-
       try
       {
         gameStarted = false;
@@ -948,7 +874,6 @@ namespace MahjongAI
       }
       if (message.MethodName == "NotifyRoomGameStart" || message.MethodName == "NotifyMatchGameStart")
       {
-        //StartGame(message.Json, false);
         authData = message.Json;
       }
       else if (message.MethodName == "NotifyGameClientConnect")
@@ -966,7 +891,6 @@ namespace MahjongAI
 
         if (!continued)
         {
-          //Send(wsGame, "enterGame", new { }).Wait();
           try
           {
             var res = fast.enterGame(new Ex.ReqCommon { }, md);
@@ -988,7 +912,6 @@ namespace MahjongAI
         }
         else
         {
-          //Send(wsGame, "syncGame", new { round_id = "-1", step = 1000000 }).Wait();
           try
           {
             var res = fast.syncGame(new Ex.ReqSyncGame
@@ -1128,7 +1051,6 @@ namespace MahjongAI
       {
         syncing = true;
         continuedBetweenGames = (int)message.Json["Step"] == 0;
-        //Send(wsGame, "fetchGamePlayerState", new { }).Wait();
         try
         {
           if (message.Json["GameRestore"]["Actions"] != null)
@@ -1170,7 +1092,6 @@ namespace MahjongAI
           HandleMessage(actionMessage, forSync: true);
         }
 
-        //Send(wsGame, "finishSyncGame", new { }).Wait();
         try
         {
           var res = fast.finishSyncGame(new Ex.ReqCommon { }, md);
@@ -1212,10 +1133,14 @@ namespace MahjongAI
         gameData.remainingTile = (int)message.Json["LeftTileCount"];
         if (message.Json["Doras"] != null)
         {
-          var doras = message.Json["Doras"].Select(t => (string)t);
-          foreach (var dora in doras.Skip(gameData.dora.Count))
-          {
-            gameData.dora.Add(new Tile(dora));
+          try {
+            var doras = message.Json["Doras"].Select(t => (string)t);
+            foreach (var dora in doras.Skip(gameData.dora.Count))
+            {
+              gameData.dora.Add(new Tile(dora));
+            }
+          } catch (Exception e) {
+            Console.WriteLine("ActionDealTile Doras Out of Range:\n" + message.Json);
           }
         }
         if (NormalizedPlayerId((int)message.Json["Seat"]) == 0)
@@ -1445,19 +1370,7 @@ namespace MahjongAI
 
     private void HeartBeat()
     {
-      //while (true)
-      //{
-      //    Thread.Sleep(60000);
-      //    try
-      //    {
-      //        Send(ws, ".lq.Lobby.heatbeat", new { no_operation_counter = 0 }).Wait();
-      //    }
-      //    catch (Exception)
-      //    {
-      //        Close(true);
-      //        return;
-      //    }
-      //}
+      
     }
 
     private void SaveReplay(string gameID)
@@ -1476,17 +1389,7 @@ namespace MahjongAI
 
     private async Task OnMessage(MessageEventArgs args)
     {
-      try
-      {
-        int length = await args.Data.ReadAsync(buffer, 0, buffer.Length);
-        //MajsoulMessage message = majsoulHelper.decode(buffer, 0, length);
-        //HandleMessage(message);
-      }
-      catch (Exception ex)
-      {
-        Trace.TraceError(ex.ToString());
-        Close(true);
-      }
+      
     }
 
     private Task OnError(WebSocketSharp.ErrorEventArgs args)
@@ -1504,23 +1407,7 @@ namespace MahjongAI
 
     public async Task Send(WebSocket ws, string methodName, object data)
     {
-      /*
-       byte[] buffer = majsoulHelper.encode(new MajsoulMessage
-      {
-          Type = MajsoulMessageType.REQUEST,
-          MethodName = methodName,
-          Data = data,
-      });
-      try
-      {
-          await ws.Send(buffer);
-      }
-      catch (Exception ex)
-      {
-          Trace.TraceError(ex.ToString());
-          Close(true);
-      }
-       */
+
     }
 
     private string GetDeviceUUID()
@@ -1529,8 +1416,6 @@ namespace MahjongAI
       if (string.IsNullOrEmpty(uuid))
       {
         uuid = Guid.NewGuid().ToString();
-        //Properties.Settings.Default["DeviceUUID"] = uuid;
-        //Properties.Settings.Default.Save();
         config.DeviceUuid = uuid;
         File.WriteAllText("config.json", JsonConvert.SerializeObject(config));
       }

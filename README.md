@@ -2,12 +2,13 @@
 
 基于 Majsoul Ex SDK 的雀魂麻将 AI，AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)。
 
-## History
+## 如何获得测试资格
 
-[可能封号] [已停止更新] [0.x]: `MajsoulEx Helper`  
-[可能封号] [已停止更新] [1.0]：[修罗之战挂机程序](https://github.com/moxcomic/no-asura-no)
+对本项目有重大贡献的用户将会获得一份测试资格  
+加入[QQ 群](https://jq.qq.com/?_wv=1027&k=3gaKRwqg)  
+目前该项目处于测试阶段, 部分代码可能不稳定或有逻辑错误, 如果您发现了错误的地方或者逻辑错误欢迎提交 PR
 
-## 2.0
+## 如何运行
 
 !!! 请尽量使用 Cmd 或 Power Shell 运行 !!!  
 !!! 双击运行报错将会直接闪退无法截图错误信息 !!!

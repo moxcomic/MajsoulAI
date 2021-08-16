@@ -1031,6 +1031,13 @@ namespace MahjongAI
                 if (tile != null)
                 {
                     currentPlayer.graveyard.Add(tile);
+                } else
+                {
+                    Console.WriteLine("player({0}({1})) tile is null, origin tile ({2})",
+                        NormalizedPlayerId((int)msg.Seat),
+                        msg.Seat,
+                        msg.Tile
+                    );
                 }
                 gameData.lastTile = tile;
                 foreach (var p in gameData.players)

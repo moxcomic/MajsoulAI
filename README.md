@@ -1,15 +1,19 @@
 # MajsoulAI
 
-基于 Majsoul Ex SDK 的雀魂麻将 AI，AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI);  
-目前该项目处于测试阶段, 部分代码可能不稳定或有逻辑错误, 如果您发现了错误的地方或者逻辑错误欢迎提交 PR;  
-使用该工具有封号风险请勿使用大号登录, 请使用小号或新注册账号进行使用;  
-本项目无法直接使用, 参与测试请参照下方获取测试资格方式。
+基于 Majsoul Ex SDK 的雀魂麻将 AI，AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)
+
+```diff
+- 目前该项目处于测试阶段, 部分代码可能不稳定或有逻辑错误
+- 如果您发现了错误的地方或者逻辑错误欢迎提交 PR
+- 使用该工具有封号风险请勿使用大号登录, 请使用小号或新注册账号进行使用
+- 本项目无法直接使用, 参与测试请参照下方获取测试资格方式
+```
 
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)
 
 ## 测试结果 (截至 2021 年 08 月 15 日)
 ```diff
-- 当前算法经测试并不适合银之间以上的场次, 如果你有需求请自行修改源码 -
+- 当前算法经测试并不适合银之间以上的场次, 如果你有需求请自行修改源码
 ```
 ![雀杰](./imgs/majsoul-0.jpg)
 
@@ -21,8 +25,10 @@
 
 ## 如何运行
 
-`请尽量使用 Cmd 或 Power Shell 运行`  
-`双击运行报错将会直接闪退无法截图错误信息`
+```diff
+- 请尽量使用 Cmd 或 Power Shell 运行
+- 双击运行报错将会直接闪退无法截图错误信息
+```
 
 运行说明：
 

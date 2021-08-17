@@ -8,7 +8,9 @@
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)
 
 ## 测试结果 (截至 2021 年 08 月 15 日)
-
+```diff
+- 当前算法经测试并不适合银之间以上的场次, 如果你有需求请自行修改源码 -
+```
 ![雀杰](./imgs/majsoul-0.jpg)
 
 ## 如何获得测试资格

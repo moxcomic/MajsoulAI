@@ -159,10 +159,11 @@ namespace Ex {
       return parser.ParseFrom(context.PayloadAsNewBuffer());
     }
 
+    static readonly grpc::Marshaller<global::Ex.ReqSendEmo> __Marshaller_ex_ReqSendEmo = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqSendEmo.Parser));
+    static readonly grpc::Marshaller<global::Ex.ResCommon> __Marshaller_ex_ResCommon = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResCommon.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqAuthGame> __Marshaller_ex_ReqAuthGame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqAuthGame.Parser));
     static readonly grpc::Marshaller<global::Ex.ResAuthGame> __Marshaller_ex_ResAuthGame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResAuthGame.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqAuthObserve> __Marshaller_ex_ReqAuthObserve = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqAuthObserve.Parser));
-    static readonly grpc::Marshaller<global::Ex.ResCommon> __Marshaller_ex_ResCommon = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResCommon.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqBroadcastInGame> __Marshaller_ex_ReqBroadcastInGame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqBroadcastInGame.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqCommon> __Marshaller_ex_ReqCommon = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqCommon.Parser));
     static readonly grpc::Marshaller<global::Ex.ResEnterGame> __Marshaller_ex_ResEnterGame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResEnterGame.Parser));
@@ -175,6 +176,13 @@ namespace Ex {
     static readonly grpc::Marshaller<global::Ex.ResSyncGame> __Marshaller_ex_ResSyncGame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResSyncGame.Parser));
     static readonly grpc::Marshaller<global::Ex.ReqVoteGameEnd> __Marshaller_ex_ReqVoteGameEnd = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ReqVoteGameEnd.Parser));
     static readonly grpc::Marshaller<global::Ex.ResGameEndVote> __Marshaller_ex_ResGameEndVote = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ex.ResGameEndVote.Parser));
+
+    static readonly grpc::Method<global::Ex.ReqSendEmo, global::Ex.ResCommon> __Method_sendEmo = new grpc::Method<global::Ex.ReqSendEmo, global::Ex.ResCommon>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "sendEmo",
+        __Marshaller_ex_ReqSendEmo,
+        __Marshaller_ex_ResCommon);
 
     static readonly grpc::Method<global::Ex.ReqAuthGame, global::Ex.ResAuthGame> __Method_authGame = new grpc::Method<global::Ex.ReqAuthGame, global::Ex.ResAuthGame>(
         grpc::MethodType.Unary,
@@ -305,6 +313,11 @@ namespace Ex {
     [grpc::BindServiceMethod(typeof(FastTest), "BindService")]
     public abstract partial class FastTestBase
     {
+      public virtual global::System.Threading.Tasks.Task<global::Ex.ResCommon> sendEmo(global::Ex.ReqSendEmo request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task<global::Ex.ResAuthGame> authGame(global::Ex.ReqAuthGame request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -415,6 +428,22 @@ namespace Ex {
       {
       }
 
+      public virtual global::Ex.ResCommon sendEmo(global::Ex.ReqSendEmo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return sendEmo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Ex.ResCommon sendEmo(global::Ex.ReqSendEmo request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_sendEmo, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Ex.ResCommon> sendEmoAsync(global::Ex.ReqSendEmo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return sendEmoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Ex.ResCommon> sendEmoAsync(global::Ex.ReqSendEmo request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_sendEmo, null, options, request);
+      }
       public virtual global::Ex.ResAuthGame authGame(global::Ex.ReqAuthGame request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return authGame(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -699,6 +728,7 @@ namespace Ex {
     public static grpc::ServerServiceDefinition BindService(FastTestBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_sendEmo, serviceImpl.sendEmo)
           .AddMethod(__Method_authGame, serviceImpl.authGame)
           .AddMethod(__Method_authObserve, serviceImpl.authObserve)
           .AddMethod(__Method_broadcastInGame, serviceImpl.broadcastInGame)
@@ -724,6 +754,7 @@ namespace Ex {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, FastTestBase serviceImpl)
     {
+      serviceBinder.AddMethod(__Method_sendEmo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqSendEmo, global::Ex.ResCommon>(serviceImpl.sendEmo));
       serviceBinder.AddMethod(__Method_authGame, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqAuthGame, global::Ex.ResAuthGame>(serviceImpl.authGame));
       serviceBinder.AddMethod(__Method_authObserve, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqAuthObserve, global::Ex.ResCommon>(serviceImpl.authObserve));
       serviceBinder.AddMethod(__Method_broadcastInGame, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ex.ReqBroadcastInGame, global::Ex.ResCommon>(serviceImpl.broadcastInGame));

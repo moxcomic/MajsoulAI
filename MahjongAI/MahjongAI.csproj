@@ -78,8 +78,8 @@
     <Compile Include="AIControllerDef.cs" />
     <Compile Include="AIControllerHelper.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Ex.cs" />
-    <Compile Include="ExGrpc.cs" />
+    <Compile Include="Lq.cs" />
+    <Compile Include="LqGrpc.cs" />
     <Compile Include="MajsoulHelper.cs" />
     <Compile Include="MajsoulClient.cs" />
     <Compile Include="Models\Config.cs" />

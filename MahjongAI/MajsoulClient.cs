@@ -25,7 +25,7 @@ namespace MahjongAI
 
         private string username;
         private string password;
-        private pb.Collections.RepeatedField<Ex.OptionalOperation> operationList;
+        private pb.Collections.RepeatedField<Lq.OptionalOperation> operationList;
         private bool nextReach = false;
         private bool gameEnded = false;
         private Tile lastDiscardedTile;
@@ -43,10 +43,10 @@ namespace MahjongAI
 
         private Metadata md = null;
         private Channel channel = null;
-        private Ex.Lobby.LobbyClient lobby = null;
-        private Ex.FastTest.FastTestClient fast = null;
-        private Ex.Notify.NotifyClient notify = null;
-        private AsyncServerStreamingCall<Ex.ServerStream> call = null;
+        private Lq.Lobby.LobbyClient lobby = null;
+        private Lq.FastTest.FastTestClient fast = null;
+        private Lq.Notify.NotifyClient notify = null;
+        private AsyncServerStreamingCall<Lq.ServerStream> call = null;
 
         private string connect_token = "";
         private string game_uuid = "";
@@ -56,7 +56,7 @@ namespace MahjongAI
         {
             md = new Metadata { { "access_token", GetDeviceUUID() } };
             channel = new Channel(config.AuthServer, ChannelCredentials.Insecure);
-            lobby = new Ex.Lobby.LobbyClient(channel);
+            lobby = new Lq.Lobby.LobbyClient(channel);
         }
 
         public void HandleSyncGameMessage(string name, ByteString data)
@@ -66,55 +66,55 @@ namespace MahjongAI
             switch (name)
             {
                 case "NotifyRoomGameStart":
-                    msg = Ex.NotifyRoomGameStart.Parser.ParseFrom(data);
+                    msg = Lq.NotifyRoomGameStart.Parser.ParseFrom(data);
                     break;
                 case "NotifyMatchGameStart":
-                    msg = Ex.NotifyMatchGameStart.Parser.ParseFrom(data);
+                    msg = Lq.NotifyMatchGameStart.Parser.ParseFrom(data);
                     break;
                 case "NotifyGameClientConnect":
-                    msg = Ex.NotifyGameClientConnect.Parser.ParseFrom(data);
+                    msg = Lq.NotifyGameClientConnect.Parser.ParseFrom(data);
                     break;
                 case "NotifyGameEndResult":
-                    msg = Ex.NotifyGameEndResult.Parser.ParseFrom(data);
+                    msg = Lq.NotifyGameEndResult.Parser.ParseFrom(data);
                     break;
                 case "ActionNewRound":
-                    msg = Ex.ActionNewRound.Parser.ParseFrom(data);
+                    msg = Lq.ActionNewRound.Parser.ParseFrom(data);
                     break;
                 case "ActionDealTile":
-                    msg = Ex.ActionDealTile.Parser.ParseFrom(data);
+                    msg = Lq.ActionDealTile.Parser.ParseFrom(data);
                     break;
                 case "ActionDiscardTile":
-                    msg = Ex.ActionDiscardTile.Parser.ParseFrom(data);
+                    msg = Lq.ActionDiscardTile.Parser.ParseFrom(data);
                     break;
                 case "ActionChangeTile":
-                    msg = Ex.ActionChangeTile.Parser.ParseFrom(data);
+                    msg = Lq.ActionChangeTile.Parser.ParseFrom(data);
                     break;
                 case "ActionNoTile":
-                    msg = Ex.ActionNoTile.Parser.ParseFrom(data);
+                    msg = Lq.ActionNoTile.Parser.ParseFrom(data);
                     break;
                 case "ActionHuleXueZhanEnd":
-                    msg = Ex.ActionHuleXueZhanEnd.Parser.ParseFrom(data);
+                    msg = Lq.ActionHuleXueZhanEnd.Parser.ParseFrom(data);
                     break;
                 case "ActionHule":
-                    msg = Ex.ActionHule.Parser.ParseFrom(data);
+                    msg = Lq.ActionHule.Parser.ParseFrom(data);
                     break;
                 case "NotifyEndGameVote":
-                    msg = Ex.NotifyEndGameVote.Parser.ParseFrom(data);
+                    msg = Lq.NotifyEndGameVote.Parser.ParseFrom(data);
                     break;
                 case "ActionLiuJu":
-                    msg = Ex.ActionLiuJu.Parser.ParseFrom(data);
+                    msg = Lq.ActionLiuJu.Parser.ParseFrom(data);
                     break;
                 case "ActionChiPengGang":
-                    msg = Ex.ActionChiPengGang.Parser.ParseFrom(data);
+                    msg = Lq.ActionChiPengGang.Parser.ParseFrom(data);
                     break;
                 case "ActionAnGangAddGang":
-                    msg = Ex.ActionAnGangAddGang.Parser.ParseFrom(data);
+                    msg = Lq.ActionAnGangAddGang.Parser.ParseFrom(data);
                     break;
                 case "ActionMJStart":
-                    msg = Ex.ActionMJStart.Parser.ParseFrom(data);
+                    msg = Lq.ActionMJStart.Parser.ParseFrom(data);
                     break;
                 case "NotifyPlayerLoadGameReady":
-                    msg = Ex.NotifyPlayerLoadGameReady.Parser.ParseFrom(data);
+                    msg = Lq.NotifyPlayerLoadGameReady.Parser.ParseFrom(data);
                     break;
             }
 
@@ -133,66 +133,66 @@ namespace MahjongAI
             {
                 while (await call.ResponseStream.MoveNext())
                 {
-                    var data = Ex.ServerStream.Parser.ParseFrom(call.ResponseStream.Current.ToByteArray());
-                    var w = Ex.Wrapper.Parser.ParseFrom(data.Stream);
+                    var data = Lq.ServerStream.Parser.ParseFrom(call.ResponseStream.Current.ToByteArray());
+                    var w = Lq.Wrapper.Parser.ParseFrom(data.Stream);
 
                     IMessage msg = null;
 
                     switch (w.Name)
                     {
                         case "NotifyRoomGameStart":
-                            msg = Ex.NotifyRoomGameStart.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyRoomGameStart.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyMatchGameStart":
-                            msg = Ex.NotifyMatchGameStart.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyMatchGameStart.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyGameClientConnect":
-                            msg = Ex.NotifyGameClientConnect.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyGameClientConnect.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyGameEndResult":
-                            msg = Ex.NotifyGameEndResult.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyGameEndResult.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyAccountUpdate":
-                            msg = Ex.NotifyAccountUpdate.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyAccountUpdate.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionNewRound":
-                            msg = Ex.ActionNewRound.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionNewRound.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionDealTile":
-                            msg = Ex.ActionDealTile.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionDealTile.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionDiscardTile":
-                            msg = Ex.ActionDiscardTile.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionDiscardTile.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionChangeTile":
-                            msg = Ex.ActionChangeTile.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionChangeTile.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionNoTile":
-                            msg = Ex.ActionNoTile.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionNoTile.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionHuleXueZhanEnd":
-                            msg = Ex.ActionHuleXueZhanEnd.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionHuleXueZhanEnd.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionHule":
-                            msg = Ex.ActionHule.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionHule.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyEndGameVote":
-                            msg = Ex.NotifyEndGameVote.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyEndGameVote.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionLiuJu":
-                            msg = Ex.ActionLiuJu.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionLiuJu.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionChiPengGang":
-                            msg = Ex.ActionChiPengGang.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionChiPengGang.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionAnGangAddGang":
-                            msg = Ex.ActionAnGangAddGang.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionAnGangAddGang.Parser.ParseFrom(w.Data);
                             break;
                         case "ActionMJStart":
-                            msg = Ex.ActionMJStart.Parser.ParseFrom(w.Data);
+                            msg = Lq.ActionMJStart.Parser.ParseFrom(w.Data);
                             break;
                         case "NotifyPlayerLoadGameReady":
-                            msg = Ex.NotifyPlayerLoadGameReady.Parser.ParseFrom(w.Data);
+                            msg = Lq.NotifyPlayerLoadGameReady.Parser.ParseFrom(w.Data);
                             break;
                     }
 
@@ -219,7 +219,7 @@ namespace MahjongAI
         {
             try
             {
-                var res = lobby.softLogout(new Ex.ReqLogout { }, md);
+                var res = lobby.softLogout(new Lq.ReqLogout { }, md);
                 Environment.Exit(0);
             }
             catch (Exception e)
@@ -242,7 +242,7 @@ namespace MahjongAI
 
                 if (config.AccessToken == "")
                 {
-                    res = lobby.login(new Ex.ReqLogin
+                    res = lobby.login(new Lq.ReqLogin
                     {
                         CurrencyPlatforms = new pb.Collections.RepeatedField<uint> { 2, 6, 8, 10, 11 },
                         Account = username,
@@ -252,14 +252,14 @@ namespace MahjongAI
                         GenAccessToken = true,
                         Type = 0
                     }, md);
-                    config.AccessToken = ((Ex.ResLogin)res).AccessToken;
+                    config.AccessToken = ((Lq.ResLogin)res).AccessToken;
                     File.WriteAllText("config.json", JsonConvert.SerializeObject(config));
                 }
                 else
                 {
                     try
                     {
-                        var vres = lobby.oauth2Check(new Ex.ReqOauth2Check
+                        var vres = lobby.oauth2Check(new Lq.ReqOauth2Check
                         {
                             AccessToken = config.AccessToken,
                             Type = 0
@@ -273,15 +273,16 @@ namespace MahjongAI
                             Environment.Exit(0);
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
+                        Console.WriteLine(e);
                         Console.WriteLine("Please Restart Application...");
                         Console.WriteLine("Press any key to exit...");
                         Console.ReadKey();
                         Environment.Exit(0);
                     }
 
-                    res = lobby.oauth2Login(new Ex.ReqOauth2Login
+                    res = lobby.oauth2Login(new Lq.ReqOauth2Login
                     {
                         AccessToken = config.AccessToken,
                         Reconnect = false,
@@ -344,7 +345,7 @@ namespace MahjongAI
                 try
                 {
                     expectMessage("MatchGame", timeout: 60000, timeoutMessage: "Game matching timed out.");
-                    var res = lobby.matchGame(new Ex.ReqJoinMatchQueue
+                    var res = lobby.matchGame(new Lq.ReqJoinMatchQueue
                     {
                         MatchMode = (uint)typeNum
                     }, md);
@@ -367,7 +368,7 @@ namespace MahjongAI
                 try
                 {
                     Thread.Sleep(1000);
-                    var res = lobby.readyPlay(new Ex.ReqRoomReady { Ready = true }, md);
+                    var res = lobby.readyPlay(new Lq.ReqRoomReady { Ready = true }, md);
                     Console.WriteLine("Ready Play");
                 }
                 catch (Exception e)
@@ -383,7 +384,7 @@ namespace MahjongAI
             {
                 try
                 {
-                    var res = lobby.joinRoom(new Ex.ReqJoinRoom
+                    var res = lobby.joinRoom(new Lq.ReqJoinRoom
                     {
                         RoomId = (uint)roomNumber
                     }, md);
@@ -406,7 +407,7 @@ namespace MahjongAI
         {
             try
             {
-                var res = fast.confirmNewRound(new Ex.ReqCommon { }, md);
+                var res = fast.confirmNewRound(new Lq.ReqCommon { }, md);
                 Console.WriteLine("ConfirmNewRound");
             }
             catch (Exception e)
@@ -425,7 +426,7 @@ namespace MahjongAI
             doRandomDelay();
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     CancelOperation = true,
                     Timeuse = (uint)stopwatch.Elapsed.Seconds
@@ -442,7 +443,7 @@ namespace MahjongAI
             doRandomDelay();
             try
             {
-                var res = fast.inputOperation(new Ex.ReqSelfOperation
+                var res = fast.inputOperation(new Lq.ReqSelfOperation
                 {
                     Type = nextReach ? (uint)7 : (uint)1,
                     Tile = tile.OfficialName,
@@ -466,7 +467,7 @@ namespace MahjongAI
             int index = combination.ToList().FindIndex(comb => comb.Contains(tile0.GeneralName));
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 3,
                     Index = (uint)index,
@@ -484,7 +485,7 @@ namespace MahjongAI
             doRandomDelay();
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 5,
                     Index = (uint)0,
@@ -504,7 +505,7 @@ namespace MahjongAI
             int index = combination.ToList().FindIndex(comb => comb.Split('|').OrderBy(t => t).SequenceEqual(new[] { tile0.OfficialName, tile1.OfficialName }.OrderBy(t => t)));
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 2,
                     Index = (uint)index,
@@ -524,7 +525,7 @@ namespace MahjongAI
             int index = combination.ToList().FindIndex(comb => comb.Contains(tile.GeneralName));
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 4,
                     Index = (uint)index,
@@ -544,7 +545,7 @@ namespace MahjongAI
             int index = combination.ToList().FindIndex(comb => comb.Contains(tile.GeneralName) || comb.Contains(tile.OfficialName));
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 6,
                     Index = (uint)index,
@@ -561,7 +562,7 @@ namespace MahjongAI
         {
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 9,
                     Index = 0
@@ -577,7 +578,7 @@ namespace MahjongAI
         {
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 8,
                     Index = 0
@@ -594,7 +595,7 @@ namespace MahjongAI
             doRandomDelay();
             try
             {
-                var res = fast.inputChiPengGang(new Ex.ReqChiPengGang
+                var res = fast.inputChiPengGang(new Lq.ReqChiPengGang
                 {
                     Type = 10,
                     Index = 0,
@@ -635,7 +636,7 @@ namespace MahjongAI
             try
             {
                 InvokeOnUnknownEvent("Game found. Connecting...");
-                var res = fast.authGame(new Ex.ReqAuthGame
+                var res = fast.authGame(new Lq.ReqAuthGame
                 {
                     AccountId = (uint)accountId,
                     Token = connect_token,
@@ -682,7 +683,7 @@ namespace MahjongAI
             }
             if (message.MethodName == "Login" || message.MethodName == "Oauth2Login")
             {
-                var msg = (Ex.ResLogin)message.Message;
+                var msg = (Lq.ResLogin)message.Message;
                 accountId = (int)msg.AccountId;
 
                 if (msg.Error != null && msg.Error.Code != (uint)0)
@@ -692,9 +693,9 @@ namespace MahjongAI
                 else if (msg.GameInfo != null)
                 {
                     continued = true;
-                    fast = new Ex.FastTest.FastTestClient(channel);
-                    notify = new Ex.Notify.NotifyClient(channel);
-                    call = notify.Notify(new Ex.ClientStream { }, md);
+                    fast = new Lq.FastTest.FastTestClient(channel);
+                    notify = new Lq.Notify.NotifyClient(channel);
+                    call = notify.Notify(new Lq.ClientStream { }, md);
                     _ = CreateNotify();
                     connect_token = msg.GameInfo.ConnectToken;
                     game_uuid = msg.GameInfo.GameUuid;
@@ -703,22 +704,22 @@ namespace MahjongAI
                 }
                 else
                 {
-                    fast = new Ex.FastTest.FastTestClient(channel);
-                    notify = new Ex.Notify.NotifyClient(channel);
-                    call = notify.Notify(new Ex.ClientStream { }, md);
+                    fast = new Lq.FastTest.FastTestClient(channel);
+                    notify = new Lq.Notify.NotifyClient(channel);
+                    call = notify.Notify(new Lq.ClientStream { }, md);
                     _ = CreateNotify();
                     InvokeOnLogin(resume: false, succeeded: true);
                 }
             }
             if (message.MethodName == "NotifyRoomGameStart")
             {
-                var msg = (Ex.NotifyRoomGameStart)message.Message;
+                var msg = (Lq.NotifyRoomGameStart)message.Message;
                 connect_token = msg.ConnectToken;
                 game_uuid = msg.GameUuid;
                 location = msg.Location;
             } else if (message.MethodName == "NotifyMatchGameStart")
             {
-                var msg = (Ex.NotifyMatchGameStart)message.Message;
+                var msg = (Lq.NotifyMatchGameStart)message.Message;
                 connect_token = msg.ConnectToken;
                 game_uuid = msg.GameUuid;
                 location = msg.Location;
@@ -733,7 +734,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "AuthGame")
             {
-                var msg = (Ex.ResAuthGame)message.Message;
+                var msg = (Lq.ResAuthGame)message.Message;
 
                 InvokeOnGameStart(continued);
 
@@ -741,7 +742,7 @@ namespace MahjongAI
                 {
                     try
                     {
-                        fast.enterGame(new Ex.ReqCommon { }, md);
+                        fast.enterGame(new Lq.ReqCommon { }, md);
                     }
                     catch (Exception e)
                     {
@@ -752,7 +753,7 @@ namespace MahjongAI
                 {
                     try
                     {
-                        var res = fast.syncGame(new Ex.ReqSyncGame
+                        var res = fast.syncGame(new Lq.ReqSyncGame
                         {
                             RoundId = "-1",
                             Step = 1000000
@@ -774,7 +775,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "NotifyPlayerLoadGameReady")
             {
-                var msg = (Ex.NotifyPlayerLoadGameReady)message.Message;
+                var msg = (Lq.NotifyPlayerLoadGameReady)message.Message;
                 playerSeat = msg.ReadyIdList.Select(t => (int)t).ToList().IndexOf(accountId);
             }
             else if (message.MethodName == "ActionMJStart")
@@ -793,7 +794,7 @@ namespace MahjongAI
                 {
                     try
                     {
-                        fast.voteGameEnd(new Ex.ReqVoteGameEnd { Yes = true }, md);
+                        fast.voteGameEnd(new Lq.ReqVoteGameEnd { Yes = true }, md);
                     }
                     catch { }
                 }).Start();
@@ -803,7 +804,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionHule")
             {
-                var msg = (Ex.ActionHule)message.Message;
+                var msg = (Lq.ActionHule)message.Message;
 
                 int[] points = msg.Scores.Select(t => (int)t).ToArray();
                 int[] rawPointDeltas = msg.DeltaScores.Select(t => (int)t).ToArray();
@@ -840,7 +841,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionNoTile")
             {
-                var msg = (Ex.ActionNoTile)message.Message;
+                var msg = (Lq.ActionNoTile)message.Message;
 
                 var scoreObj = msg.Scores[0];
                 int[] rawPointDeltas = scoreObj.DeltaScores != null ? scoreObj.DeltaScores.Select(t => (int)t).ToArray() : new[] { 0, 0, 0, 0 };
@@ -867,7 +868,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionNewRound")
             {
-                var msg = (Ex.ActionNewRound)message.Message;
+                var msg = (Lq.ActionNewRound)message.Message;
 
                 Tile.Reset();
                 gameData = new GameData();
@@ -891,7 +892,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "SyncGame")
             {
-                var msg = (Ex.ResSyncGame)message.Message;
+                var msg = (Lq.ResSyncGame)message.Message;
 
                 syncing = true;
                 continuedBetweenGames = (int)msg.Step == 0;
@@ -904,7 +905,7 @@ namespace MahjongAI
                             HandleSyncGameMessage(action.Name, action.Data);
                         }
                     }
-                    var res = fast.fetchGamePlayerState(new Ex.ReqCommon { }, md);
+                    var res = fast.fetchGamePlayerState(new Lq.ReqCommon { }, md);
                     HandleMessage(new MajsoulMessage
                     {
                         Success = true,
@@ -920,11 +921,11 @@ namespace MahjongAI
             }
             else if (message.MethodName == "FetchGamePlayerState")
             {
-                var msg = (Ex.ResGamePlayerState)message.Message;
+                var msg = (Lq.ResGamePlayerState)message.Message;
 
                 bool inited = false;
 
-                playerSeat = msg.StateList.ToList().IndexOf(Ex.GamePlayerState.Syncing); // - 2;
+                playerSeat = msg.StateList.ToList().IndexOf(Lq.GamePlayerState.Syncing); // - 2;
 
                 while (pendingActions.Count > 1)
                 {
@@ -938,7 +939,7 @@ namespace MahjongAI
 
                 try
                 {
-                    var res = fast.finishSyncGame(new Ex.ReqCommon { }, md);
+                    var res = fast.finishSyncGame(new Lq.ReqCommon { }, md);
                     HandleMessage(new MajsoulMessage
                     {
                         Success = true,
@@ -971,7 +972,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionDealTile")
             {
-                var msg = (Ex.ActionDealTile)message.Message;
+                var msg = (Lq.ActionDealTile)message.Message;
 
                 gameData.remainingTile = (int)msg.LeftTileCount;
                 if (msg.Doras != null && msg.Doras.Count > 0)
@@ -1010,7 +1011,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionDiscardTile")
             {
-                var msg = (Ex.ActionDiscardTile)message.Message;
+                var msg = (Lq.ActionDiscardTile)message.Message;
 
                 Player currentPlayer = gameData.players[NormalizedPlayerId((int)msg.Seat)];
                 if (!msg.Moqie)
@@ -1070,7 +1071,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionChiPengGang")
             {
-                var msg = (Ex.ActionChiPengGang)message.Message;
+                var msg = (Lq.ActionChiPengGang)message.Message;
 
                 Player currentPlayer = gameData.players[NormalizedPlayerId((int)msg.Seat)];
                 var fuuro = HandleFuuro(currentPlayer, (int)msg.Type, msg.Tiles, msg.Froms.Select(t => (int)t));
@@ -1079,7 +1080,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "ActionAnGangAddGang")
             {
-                var msg = (Ex.ActionAnGangAddGang)message.Message;
+                var msg = (Lq.ActionAnGangAddGang)message.Message;
 
                 Player currentPlayer = gameData.players[NormalizedPlayerId((int)msg.Seat)];
                 FuuroGroup fuuro = null;
@@ -1096,7 +1097,7 @@ namespace MahjongAI
             }
         }
 
-        private void HandleInit(Ex.ActionNewRound data)
+        private void HandleInit(Lq.ActionNewRound data)
         {
 
             switch ((int)data.Chang)

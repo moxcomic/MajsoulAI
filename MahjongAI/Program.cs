@@ -102,6 +102,10 @@ namespace MahjongAI
                         Console.WriteLine("Start...");
                         client.Join(config.GameType);
                         break;
+                    case "r":
+                        Console.WriteLine("ReLogin...");
+                        client.Login();
+                        break;
                 }
             }
         }

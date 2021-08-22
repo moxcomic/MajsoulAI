@@ -149,6 +149,9 @@ namespace MahjongAI
                         case "NotifyGameClientConnect":
                             msg = Lq.NotifyGameClientConnect.Parser.ParseFrom(w.Data);
                             break;
+                        case "NotifyDisconnect":
+                            msg = Lq.NotifyDisconnect.Parser.ParseFrom(w.Data);
+                            break;
                         case "NotifyGameEndResult":
                             msg = Lq.NotifyGameEndResult.Parser.ParseFrom(w.Data);
                             break;
@@ -728,6 +731,10 @@ namespace MahjongAI
             {
                 StartGame(false);
             }
+            else if (message.MethodName == "NotifyDisconnect")
+            {
+                Login();
+            }
             else if (message.MethodName == "NotifyGameSync")
             {
                 StartGame(true);
@@ -997,7 +1004,7 @@ namespace MahjongAI
                                                         
                         operationList = msg.Operation.OperationList;
 
-                        if (!syncing)
+                        if (!syncing && operationList.Count > 0)
                         {
                             stopwatch.Restart();
                             InvokeOnDraw(tile);

@@ -819,6 +819,7 @@ namespace Lq {
     static readonly grpc::Marshaller<global::Lq.ReqBindAccount> __Marshaller_lq_ReqBindAccount = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBindAccount.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqBindEmail> __Marshaller_lq_ReqBindEmail = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBindEmail.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqBindPhoneNumber> __Marshaller_lq_ReqBindPhoneNumber = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBindPhoneNumber.Parser));
+    static readonly grpc::Marshaller<global::Lq.ReqBuyArenaTicket> __Marshaller_lq_ReqBuyArenaTicket = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBuyArenaTicket.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqBuyFromChestShop> __Marshaller_lq_ReqBuyFromChestShop = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBuyFromChestShop.Parser));
     static readonly grpc::Marshaller<global::Lq.ResBuyFromChestShop> __Marshaller_lq_ResBuyFromChestShop = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResBuyFromChestShop.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqBuyFromShop> __Marshaller_lq_ReqBuyFromShop = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqBuyFromShop.Parser));
@@ -908,6 +909,7 @@ namespace Lq {
     static readonly grpc::Marshaller<global::Lq.ReqRoomDressing> __Marshaller_lq_ReqRoomDressing = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqRoomDressing.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqEmailLogin> __Marshaller_lq_ReqEmailLogin = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqEmailLogin.Parser));
     static readonly grpc::Marshaller<global::Lq.ResLogin> __Marshaller_lq_ResLogin = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResLogin.Parser));
+    static readonly grpc::Marshaller<global::Lq.ReqEnterArena> __Marshaller_lq_ReqEnterArena = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqEnterArena.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqEnterCustomizedContest> __Marshaller_lq_ReqEnterCustomizedContest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqEnterCustomizedContest.Parser));
     static readonly grpc::Marshaller<global::Lq.ResEnterCustomizedContest> __Marshaller_lq_ResEnterCustomizedContest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResEnterCustomizedContest.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqExchangeActivityItem> __Marshaller_lq_ReqExchangeActivityItem = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqExchangeActivityItem.Parser));
@@ -1000,6 +1002,8 @@ namespace Lq {
     static readonly grpc::Marshaller<global::Lq.ResFetchPhoneLoginBind> __Marshaller_lq_ResFetchPhoneLoginBind = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResFetchPhoneLoginBind.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqPlatformBillingProducts> __Marshaller_lq_ReqPlatformBillingProducts = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqPlatformBillingProducts.Parser));
     static readonly grpc::Marshaller<global::Lq.ResPlatformBillingProducts> __Marshaller_lq_ResPlatformBillingProducts = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResPlatformBillingProducts.Parser));
+    static readonly grpc::Marshaller<global::Lq.ReqFetchRPGBattleHistory> __Marshaller_lq_ReqFetchRPGBattleHistory = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqFetchRPGBattleHistory.Parser));
+    static readonly grpc::Marshaller<global::Lq.ResFetchRPGBattleHistory> __Marshaller_lq_ResFetchRPGBattleHistory = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResFetchRPGBattleHistory.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqFetchRankPointLeaderboard> __Marshaller_lq_ReqFetchRankPointLeaderboard = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqFetchRankPointLeaderboard.Parser));
     static readonly grpc::Marshaller<global::Lq.ResFetchRankPointLeaderboard> __Marshaller_lq_ResFetchRankPointLeaderboard = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResFetchRankPointLeaderboard.Parser));
     static readonly grpc::Marshaller<global::Lq.ResFetchRefundOrder> __Marshaller_lq_ResFetchRefundOrder = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResFetchRefundOrder.Parser));
@@ -1064,8 +1068,12 @@ namespace Lq {
     static readonly grpc::Marshaller<global::Lq.ResReceiveAchievementReward> __Marshaller_lq_ResReceiveAchievementReward = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResReceiveAchievementReward.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqReceiveActivityFlipTask> __Marshaller_lq_ReqReceiveActivityFlipTask = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqReceiveActivityFlipTask.Parser));
     static readonly grpc::Marshaller<global::Lq.ResReceiveActivityFlipTask> __Marshaller_lq_ResReceiveActivityFlipTask = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResReceiveActivityFlipTask.Parser));
+    static readonly grpc::Marshaller<global::Lq.ReqArenaReward> __Marshaller_lq_ReqArenaReward = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqArenaReward.Parser));
+    static readonly grpc::Marshaller<global::Lq.ResArenaReward> __Marshaller_lq_ResArenaReward = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResArenaReward.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqReceiveChallengeRankReward> __Marshaller_lq_ReqReceiveChallengeRankReward = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqReceiveChallengeRankReward.Parser));
     static readonly grpc::Marshaller<global::Lq.ResReceiveChallengeRankReward> __Marshaller_lq_ResReceiveChallengeRankReward = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResReceiveChallengeRankReward.Parser));
+    static readonly grpc::Marshaller<global::Lq.ReqReceiveRPGRewards> __Marshaller_lq_ReqReceiveRPGRewards = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqReceiveRPGRewards.Parser));
+    static readonly grpc::Marshaller<global::Lq.ResReceiveRPGRewards> __Marshaller_lq_ResReceiveRPGRewards = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResReceiveRPGRewards.Parser));
     static readonly grpc::Marshaller<global::Lq.ResRefreshChallenge> __Marshaller_lq_ResRefreshChallenge = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResRefreshChallenge.Parser));
     static readonly grpc::Marshaller<global::Lq.ReqRefreshDailyTask> __Marshaller_lq_ReqRefreshDailyTask = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ReqRefreshDailyTask.Parser));
     static readonly grpc::Marshaller<global::Lq.ResRefreshDailyTask> __Marshaller_lq_ResRefreshDailyTask = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Lq.ResRefreshDailyTask.Parser));
@@ -1176,6 +1184,13 @@ namespace Lq {
         __ServiceName,
         "bindPhoneNumber",
         __Marshaller_lq_ReqBindPhoneNumber,
+        __Marshaller_lq_ResCommon);
+
+    static readonly grpc::Method<global::Lq.ReqBuyArenaTicket, global::Lq.ResCommon> __Method_buyArenaTicket = new grpc::Method<global::Lq.ReqBuyArenaTicket, global::Lq.ResCommon>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "buyArenaTicket",
+        __Marshaller_lq_ReqBuyArenaTicket,
         __Marshaller_lq_ResCommon);
 
     static readonly grpc::Method<global::Lq.ReqBuyFromChestShop, global::Lq.ResBuyFromChestShop> __Method_buyFromChestShop = new grpc::Method<global::Lq.ReqBuyFromChestShop, global::Lq.ResBuyFromChestShop>(
@@ -1597,6 +1612,13 @@ namespace Lq {
         "emailLogin",
         __Marshaller_lq_ReqEmailLogin,
         __Marshaller_lq_ResLogin);
+
+    static readonly grpc::Method<global::Lq.ReqEnterArena, global::Lq.ResCommon> __Method_enterArena = new grpc::Method<global::Lq.ReqEnterArena, global::Lq.ResCommon>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "enterArena",
+        __Marshaller_lq_ReqEnterArena,
+        __Marshaller_lq_ResCommon);
 
     static readonly grpc::Method<global::Lq.ReqEnterCustomizedContest, global::Lq.ResEnterCustomizedContest> __Method_enterCustomizedContest = new grpc::Method<global::Lq.ReqEnterCustomizedContest, global::Lq.ResEnterCustomizedContest>(
         grpc::MethodType.Unary,
@@ -2039,6 +2061,13 @@ namespace Lq {
         __Marshaller_lq_ReqPlatformBillingProducts,
         __Marshaller_lq_ResPlatformBillingProducts);
 
+    static readonly grpc::Method<global::Lq.ReqFetchRPGBattleHistory, global::Lq.ResFetchRPGBattleHistory> __Method_fetchRPGBattleHistory = new grpc::Method<global::Lq.ReqFetchRPGBattleHistory, global::Lq.ResFetchRPGBattleHistory>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "fetchRPGBattleHistory",
+        __Marshaller_lq_ReqFetchRPGBattleHistory,
+        __Marshaller_lq_ResFetchRPGBattleHistory);
+
     static readonly grpc::Method<global::Lq.ReqFetchRankPointLeaderboard, global::Lq.ResFetchRankPointLeaderboard> __Method_fetchRankPointLeaderboard = new grpc::Method<global::Lq.ReqFetchRankPointLeaderboard, global::Lq.ResFetchRankPointLeaderboard>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -2459,6 +2488,13 @@ namespace Lq {
         __Marshaller_lq_ReqReceiveActivityFlipTask,
         __Marshaller_lq_ResReceiveActivityFlipTask);
 
+    static readonly grpc::Method<global::Lq.ReqArenaReward, global::Lq.ResArenaReward> __Method_receiveArenaReward = new grpc::Method<global::Lq.ReqArenaReward, global::Lq.ResArenaReward>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "receiveArenaReward",
+        __Marshaller_lq_ReqArenaReward,
+        __Marshaller_lq_ResArenaReward);
+
     static readonly grpc::Method<global::Lq.ReqReceiveChallengeRankReward, global::Lq.ResReceiveChallengeRankReward> __Method_receiveChallengeRankReward = new grpc::Method<global::Lq.ReqReceiveChallengeRankReward, global::Lq.ResReceiveChallengeRankReward>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -2472,6 +2508,13 @@ namespace Lq {
         "receiveEndingReward",
         __Marshaller_lq_ReqFinishedEnding,
         __Marshaller_lq_ResCommon);
+
+    static readonly grpc::Method<global::Lq.ReqReceiveRPGRewards, global::Lq.ResReceiveRPGRewards> __Method_receiveRPGRewards = new grpc::Method<global::Lq.ReqReceiveRPGRewards, global::Lq.ResReceiveRPGRewards>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "receiveRPGRewards",
+        __Marshaller_lq_ReqReceiveRPGRewards,
+        __Marshaller_lq_ResReceiveRPGRewards);
 
     static readonly grpc::Method<global::Lq.ReqCommon, global::Lq.ResCommon> __Method_receiveVersionReward = new grpc::Method<global::Lq.ReqCommon, global::Lq.ResCommon>(
         grpc::MethodType.Unary,
@@ -2861,6 +2904,11 @@ namespace Lq {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::Lq.ResCommon> buyArenaTicket(global::Lq.ReqBuyArenaTicket request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task<global::Lq.ResBuyFromChestShop> buyFromChestShop(global::Lq.ReqBuyFromChestShop request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -3157,6 +3205,11 @@ namespace Lq {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Lq.ResLogin> emailLogin(global::Lq.ReqEmailLogin request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Lq.ResCommon> enterArena(global::Lq.ReqEnterArena request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -3476,6 +3529,11 @@ namespace Lq {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::Lq.ResFetchRPGBattleHistory> fetchRPGBattleHistory(global::Lq.ReqFetchRPGBattleHistory request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task<global::Lq.ResFetchRankPointLeaderboard> fetchRankPointLeaderboard(global::Lq.ReqFetchRankPointLeaderboard request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -3776,12 +3834,22 @@ namespace Lq {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::Lq.ResArenaReward> receiveArenaReward(global::Lq.ReqArenaReward request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task<global::Lq.ResReceiveChallengeRankReward> receiveChallengeRankReward(global::Lq.ReqReceiveChallengeRankReward request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Lq.ResCommon> receiveEndingReward(global::Lq.ReqFinishedEnding request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Lq.ResReceiveRPGRewards> receiveRPGRewards(global::Lq.ReqReceiveRPGRewards request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -4167,6 +4235,22 @@ namespace Lq {
       public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> bindPhoneNumberAsync(global::Lq.ReqBindPhoneNumber request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_bindPhoneNumber, null, options, request);
+      }
+      public virtual global::Lq.ResCommon buyArenaTicket(global::Lq.ReqBuyArenaTicket request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return buyArenaTicket(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Lq.ResCommon buyArenaTicket(global::Lq.ReqBuyArenaTicket request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_buyArenaTicket, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> buyArenaTicketAsync(global::Lq.ReqBuyArenaTicket request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return buyArenaTicketAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> buyArenaTicketAsync(global::Lq.ReqBuyArenaTicket request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_buyArenaTicket, null, options, request);
       }
       public virtual global::Lq.ResBuyFromChestShop buyFromChestShop(global::Lq.ReqBuyFromChestShop request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -5127,6 +5211,22 @@ namespace Lq {
       public virtual grpc::AsyncUnaryCall<global::Lq.ResLogin> emailLoginAsync(global::Lq.ReqEmailLogin request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_emailLogin, null, options, request);
+      }
+      public virtual global::Lq.ResCommon enterArena(global::Lq.ReqEnterArena request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return enterArena(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Lq.ResCommon enterArena(global::Lq.ReqEnterArena request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_enterArena, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> enterArenaAsync(global::Lq.ReqEnterArena request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return enterArenaAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> enterArenaAsync(global::Lq.ReqEnterArena request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_enterArena, null, options, request);
       }
       public virtual global::Lq.ResEnterCustomizedContest enterCustomizedContest(global::Lq.ReqEnterCustomizedContest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -6136,6 +6236,22 @@ namespace Lq {
       {
         return CallInvoker.AsyncUnaryCall(__Method_fetchPlatformProducts, null, options, request);
       }
+      public virtual global::Lq.ResFetchRPGBattleHistory fetchRPGBattleHistory(global::Lq.ReqFetchRPGBattleHistory request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return fetchRPGBattleHistory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Lq.ResFetchRPGBattleHistory fetchRPGBattleHistory(global::Lq.ReqFetchRPGBattleHistory request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_fetchRPGBattleHistory, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResFetchRPGBattleHistory> fetchRPGBattleHistoryAsync(global::Lq.ReqFetchRPGBattleHistory request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return fetchRPGBattleHistoryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResFetchRPGBattleHistory> fetchRPGBattleHistoryAsync(global::Lq.ReqFetchRPGBattleHistory request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_fetchRPGBattleHistory, null, options, request);
+      }
       public virtual global::Lq.ResFetchRankPointLeaderboard fetchRankPointLeaderboard(global::Lq.ReqFetchRankPointLeaderboard request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return fetchRankPointLeaderboard(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -7096,6 +7212,22 @@ namespace Lq {
       {
         return CallInvoker.AsyncUnaryCall(__Method_receiveActivityFlipTask, null, options, request);
       }
+      public virtual global::Lq.ResArenaReward receiveArenaReward(global::Lq.ReqArenaReward request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return receiveArenaReward(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Lq.ResArenaReward receiveArenaReward(global::Lq.ReqArenaReward request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_receiveArenaReward, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResArenaReward> receiveArenaRewardAsync(global::Lq.ReqArenaReward request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return receiveArenaRewardAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResArenaReward> receiveArenaRewardAsync(global::Lq.ReqArenaReward request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_receiveArenaReward, null, options, request);
+      }
       public virtual global::Lq.ResReceiveChallengeRankReward receiveChallengeRankReward(global::Lq.ReqReceiveChallengeRankReward request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return receiveChallengeRankReward(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -7127,6 +7259,22 @@ namespace Lq {
       public virtual grpc::AsyncUnaryCall<global::Lq.ResCommon> receiveEndingRewardAsync(global::Lq.ReqFinishedEnding request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_receiveEndingReward, null, options, request);
+      }
+      public virtual global::Lq.ResReceiveRPGRewards receiveRPGRewards(global::Lq.ReqReceiveRPGRewards request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return receiveRPGRewards(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Lq.ResReceiveRPGRewards receiveRPGRewards(global::Lq.ReqReceiveRPGRewards request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_receiveRPGRewards, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResReceiveRPGRewards> receiveRPGRewardsAsync(global::Lq.ReqReceiveRPGRewards request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return receiveRPGRewardsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Lq.ResReceiveRPGRewards> receiveRPGRewardsAsync(global::Lq.ReqReceiveRPGRewards request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_receiveRPGRewards, null, options, request);
       }
       public virtual global::Lq.ResCommon receiveVersionReward(global::Lq.ReqCommon request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -7931,6 +8079,7 @@ namespace Lq {
           .AddMethod(__Method_bindAccount, serviceImpl.bindAccount)
           .AddMethod(__Method_bindEmail, serviceImpl.bindEmail)
           .AddMethod(__Method_bindPhoneNumber, serviceImpl.bindPhoneNumber)
+          .AddMethod(__Method_buyArenaTicket, serviceImpl.buyArenaTicket)
           .AddMethod(__Method_buyFromChestShop, serviceImpl.buyFromChestShop)
           .AddMethod(__Method_buyFromShop, serviceImpl.buyFromShop)
           .AddMethod(__Method_buyFromZHP, serviceImpl.buyFromZHP)
@@ -7991,6 +8140,7 @@ namespace Lq {
           .AddMethod(__Method_doDailySignIn, serviceImpl.doDailySignIn)
           .AddMethod(__Method_dressingStatus, serviceImpl.dressingStatus)
           .AddMethod(__Method_emailLogin, serviceImpl.emailLogin)
+          .AddMethod(__Method_enterArena, serviceImpl.enterArena)
           .AddMethod(__Method_enterCustomizedContest, serviceImpl.enterCustomizedContest)
           .AddMethod(__Method_exchangeActivityItem, serviceImpl.exchangeActivityItem)
           .AddMethod(__Method_exchangeChestStone, serviceImpl.exchangeChestStone)
@@ -8054,6 +8204,7 @@ namespace Lq {
           .AddMethod(__Method_fetchMutiChallengeLevel, serviceImpl.fetchMutiChallengeLevel)
           .AddMethod(__Method_fetchPhoneLoginBind, serviceImpl.fetchPhoneLoginBind)
           .AddMethod(__Method_fetchPlatformProducts, serviceImpl.fetchPlatformProducts)
+          .AddMethod(__Method_fetchRPGBattleHistory, serviceImpl.fetchRPGBattleHistory)
           .AddMethod(__Method_fetchRankPointLeaderboard, serviceImpl.fetchRankPointLeaderboard)
           .AddMethod(__Method_fetchRefundOrder, serviceImpl.fetchRefundOrder)
           .AddMethod(__Method_fetchReviveCoinInfo, serviceImpl.fetchReviveCoinInfo)
@@ -8114,8 +8265,10 @@ namespace Lq {
           .AddMethod(__Method_receiveAchievementGroupReward, serviceImpl.receiveAchievementGroupReward)
           .AddMethod(__Method_receiveAchievementReward, serviceImpl.receiveAchievementReward)
           .AddMethod(__Method_receiveActivityFlipTask, serviceImpl.receiveActivityFlipTask)
+          .AddMethod(__Method_receiveArenaReward, serviceImpl.receiveArenaReward)
           .AddMethod(__Method_receiveChallengeRankReward, serviceImpl.receiveChallengeRankReward)
           .AddMethod(__Method_receiveEndingReward, serviceImpl.receiveEndingReward)
+          .AddMethod(__Method_receiveRPGRewards, serviceImpl.receiveRPGRewards)
           .AddMethod(__Method_receiveVersionReward, serviceImpl.receiveVersionReward)
           .AddMethod(__Method_refreshChallenge, serviceImpl.refreshChallenge)
           .AddMethod(__Method_refreshDailyTask, serviceImpl.refreshDailyTask)
@@ -8180,6 +8333,7 @@ namespace Lq {
       serviceBinder.AddMethod(__Method_bindAccount, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBindAccount, global::Lq.ResCommon>(serviceImpl.bindAccount));
       serviceBinder.AddMethod(__Method_bindEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBindEmail, global::Lq.ResCommon>(serviceImpl.bindEmail));
       serviceBinder.AddMethod(__Method_bindPhoneNumber, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBindPhoneNumber, global::Lq.ResCommon>(serviceImpl.bindPhoneNumber));
+      serviceBinder.AddMethod(__Method_buyArenaTicket, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBuyArenaTicket, global::Lq.ResCommon>(serviceImpl.buyArenaTicket));
       serviceBinder.AddMethod(__Method_buyFromChestShop, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBuyFromChestShop, global::Lq.ResBuyFromChestShop>(serviceImpl.buyFromChestShop));
       serviceBinder.AddMethod(__Method_buyFromShop, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBuyFromShop, global::Lq.ResBuyFromShop>(serviceImpl.buyFromShop));
       serviceBinder.AddMethod(__Method_buyFromZHP, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqBuyFromZHP, global::Lq.ResCommon>(serviceImpl.buyFromZHP));
@@ -8240,6 +8394,7 @@ namespace Lq {
       serviceBinder.AddMethod(__Method_doDailySignIn, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResCommon>(serviceImpl.doDailySignIn));
       serviceBinder.AddMethod(__Method_dressingStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqRoomDressing, global::Lq.ResCommon>(serviceImpl.dressingStatus));
       serviceBinder.AddMethod(__Method_emailLogin, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqEmailLogin, global::Lq.ResLogin>(serviceImpl.emailLogin));
+      serviceBinder.AddMethod(__Method_enterArena, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqEnterArena, global::Lq.ResCommon>(serviceImpl.enterArena));
       serviceBinder.AddMethod(__Method_enterCustomizedContest, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqEnterCustomizedContest, global::Lq.ResEnterCustomizedContest>(serviceImpl.enterCustomizedContest));
       serviceBinder.AddMethod(__Method_exchangeActivityItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqExchangeActivityItem, global::Lq.ResExchangeActivityItem>(serviceImpl.exchangeActivityItem));
       serviceBinder.AddMethod(__Method_exchangeChestStone, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqExchangeCurrency, global::Lq.ResCommon>(serviceImpl.exchangeChestStone));
@@ -8303,6 +8458,7 @@ namespace Lq {
       serviceBinder.AddMethod(__Method_fetchMutiChallengeLevel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqMutiChallengeLevel, global::Lq.ResMutiChallengeLevel>(serviceImpl.fetchMutiChallengeLevel));
       serviceBinder.AddMethod(__Method_fetchPhoneLoginBind, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResFetchPhoneLoginBind>(serviceImpl.fetchPhoneLoginBind));
       serviceBinder.AddMethod(__Method_fetchPlatformProducts, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqPlatformBillingProducts, global::Lq.ResPlatformBillingProducts>(serviceImpl.fetchPlatformProducts));
+      serviceBinder.AddMethod(__Method_fetchRPGBattleHistory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqFetchRPGBattleHistory, global::Lq.ResFetchRPGBattleHistory>(serviceImpl.fetchRPGBattleHistory));
       serviceBinder.AddMethod(__Method_fetchRankPointLeaderboard, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqFetchRankPointLeaderboard, global::Lq.ResFetchRankPointLeaderboard>(serviceImpl.fetchRankPointLeaderboard));
       serviceBinder.AddMethod(__Method_fetchRefundOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResFetchRefundOrder>(serviceImpl.fetchRefundOrder));
       serviceBinder.AddMethod(__Method_fetchReviveCoinInfo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResReviveCoinInfo>(serviceImpl.fetchReviveCoinInfo));
@@ -8363,8 +8519,10 @@ namespace Lq {
       serviceBinder.AddMethod(__Method_receiveAchievementGroupReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqReceiveAchievementGroupReward, global::Lq.ResReceiveAchievementGroupReward>(serviceImpl.receiveAchievementGroupReward));
       serviceBinder.AddMethod(__Method_receiveAchievementReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqReceiveAchievementReward, global::Lq.ResReceiveAchievementReward>(serviceImpl.receiveAchievementReward));
       serviceBinder.AddMethod(__Method_receiveActivityFlipTask, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqReceiveActivityFlipTask, global::Lq.ResReceiveActivityFlipTask>(serviceImpl.receiveActivityFlipTask));
+      serviceBinder.AddMethod(__Method_receiveArenaReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqArenaReward, global::Lq.ResArenaReward>(serviceImpl.receiveArenaReward));
       serviceBinder.AddMethod(__Method_receiveChallengeRankReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqReceiveChallengeRankReward, global::Lq.ResReceiveChallengeRankReward>(serviceImpl.receiveChallengeRankReward));
       serviceBinder.AddMethod(__Method_receiveEndingReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqFinishedEnding, global::Lq.ResCommon>(serviceImpl.receiveEndingReward));
+      serviceBinder.AddMethod(__Method_receiveRPGRewards, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqReceiveRPGRewards, global::Lq.ResReceiveRPGRewards>(serviceImpl.receiveRPGRewards));
       serviceBinder.AddMethod(__Method_receiveVersionReward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResCommon>(serviceImpl.receiveVersionReward));
       serviceBinder.AddMethod(__Method_refreshChallenge, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqCommon, global::Lq.ResRefreshChallenge>(serviceImpl.refreshChallenge));
       serviceBinder.AddMethod(__Method_refreshDailyTask, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Lq.ReqRefreshDailyTask, global::Lq.ResRefreshDailyTask>(serviceImpl.refreshDailyTask));

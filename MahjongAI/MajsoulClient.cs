@@ -132,81 +132,86 @@ namespace MahjongAI
         {
             new Thread(async () =>
             {
-                while (await call.ResponseStream.MoveNext())
-                {
-                    var data = Lq.ServerStream.Parser.ParseFrom(call.ResponseStream.Current.ToByteArray());
-                    var w = Lq.Wrapper.Parser.ParseFrom(data.Stream);
-
-                    IMessage msg = null;
-
-                    switch (w.Name)
+                try {
+                    while (await call.ResponseStream.MoveNext())
                     {
-                        case "NotifyRoomGameStart":
-                            msg = Lq.NotifyRoomGameStart.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyMatchGameStart":
-                            msg = Lq.NotifyMatchGameStart.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyGameClientConnect":
-                            msg = Lq.NotifyGameClientConnect.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyDisconnect":
-                            msg = Lq.NotifyDisconnect.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyGameEndResult":
-                            msg = Lq.NotifyGameEndResult.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyAccountUpdate":
-                            msg = Lq.NotifyAccountUpdate.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionNewRound":
-                            msg = Lq.ActionNewRound.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionDealTile":
-                            msg = Lq.ActionDealTile.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionDiscardTile":
-                            msg = Lq.ActionDiscardTile.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionChangeTile":
-                            msg = Lq.ActionChangeTile.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionNoTile":
-                            msg = Lq.ActionNoTile.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionHuleXueZhanEnd":
-                            msg = Lq.ActionHuleXueZhanEnd.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionHule":
-                            msg = Lq.ActionHule.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyEndGameVote":
-                            msg = Lq.NotifyEndGameVote.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionLiuJu":
-                            msg = Lq.ActionLiuJu.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionChiPengGang":
-                            msg = Lq.ActionChiPengGang.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionAnGangAddGang":
-                            msg = Lq.ActionAnGangAddGang.Parser.ParseFrom(w.Data);
-                            break;
-                        case "ActionMJStart":
-                            msg = Lq.ActionMJStart.Parser.ParseFrom(w.Data);
-                            break;
-                        case "NotifyPlayerLoadGameReady":
-                            msg = Lq.NotifyPlayerLoadGameReady.Parser.ParseFrom(w.Data);
-                            break;
+                        var data = Lq.ServerStream.Parser.ParseFrom(call.ResponseStream.Current.ToByteArray());
+                        var w = Lq.Wrapper.Parser.ParseFrom(data.Stream);
+
+                        IMessage msg = null;
+
+                        switch (w.Name)
+                        {
+                            case "NotifyRoomGameStart":
+                                msg = Lq.NotifyRoomGameStart.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyMatchGameStart":
+                                msg = Lq.NotifyMatchGameStart.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyGameClientConnect":
+                                msg = Lq.NotifyGameClientConnect.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyDisconnect":
+                                msg = Lq.NotifyDisconnect.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyGameEndResult":
+                                msg = Lq.NotifyGameEndResult.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyAccountUpdate":
+                                msg = Lq.NotifyAccountUpdate.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionNewRound":
+                                msg = Lq.ActionNewRound.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionDealTile":
+                                msg = Lq.ActionDealTile.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionDiscardTile":
+                                msg = Lq.ActionDiscardTile.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionChangeTile":
+                                msg = Lq.ActionChangeTile.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionNoTile":
+                                msg = Lq.ActionNoTile.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionHuleXueZhanEnd":
+                                msg = Lq.ActionHuleXueZhanEnd.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionHule":
+                                msg = Lq.ActionHule.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyEndGameVote":
+                                msg = Lq.NotifyEndGameVote.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionLiuJu":
+                                msg = Lq.ActionLiuJu.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionChiPengGang":
+                                msg = Lq.ActionChiPengGang.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionAnGangAddGang":
+                                msg = Lq.ActionAnGangAddGang.Parser.ParseFrom(w.Data);
+                                break;
+                            case "ActionMJStart":
+                                msg = Lq.ActionMJStart.Parser.ParseFrom(w.Data);
+                                break;
+                            case "NotifyPlayerLoadGameReady":
+                                msg = Lq.NotifyPlayerLoadGameReady.Parser.ParseFrom(w.Data);
+                                break;
+                        }
+
+                        HandleMessage(new MajsoulMessage
+                        {
+                            Success = true,
+                            Type = MajsoulMessageType.RESPONSE,
+                            MethodName = w.Name,
+                            Message = msg
+                        });
                     }
-
-                    HandleMessage(new MajsoulMessage
-                    {
-                        Success = true,
-                        Type = MajsoulMessageType.RESPONSE,
-                        MethodName = w.Name,
-                        Message = msg
-                    });
+                } catch (Exception e)
+                {
+                    Console.WriteLine(e);
                 }
             }).Start();
             return Task.CompletedTask;
@@ -697,13 +702,10 @@ namespace MahjongAI
                 else if (msg.GameInfo != null)
                 {
                     continued = true;
-                    if (!disconnect)
-                    {
-                        fast = new Lq.FastTest.FastTestClient(channel);
-                        notify = new Lq.Notify.NotifyClient(channel);
-                        call = notify.Notify(new Lq.ClientStream { }, md);
-                        _ = CreateNotify();
-                    }
+                    fast = new Lq.FastTest.FastTestClient(channel);
+                    notify = new Lq.Notify.NotifyClient(channel);
+                    call = notify.Notify(new Lq.ClientStream { }, md);
+                    _ = CreateNotify();
                     connect_token = msg.GameInfo.ConnectToken;
                     game_uuid = msg.GameInfo.GameUuid;
                     location = msg.GameInfo.Location;
@@ -711,13 +713,10 @@ namespace MahjongAI
                 }
                 else
                 {
-                    if (!disconnect)
-                    {
-                        fast = new Lq.FastTest.FastTestClient(channel);
-                        notify = new Lq.Notify.NotifyClient(channel);
-                        call = notify.Notify(new Lq.ClientStream { }, md);
-                        _ = CreateNotify();
-                    }
+                    fast = new Lq.FastTest.FastTestClient(channel);
+                    notify = new Lq.Notify.NotifyClient(channel);
+                    call = notify.Notify(new Lq.ClientStream { }, md);
+                    _ = CreateNotify();
                     InvokeOnLogin(resume: false, succeeded: true);
                 }
                 disconnect = false;

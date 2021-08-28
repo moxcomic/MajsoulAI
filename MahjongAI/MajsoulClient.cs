@@ -51,6 +51,7 @@ namespace MahjongAI
         private string connect_token = "";
         private string game_uuid = "";
         private string location = "";
+        private bool disconnect = false;
 
         public void InitGrpc()
         {
@@ -696,10 +697,13 @@ namespace MahjongAI
                 else if (msg.GameInfo != null)
                 {
                     continued = true;
-                    fast = new Lq.FastTest.FastTestClient(channel);
-                    notify = new Lq.Notify.NotifyClient(channel);
-                    call = notify.Notify(new Lq.ClientStream { }, md);
-                    _ = CreateNotify();
+                    if (!disconnect)
+                    {
+                        fast = new Lq.FastTest.FastTestClient(channel);
+                        notify = new Lq.Notify.NotifyClient(channel);
+                        call = notify.Notify(new Lq.ClientStream { }, md);
+                        _ = CreateNotify();
+                    }
                     connect_token = msg.GameInfo.ConnectToken;
                     game_uuid = msg.GameInfo.GameUuid;
                     location = msg.GameInfo.Location;
@@ -707,12 +711,16 @@ namespace MahjongAI
                 }
                 else
                 {
-                    fast = new Lq.FastTest.FastTestClient(channel);
-                    notify = new Lq.Notify.NotifyClient(channel);
-                    call = notify.Notify(new Lq.ClientStream { }, md);
-                    _ = CreateNotify();
+                    if (!disconnect)
+                    {
+                        fast = new Lq.FastTest.FastTestClient(channel);
+                        notify = new Lq.Notify.NotifyClient(channel);
+                        call = notify.Notify(new Lq.ClientStream { }, md);
+                        _ = CreateNotify();
+                    }
                     InvokeOnLogin(resume: false, succeeded: true);
                 }
+                disconnect = false;
             }
             if (message.MethodName == "NotifyRoomGameStart")
             {
@@ -733,6 +741,7 @@ namespace MahjongAI
             }
             else if (message.MethodName == "NotifyDisconnect")
             {
+                disconnect = true;
                 Login();
             }
             else if (message.MethodName == "NotifyGameSync")

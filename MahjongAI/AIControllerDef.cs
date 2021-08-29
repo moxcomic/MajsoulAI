@@ -34,13 +34,13 @@ namespace MahjongAI
                     evalResult.E_Point < 8000
                     || evalResult.E_PromotionCount[0] <= 15 && evalResult.E_Point < 12000
                     || evalResult.E_PromotionCount[0] <= 8)
-                || evalResult.Distance == 1 && (
-                    (evalResult.E_Point < 2000 && isTileTooDangerous(discardTile))
+                || evalResult.Distance == 1 && isTileTooDangerous(discardTile) && (
+                    (evalResult.E_Point < 2000)
                     || (evalResult.E_PromotionCount[0] <= 20 && evalResult.E_Point < 4000)
                     || (evalResult.E_PromotionCount[0] <= 9 && evalResult.E_Point < 8000)
                     || evalResult.E_PromotionCount[0] <= 4)
                 || evalResult.Distance == 0 && (evalResult.E_Point < 2000 || evalResult.E_PromotionCount[0] < 1) && isTileTooDangerous(discardTile)
-                || gameData.remainingTile / 4 <= evalResult.Distance * 2 && isTileTooDangerous(discardTile);
+                || gameData.remainingTile / 4 < evalResult.Distance * 2 && isTileTooDangerous(discardTile);
         }
 
         private bool shouldDef2(EvalResult evalResult, Tile discardTile = null)

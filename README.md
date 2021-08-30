@@ -20,6 +20,8 @@ AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)；
 ![雀杰](./imgs/majsoul-0.jpg)
 (截至 2021 年 08 月 30 日 | 无东场)
 ![雀杰](./imgs/majsoul-1.png)
+(截至 2021 年 08 月 30 日 | 无东场)
+![雀杰](./imgs/majsoul-2.png)
 
 ## 如何获得测试资格
 

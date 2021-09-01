@@ -26,5 +26,7 @@ namespace MahjongAI.Models
         public string MatchMode { get; set; }
         public int DefenceLevel { get; set; }
         public string DeviceUuid { get; set; }
+
+        public bool AutoLevel { get; set; } = true;
     }
 }

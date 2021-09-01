@@ -128,9 +128,11 @@ namespace MahjongAI
                 AccessToken = "",
                 GameLevel = "Normal",
                 GameMode = "Normal",
-                MatchMode = "East",
+                MatchMode = "EastSouth",
                 DefenceLevel = 3,
-                DeviceUuid = ""
+                DeviceUuid = "",
+
+                AutoLevel = true
             };
 
             var ok = false;

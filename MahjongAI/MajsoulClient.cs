@@ -52,6 +52,7 @@ namespace MahjongAI
         private string game_uuid = "";
         private string location = "";
         private bool disconnect = false;
+        private uint level = 0;
 
         public void InitGrpc()
         {
@@ -142,6 +143,9 @@ namespace MahjongAI
 
                         switch (w.Name)
                         {
+                            case "NotifyGameFinishReward":
+                                msg = Lq.NotifyGameFinishReward.Parser.ParseFrom(w.Data);
+                                break;
                             case "NotifyRoomGameStart":
                                 msg = Lq.NotifyRoomGameStart.Parser.ParseFrom(w.Data);
                                 break;
@@ -349,6 +353,49 @@ namespace MahjongAI
                 else if (type.HasFlag(GameType.Level_Silver))
                 {
                     typeNum += 3;
+                }
+
+                if (config.AutoLevel && level == 0)
+                {
+                    try
+                    {
+                        var res = lobby.fetchAccountInfo(new Lq.ReqAccountInfo { AccountId = (uint)accountId }, md);
+                        level = res.Account.Level.Id;
+                        Console.WriteLine("Get Level: {0}", level);
+                    } catch
+                    {
+                        Console.WriteLine("Get Level Fail, Use Config Level...");
+                    }
+                }
+
+                if (config.AutoLevel && level > 0)
+                {
+                    typeNum = 2;
+                    if (type.HasFlag(GameType.Match_EastSouth))
+                    {
+                        typeNum += 1;
+                    }
+
+                    if (level == 10101 || level == 10102 || level == 10103)
+                    {
+                        
+                    } else if (level == 10201 || level == 10202 || level == 10203)
+                    {
+                        typeNum += 3;
+                    } else if (level == 10301 || level == 10303 || level == 10303)
+                    {
+                        typeNum += 6;
+                    } else if (level == 10401 || level == 10402 || level == 10403)
+                    {
+                        typeNum += 9;
+                    } else if (level == 10501 || level == 10502 || level == 10503)
+                    {
+                        typeNum += 12;
+                    } else
+                    {
+                        Console.WriteLine("top level please play by yourself");
+                        Close();
+                    }
                 }
 
                 try
@@ -686,6 +733,18 @@ namespace MahjongAI
                 timers[message.MethodName].Dispose();
             }
 
+            if (message.MethodName == "NotifyGameFinishReward")
+            {
+                var msg = (Lq.NotifyGameFinishReward)message.Message;
+                try
+                {
+                    level = msg.LevelChange.Final.Id;
+                } catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+
             if (!message.Success && message.MethodName != "AuthGame")
             {
                 return;
@@ -1020,7 +1079,11 @@ namespace MahjongAI
 
                     } catch (Exception e)
                     {
-                        Console.WriteLine(e);
+                        Console.WriteLine("Deal error:");
+                        Console.WriteLine(playerSeat);
+                        Console.WriteLine(msg.Seat);
+                        Console.WriteLine(NormalizedPlayerId((int)msg.Seat));
+                        Console.WriteLine(msg);
                     }
                 }
             }
@@ -1049,11 +1112,11 @@ namespace MahjongAI
                     currentPlayer.graveyard.Add(tile);
                 } else
                 {
-                    Console.WriteLine("player({0}({1})) tile is null, origin tile ({2})",
-                        NormalizedPlayerId((int)msg.Seat),
-                        msg.Seat,
-                        msg.Tile
-                    );
+                    Console.WriteLine("Discard error:");
+                    Console.WriteLine(playerSeat);
+                    Console.WriteLine(msg.Seat);
+                    Console.WriteLine(NormalizedPlayerId((int)msg.Seat));
+                    Console.WriteLine(msg);
                 }
                 gameData.lastTile = tile;
                 foreach (var p in gameData.players)

@@ -7,7 +7,7 @@ AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)；
 - 目前该项目处于测试阶段, 部分代码可能不稳定或有逻辑错误
 - 如果您发现了错误的地方或者逻辑错误欢迎提交 PR
 - 使用该工具有封号风险请勿使用大号登录, 请使用小号或新注册账号进行使用
-- 本项目无法直接使用, 参与测试请参照下方获取测试资格方式
+- 本项目无法直接使用, 请加群获取AuthServer后才能使用
 ```
 
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)
@@ -16,21 +16,14 @@ AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)；
 [网盘下载](https://www.aliyundrive.com/s/w1toPgKkGjw)
 
 ## 测试结果
-```diff
-- 当前算法经测试并不适合银之间以上的场次, 如果你有需求请自行修改源码
-```
+(截至 2021 年 08 月 30 日)
+![一姬当千](./imgs/yijidangqian.PNG)
 (截至 2021 年 08 月 15 日)
 ![雀杰](./imgs/majsoul-0.jpg)
 (截至 2021 年 08 月 30 日 | 无东场)
 ![雀杰](./imgs/majsoul-1.png)
 (截至 2021 年 08 月 30 日 | 无东场)
 ![雀杰](./imgs/majsoul-2.png)
-
-## 如何获得测试资格
-
-1. 参与本项目的开发人员 (本项目使用语言 C#)
-2. 对麻将算法有一定理解的人员
-3. 对游戏有一定理解的并且有能力助力本项目的人员
 
 ## 如何运行
 

@@ -739,6 +739,7 @@ namespace MahjongAI
                 try
                 {
                     level = msg.LevelChange.Final.Id;
+                    Console.WriteLine("Level Change: {0}: {1}", msg.LevelChange.Final.Id, msg.LevelChange.Final.Score);
                 } catch (Exception e)
                 {
                     Console.WriteLine(e);

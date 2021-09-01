@@ -12,6 +12,9 @@ AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)；
 
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)
 
+[Github下载](https://github.com/moxcomic/MajsoulAI/releases/latest)  
+[网盘下载](https://www.aliyundrive.com/s/w1toPgKkGjw)
+
 ## 测试结果
 ```diff
 - 当前算法经测试并不适合银之间以上的场次, 如果你有需求请自行修改源码

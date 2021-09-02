@@ -385,7 +385,7 @@ namespace MahjongAI
                     } else if (level == 10201 || level == 10202 || level == 10203)
                     {
                         typeNum += 3;
-                    } else if (level == 10301 || level == 10303 || level == 10303)
+                    } else if (level == 10301 || level == 10302 || level == 10303)
                     {
                         typeNum += 6;
                     } else if (level == 10401 || level == 10402 || level == 10403)

@@ -143,6 +143,9 @@ namespace MahjongAI
 
                         switch (w.Name)
                         {
+                            case "NotifyLicence":
+                                msg = Lq.NotifyLicence.Parser.ParseFrom(w.Data);
+                                break;
                             case "NotifyGameFinishReward":
                                 msg = Lq.NotifyGameFinishReward.Parser.ParseFrom(w.Data);
                                 break;
@@ -739,11 +742,17 @@ namespace MahjongAI
                 try
                 {
                     level = msg.LevelChange.Final.Id;
-                    Console.WriteLine("Level Change: {0}: {1}", msg.LevelChange.Final.Id, msg.LevelChange.Final.Score);
+                    Console.WriteLine("Level Change: origin {0}: {1} {2}: {3}", msg.LevelChange.Origin.Id, msg.LevelChange.Origin.Score, msg.LevelChange.Final.Id, msg.LevelChange.Final.Score);
                 } catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
+            }
+
+            if (message.MethodName == "NotifyLicence")
+            {
+                var msg = (Lq.NotifyLicence)message.Message;
+                Console.WriteLine("ExpireTime: {0} LeftMatchCount: {1}", msg.Time, msg.MatchCount);
             }
 
             if (!message.Success && message.MethodName != "AuthGame")

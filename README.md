@@ -16,6 +16,8 @@ AI 逻辑原作者[MahjongAI](https://github.com/zhangjk95/MahjongAI)；
 [网盘下载](https://www.aliyundrive.com/s/w1toPgKkGjw)
 
 ## 测试结果
+(截至 2021 年 10 月 14 日)
+![雀圣3](./imgs/majsoul-7.png)
 (截至 2021 年 09 月 09 日)
 ![雀豪](./imgs/majsoul-6.png)
 (截至 2021 年 09 月 08 日)

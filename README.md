@@ -99,7 +99,7 @@ vim config.json
 
 B 站 ID: [神崎·H·亚里亚](https://space.bilibili.com/898411/)  
 B 站 ID: [关野萝可](https://space.bilibili.com/612462792/)  
-QQ 交流群: [991568358](https://jq.qq.com/?_wv=1027&k=3gaKRwqg)
+QQ 交流群: [991568358](https://jq.qq.com/?_wv=1027&k=3gaKRwqg)  
 Discord: [JoinDiscord](https://discord.gg/eNKz25Xf3r)
 
 请作者喝一杯咖啡

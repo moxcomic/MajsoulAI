@@ -60,6 +60,7 @@ exit: 打完当前对局后退出
 - 这里随便填写注册即可, 不需要验证
 ```
 ![](https://upload-images.jianshu.io/upload_images/22319199-f1aa61e705745597.png?imageMogr2/auto-orient/strip|imageView2/2/w/523)
+
 2、企业微信登录
 
 登录地址：[https://work.weixin.qq.com/wework_admin/loginpage_wx?from=myhome](https://work.weixin.qq.com/wework_admin/loginpage_wx?from=myhome)

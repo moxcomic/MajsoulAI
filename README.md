@@ -1,7 +1,7 @@
 # MajsoulAI
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)
 
-使用请先加群或Discord频道, 最新版本已不在github发布. 最新版本再docker hub发布, github下载版本已停用.
+使用请先加群或Discord频道, 最新版本已不在github发布. 最新版本发布在docker hub, github下载版本已停用.
 
 ## 测试结果
 (截至 2021 年 10 月 14 日)

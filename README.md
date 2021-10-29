@@ -108,6 +108,5 @@ Discord: [JoinDiscord](https://discord.gg/eNKz25Xf3r)
 
 <figure class="third">
     <img src="https://moxcomic.github.io/wechat.png" width=170>
-    <img src="https://moxcomic.github.io/alipay.png" width=170>
     <img src="https://moxcomic.github.io/qq.png" width=170>
 </figure>

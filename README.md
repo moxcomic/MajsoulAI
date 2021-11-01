@@ -5,7 +5,7 @@
 ```
 为了项目的可持续发展, 使用本项目需要赞助才可进行使用, 按照(30CNY/600JPY/5USD)兑换100场计算, 东风场或南风场打完结束算作一场, 赞助请拉到最下方微信并附带数字ID(使用本项目在登录后会看到一串数字ID)之后会开通权限.  
 使用请先加群或[discord](https://discord.gg/eNKz25Xf3r)频道, 最新版本已不在github发布. 最新版本发布在[docker hub](https://hub.docker.com/repository/docker/moxcomic/mjai), github下载版本已停用.  
-[## 如何运行 ##](./MajsoulAI#如何运行)
+[## 如何运行 ##](https://github.com/moxcomic/MajsoulAI#如何运行)
 
 ## 测试结果
 (截至 2021 年 10 月 14 日)

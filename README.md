@@ -32,7 +32,7 @@
 2. 使用cmd或powershell执行以下命令(注意空格, 复制时不要漏掉空格否则无法执行)
 ```shell
 docker pull moxcomic/mjai
-docker run -itd --name ai moxcomic/mjai /bin/bash
+docker run -itd --name ako -p 30001:30001 moxcomic/mjai /bin/bash
 docker ps
     这里会得到如下输出
     CONTAINER ID   IMAGE          COMMAND       CREATED       STATUS      PORTS     NAMES
@@ -41,7 +41,7 @@ docker exec -it [CONTAINER ID] /bin/bash
     这里的[CONTAINER ID]需要进行替换
     例如这里替换后的命令为: docker exec -it 2b9c0ff81e96 /bin/bash
 cd ai
-./mjai
+./kaguya
 根据提示选择服务器 国服输入tw 日服输入jp 美服输入en
 输入账号密码(日美服无需输入密码)
 选择连接服务器(不要选择0剩余的都可以)

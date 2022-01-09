@@ -32,7 +32,7 @@
 2. 使用cmd或powershell执行以下命令(注意空格, 复制时不要漏掉空格否则无法执行)
 ```shell
 docker pull moxcomic/mjai
-docker run -itd --name ako -p 30001:30001 moxcomic/mjai /bin/bash
+docker run -itd --name ai -p 30001:30001 moxcomic/mjai /bin/bash
 docker ps
     这里会得到如下输出
     CONTAINER ID   IMAGE          COMMAND       CREATED       STATUS      PORTS     NAMES

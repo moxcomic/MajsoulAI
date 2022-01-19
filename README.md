@@ -28,26 +28,59 @@
 ![雀杰](./imgs/majsoul-2.png)
 
 ## 如何运行
-1. 安装docker
-2. 使用cmd或powershell执行以下命令(注意空格, 复制时不要漏掉空格否则无法执行)
-```shell
-docker pull moxcomic/mjai
-docker run -itd --name ai -p 30001:30001 moxcomic/mjai /bin/bash
-docker ps
-    这里会得到如下输出
-    CONTAINER ID   IMAGE          COMMAND       CREATED       STATUS      PORTS     NAMES
-    2b9c0ff81e96   6a7ed490783d   "/bin/bash"   2 weeks ago   Up 6 days             ai
-docker exec -it [CONTAINER ID] /bin/bash
-    这里的[CONTAINER ID]需要进行替换
-    例如这里替换后的命令为: docker exec -it 2b9c0ff81e96 /bin/bash
-cd ai
-./kaguya
-根据提示选择服务器 国服输入tw 日服输入jp 美服输入en
-输入账号密码(日美服无需输入密码)
-选择连接服务器(不要选择0剩余的都可以)
-等待网络测速选择推荐服务器即可
-完成登录(日美服用户需要填入邮箱验证码)
-得到返回数字ID(此项用于授权)
+```
+ubuntu镜像下载：magnet:?xt=urn:btih:9FC20B9E98EA98B4A35E6223041A5EF94EA27809&dn=ubuntu-20.04-desktop-amd64.iso&xl=2715254784
+
+AI使用教程：
+1. 使用前请先安装虚拟机（PD或者VM虚拟机均可）
+2. 安装ubuntu或者debian之类apt体系的Linux系统（如果你需要可视化实时观战/手动打牌请安装有界面的版本）
+3. 打开Linux里的 Terminal（终端）
+4. 按照顺序执行以下命令, 一行为一条, 请一条一条执行不要全部复制一股脑粘贴进去, 输入时会让你输入密码（就是你创建的时候的密码）
+
+#### 开始安装
+1. 将ai.zip复制到虚拟机里解压
+2. 右键ai文件夹Open in Terminal
+3. sudo ./install
+4. 输入你设置的Linux账户密码
+5. 安装结束
+6. cd /ai
+7. ./kaguya
+8. 根据提示获取UA填入对应区域
+9. config.json在运行后会生成在/ai目录下
+
+#### 如何修改config
+1. vim config.json
+2. 按键盘 i 进入编辑模式
+3. 上下左右方向键调整光标
+4. 在user_agent对应区域输入内容, 例如: "user_agent": "这里是你要输入的内容, 必须在双引号里面, 后面的逗号不能删除, 输入的内容不能有单引号",
+4.5 Windows用户请鼠标右键标题栏粘贴, 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴
+5. 按键盘左上角ESC退出编辑模式
+6. 输入英文冒号 : 你不要管在哪里输入按下ESC后就输入就行不要管其他
+7. 输入小写英文 x 你不要管在哪里输入按下ESC后就输入就行不要管其他
+8. 回车
+9. ./kaguya
+10. 根据提示登录
+
+请注意选择模式
+auto:    无UI自动模式
+calc:    手动打牌模式
+display: 实时观战模式
+
+请注意这里输入 0 1 2 数字, 否则会卡住
+除auto以外两个模式均需要手动进行匹配
+遇到填写Chrome路径如果小白不知道请直接回车不用管
+
+#### 手动开启浏览器模式
+遇到输入Chrome URL时停下, 不要动
+（首先确认你安装了Chrome浏览器）
+打开新终端输入 /usr/bin/google-chrome-stable --no-sandbox --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0
+这时他会返回一个 DevTools listening on ws://127.0.0.1:9222/devtools/browser/76e63b34-b184-46af-925d-969ba7ab763d
+把ws(ws://127.0.0.1:9222/devtools/browser/76e63b34-b184-46af-925d-969ba7ab763d)到最后的复制粘贴到第一个终端回车
+(这个值每次都会变的, 请不要复制我这里的)
+#### 自动开启浏览器模式
+直接回车
+#### 小白模式
+啥也不会你就摁回车
 ```
 
 ## 登录后命令

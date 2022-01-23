@@ -41,26 +41,6 @@ AI使用教程：
 1. 将ai.zip复制到虚拟机里解压
 2. 右键ai文件夹Open in Terminal
 3. sudo ./install
-4. 输入你设置的Linux账户密码
-5. 安装结束
-6. cd /ai
-7. ./kaguya
-8. 根据提示获取UA填入对应区域
-9. config.json在运行后会生成在/ai目录下
-
-#### 如何修改config
-ubuntu镜像下载：magnet:?xt=urn:btih:9FC20B9E98EA98B4A35E6223041A5EF94EA27809&dn=ubuntu-20.04-desktop-amd64.iso&xl=2715254784
-
-AI使用教程：
-1. 使用前请先安装虚拟机（PD或者VM虚拟机均可）
-2. 安装ubuntu或者debian之类apt体系的Linux系统（如果你需要可视化实时观战/手动打牌请安装有界面的版本）
-3. 打开Linux里的 Terminal（终端）
-4. 按照顺序执行以下命令, 一行为一条, 请一条一条执行不要全部复制一股脑粘贴进去, 输入时会让你输入密码（就是你创建的时候的密码）
-
-#### 开始安装
-1. 将ai.zip复制到虚拟机里解压
-2. 右键ai文件夹Open in Terminal
-3. sudo ./install
 4. 输入你设置的Linux账户密码, 输入过程不可见你输入就行
 5. 安装结束
 6. ./kaguya

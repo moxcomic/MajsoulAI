@@ -49,17 +49,26 @@ AI使用教程：
 9. config.json在运行后会生成在/ai目录下
 
 #### 如何修改config
-1. vim config.json
-2. 按键盘 i 进入编辑模式
-3. 上下左右方向键调整光标
-4. 在user_agent对应区域输入内容, 例如: "user_agent": "这里是你要输入的内容, 必须在双引号里面, 后面的逗号不能删除, 输入的内容不能有单引号",
-4.5 Windows用户请鼠标右键标题栏粘贴, 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴 不要用Ctrl+V粘贴
-5. 按键盘左上角ESC退出编辑模式
-6. 输入英文冒号 : 你不要管在哪里输入按下ESC后就输入就行不要管其他
-7. 输入小写英文 x 你不要管在哪里输入按下ESC后就输入就行不要管其他
-8. 回车
-9. ./kaguya
-10. 根据提示登录
+ubuntu镜像下载：magnet:?xt=urn:btih:9FC20B9E98EA98B4A35E6223041A5EF94EA27809&dn=ubuntu-20.04-desktop-amd64.iso&xl=2715254784
+
+AI使用教程：
+1. 使用前请先安装虚拟机（PD或者VM虚拟机均可）
+2. 安装ubuntu或者debian之类apt体系的Linux系统（如果你需要可视化实时观战/手动打牌请安装有界面的版本）
+3. 打开Linux里的 Terminal（终端）
+4. 按照顺序执行以下命令, 一行为一条, 请一条一条执行不要全部复制一股脑粘贴进去, 输入时会让你输入密码（就是你创建的时候的密码）
+
+#### 开始安装
+1. 将ai.zip复制到虚拟机里解压
+2. 右键ai文件夹Open in Terminal
+3. sudo ./install
+4. 输入你设置的Linux账户密码, 输入过程不可见你输入就行
+5. 安装结束
+6. ./kaguya
+7. 根据提示获取UA填入对应区域
+8. config.json在运行后会生成在ai目录下
+
+#### 如何修改config
+双击打开自己修改, 鼠标右键复制粘贴
 
 请注意选择模式
 auto:    无UI自动模式
@@ -68,19 +77,7 @@ display: 实时观战模式
 
 请注意这里输入 0 1 2 数字, 否则会卡住
 除auto以外两个模式均需要手动进行匹配
-遇到填写Chrome路径如果小白不知道请直接回车不用管
-
-#### 手动开启浏览器模式
-遇到输入Chrome URL时停下, 不要动
-（首先确认你安装了Chrome浏览器）
-打开新终端输入 /usr/bin/google-chrome-stable --no-sandbox --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0
-这时他会返回一个 DevTools listening on ws://127.0.0.1:9222/devtools/browser/76e63b34-b184-46af-925d-969ba7ab763d
-把ws(ws://127.0.0.1:9222/devtools/browser/76e63b34-b184-46af-925d-969ba7ab763d)到最后的复制粘贴到第一个终端回车
-(这个值每次都会变的, 请不要复制我这里的)
-#### 自动开启浏览器模式
-直接回车
-#### 小白模式
-啥也不会你就摁回车
+遇到填写Chrome路径和URL如果小白不知道请直接回车不用管
 ```
 
 ## 登录后命令

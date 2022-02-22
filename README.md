@@ -3,7 +3,7 @@
 ```diff
 - 由于雀魂不允许AI进入, 所以会封号, 请不要使用大号进行登录和使用
 ```
-为了项目的可持续发展, 使用本项目需要赞助才可进行使用, 按照(30CNY/800JPY/7USD)7天/(100CNY/2500JPY/20USD)30天计算, 赞助请拉到最下方微信并附带数字ID(使用本项目在登录后会看到一串数字ID)之后会开通权限.  
+为了项目的可持续发展, 使用本项目需要赞助才可进行使用, 按照(30CNY/800JPY/7USD)7天/(100CNY/2500JPY/20USD)30天计算, 赞助请拉到最下方添加微信或者进Discord群询问.  
 使用请先加群或[discord](https://discord.gg/eNKz25Xf3r)频道, 最新版本只要能跑Linux的地方都可以使用, 最低要求8核CPU 8G内存  
 [## 如何运行 ##](#如何运行)
 
@@ -121,9 +121,6 @@ B 站 ID: [关野萝可](https://space.bilibili.com/612462792/)
 QQ 交流群: [991568358](https://jq.qq.com/?_wv=1027&k=3gaKRwqg)  
 Discord: [JoinDiscord](https://discord.gg/eNKz25Xf3r)
 
-请作者喝一杯咖啡
-
 <figure class="third">
-    <img src="https://moxcomic.github.io/wechat.png" width=170>
-    <img src="https://moxcomic.github.io/qq.png" width=170>
+    <img src="./qrcode.JPG" width=170>
 </figure>

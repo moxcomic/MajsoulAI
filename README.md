@@ -122,5 +122,5 @@ QQ 交流群: [991568358](https://jq.qq.com/?_wv=1027&k=3gaKRwqg)
 Discord: [JoinDiscord](https://discord.gg/eNKz25Xf3r)
 
 <figure class="third">
-    <img src="./qrcode.JPG" width=170>
+    <img src="./imgs/qrcode.JPG" width=170>
 </figure>

@@ -1,5 +1,6 @@
 # MajsoulAI
-[![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI) ![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)  
+[![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI)![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)  
+
 ```diff
 - 由于雀魂不允许AI进入, 所以会封号, 请不要使用大号进行登录和使用
 ```
@@ -11,6 +12,21 @@
 ![](./imgs/xianyu-01.png)  
 ![](./imgs/xianyu-02.jpg)  
 ![](./imgs/xianyu-03.jpg)  
+
+### 中国大陆无法加载问题
+
+如果你在中国大陆内使用本软件，可能会遇到卡加载进度条、日服美服无法登陆等问题，遇到此问题的原因是雀魂的服务器架设在非大陆地区，您可能需要使用代理才能够正常的访问。
+
+这里我们以[PandaVPN](https://www.pantavv.xyz/i/27611920)进行举例，首先我们安装并打开VPN，登录后连接上可用的线路，之后修改`config.proxy.json`即可正常访问
+
+```json
+{
+  "enbale": true,        // true开启代理 false关闭代理
+  "mode": "socks5",      // 代理模式, 仅支持socks5和http
+  "host": "localhost",   // 代理ip
+  "port": 1090           // 代理端口
+}
+```
 
 ## 测试结果
 (截至 2021 年 10 月 14 日)
@@ -65,17 +81,6 @@ display: 实时观战模式
 遇到填写Chrome路径和URL如果小白不知道请直接回车不用管
 ```
 
-## 登录后命令
-```
-当前可用命令:
-logout: 登出账号
-join: 进入友人房, 例子: join 10086
-ready: 友人房准备
-auto: 自动匹配开始
-info: 调试输出
-exit: 打完当前对局后退出
-```
-
 ## 配置微信推送对局结果
 ![](./imgs/push.PNG)
 1、企业微信注册[https://work.weixin.qq.com/wework_admin/register_wx?from=loginpage](https://work.weixin.qq.com/wework_admin/register_wx?from=loginpage)
@@ -110,10 +115,11 @@ exit: 打完当前对局后退出
 
 secret需要下载企业微信手机App后在网页点击查看secret后在手机端App查看。
 6、将得到的内容输入config.json
+
 ```shell
 // 在 /ai 目录下执行以下命令
 vim config.json
-// 然后将以上内容填入 qy_wechat 对应区域
+// 然后将以上内容填入 notification 对应区域
 // vim命令使用方式请参照百度
 ```
 

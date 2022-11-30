@@ -1,4 +1,4 @@
-# MajsoulAI
+# MahjongAI
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI)![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)  
 
 ```diff

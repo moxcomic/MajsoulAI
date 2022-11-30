@@ -34,7 +34,7 @@
 
 (2022年11月30日)
 
-![tenhou-1](./imgs/tenhou-0.png)
+![tenhou-1](./imgs/tenhou-1.png)
 
 ### Majsoul
 

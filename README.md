@@ -32,6 +32,10 @@
 
 ### Tenhou
 
+(2022年12月03日)
+
+![tenhou-03](./imgs/tenhou-03.png)
+
 (2022年12月02日)
 
 ![tenhou-02](./imgs/tenhou-02.png)

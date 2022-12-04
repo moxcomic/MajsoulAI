@@ -34,7 +34,7 @@
 
 (2022年12月04日)
 
-![tenhou-04](./imgs/tenhou-004.png)
+![tenhou-04](./imgs/tenhou-04.png)
 
 (2022年12月03日)
 

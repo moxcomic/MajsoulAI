@@ -32,25 +32,9 @@
 
 ### Tenhou
 
-(2022年12月05日)
+(2022年12月07日)
 
-![tenhou-05](./imgs/tenhou-05.png)
-
-(2022年12月04日)
-
-![tenhou-04](./imgs/tenhou-004.png)
-
-(2022年12月03日)
-
-![tenhou-003](./imgs/tenhou-003.png)
-
-(2022年12月02日)
-
-![tenhou-02](./imgs/tenhou-02.png)
-
-(2022年12月01日)
-
-![tenhou-01](./imgs/tenhou-01.png)
+![tenhou](./imgs/tenhou.png)
 
 ### Majsoul
 

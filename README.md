@@ -15,6 +15,10 @@
 - 禁止参加任何官方/非官方举办的比赛
 - 禁止任何形式的代练
 ```
+### Attention
+
+[Twitter](https://twitter.com/Start_MahjongAI/status/1601725023949320192)
+
 ## Results
 
 Tenhou

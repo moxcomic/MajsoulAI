@@ -1,6 +1,10 @@
 # MahjongAI
 [![VersionLatest](https://img.shields.io/github/release/moxcomic/MajsoulAI)![DownloadsLatest](https://img.shields.io/github/downloads/moxcomic/MajsoulAI/latest/total)](https://github.com/moxcomic/MajsoulAI/releases/latest)  
 
+## 新项目进度公告
+
+新项目目前已经在测试中，感谢`牌谱屋`的支持和数据支持，我们将会在近期内公布新项目。
+
 ## 致所有用户的一封信
 ![messsage](./imgs/bye.png)
 ### Attention

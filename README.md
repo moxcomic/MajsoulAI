@@ -5,7 +5,7 @@
 
 新项目目前已经在测试中，感谢`牌谱屋`的数据支持和帮忙宣传新项目，我们将会在近期内公布新项目。
 
-新项目演示视频：[bilibili](https://www.bilibili.com/video/BV1pY4y1f7M8/?vd_source=95802807d6ccce7bed8e5b090598c3b6)
+王座南：[bilibili](https://www.bilibili.com/video/BV1pY4y1f7M8/)  玉南: [bilibili](https://www.bilibili.com/video/BV1s3411U7v8/)
 
 ## 致所有用户的一封信
 ![messsage](./imgs/bye.png)

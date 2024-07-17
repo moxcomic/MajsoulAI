@@ -3,7 +3,7 @@
 
 ## 新项目进度公告
 
-新项目公测: [戳我进入新项目](https://live.bilibili.com/21949)
+新项目公测: [戳我进入新项目](https://github.com/moxcomic/archer)
 
 ## 致所有用户的一封信
 ![messsage](./imgs/bye.png)
